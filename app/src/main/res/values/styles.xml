@@ -8,4 +8,19 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="tabstyle" parent="Widget.Design.TabLayout">
+        <item name="tabPaddingStart">3dp</item>
+        <item name="tabPaddingEnd">3dp</item>
+        <item name="tabBackground">@android:color/transparent</item>
+        <item name="tabIndicatorHeight">0dp</item>
+        <item name="tabRippleColor">@android:color/transparent</item>
+        <item name="tabMode">scrollable</item>
+    </style>
+
+    <style name="bottomnavstyle" parent="Widget.Design.BottomNavigationView">
+        <item name="android:background">@drawable/bottom_nav_shape</item>
+        <item name="itemIconTint">@color/sub_events_btm_bar_icon</item>
+        <item name="itemTextColor">@color/sub_events_btm_bar_text</item>
+    </style>
+
 </resources>

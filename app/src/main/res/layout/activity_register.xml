@@ -7,62 +7,160 @@
     android:layout_height="match_parent"
     tools:context=".Activity.RegisterActivity">
 
-    <Button
-        android:id="@+id/btn_reg_skip"
-        android:textAllCaps="false"
-        android:text="Skip"
-        android:layout_marginRight="5dp"
-        android:layout_marginTop="5dp"
-        android:layout_alignParentRight="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <LinearLayout
-        android:layout_below="@+id/btn_reg_skip"
-        android:orientation="vertical"
+    <android.support.v7.widget.Toolbar
+        android:background="#5287B6"
+        app:titleTextColor="@color/colorWhite"
+        android:id="@+id/reg_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"/>
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_gravity="center"
-            android:src="@drawable/ojass_icon"
-            android:layout_width="150dp"
-            android:layout_height="150dp" />
+    <ImageView
+        android:layout_below="@+id/reg_toolbar"
+        android:src="@drawable/ojass_theme"
+        android:id="@+id/theme"
+        android:layout_width="match_parent"
+        android:layout_height="100dp" />
 
-        <EditText
-            android:hint="Name"
+    <ScrollView
+        android:layout_below="@+id/theme"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp">
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:orientation="vertical">
 
-        <EditText
-            android:hint="Email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="#569bef">
 
-        <EditText
-            android:hint="Mobile"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+                <EditText
+                    android:imeOptions="actionNext"
+                    android:maxLines="1"
+                    android:inputType="textCapWords"
+                    android:id="@+id/input_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Name" />
 
-        <EditText
-            android:hint="College"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            </android.support.design.widget.TextInputLayout>
 
-        <EditText
-            android:hint="Registration No"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="#569bef">
 
-        <EditText
-            android:hint="Branch"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+                <EditText
+                    android:imeOptions="actionNext"
+                    android:maxLines="1"
+                    android:inputType="textEmailAddress"
+                    android:id="@+id/input_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Email" />
 
-        <Spinner
-            android:layout_width="match_parent"
-            android:layout_height="50dp"></Spinner>
+            </android.support.design.widget.TextInputLayout>
 
-    </LinearLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="#569bef">
+
+                <EditText
+                    android:imeOptions="actionNext"
+                    android:maxLines="1"
+                    android:inputType="phone"
+                    android:maxLength="10"
+                    android:id="@+id/input_mobile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Mobile" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="#569bef">
+
+                <EditText
+                    android:imeOptions="actionNext"
+                    android:maxLines="1"
+                    android:inputType="text"
+                    android:id="@+id/input_college"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="College/School" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="#569bef">
+
+                <EditText
+                    android:imeOptions="actionNext"
+                    android:maxLines="1"
+                    android:inputType="text"
+                    android:id="@+id/input_reg_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Registration No/Roll No" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="#569bef">
+
+                <EditText
+                    android:imeOptions="actionDone"
+                    android:maxLines="1"
+                    android:id="@+id/input_branch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Branch" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <Spinner
+                android:background="@drawable/spinner_bg"
+                android:id="@+id/spinner_tshirt_size"
+                android:entries="@array/tshirt_size"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"></Spinner>
+
+            <Button
+                android:layout_marginTop="5dp"
+                android:id="@+id/btn_register"
+                android:background="@drawable/btn_reg_bg"
+                android:textColor="#ffffff"
+                android:textSize="17sp"
+                android:textAllCaps="false"
+                android:text="Register"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_height" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+            <TextView
+                android:id="@+id/skip_this"
+                android:layout_gravity="end"
+                android:text="@string/skip_this"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </RelativeLayout>

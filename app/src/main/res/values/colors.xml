@@ -3,4 +3,13 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="sub_events_bottom_nav">#777</color>
+    <color name="black">#000</color>
+    <color name="tab_underline_color">@color/colorWhite</color>
+    <color name="sub_events_btm_bar_icon">#fff</color>
+    <color name="sub_events_btm_bar_text">#fff</color>
+    <color name="tab_text_color">@color/colorWhite</color>
+    <color name="profile_top">#005be7</color>
+    <color name="forest_green">#228B22</color>
 </resources>

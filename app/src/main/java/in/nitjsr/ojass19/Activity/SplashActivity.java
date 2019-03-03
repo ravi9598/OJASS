@@ -6,18 +6,21 @@ import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.ContextMenu;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.Button;
 import android.widget.ImageView;
 
 import in.nitjsr.ojass19.R;
+import in.nitjsr.ojass19.Utils.SharedPrefManager;
 
 public class SplashActivity extends AppCompatActivity {
 
     private static final int SPLASH_SCREEN_TIMER =  1600;
     private ImageView ivSplashIcon, ivSplashName;
     private Button btnContinue;
+    private SharedPrefManager sharedPrefManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +28,12 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
 
         init();
-        
+
+        sharedPrefManager = new SharedPrefManager(this);
+
+        if(sharedPrefManager.isLoggedIn())
+            moveToHome();
+
         animate();
 
         doTheDelayStuff();
@@ -36,8 +44,12 @@ public class SplashActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(SplashActivity.this,LoginActivity.class));
-                finish();
+                btnContinue.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        moveToLogin();
+                    }
+                });
             }
         }, SPLASH_SCREEN_TIMER);
     }
@@ -70,11 +82,25 @@ public class SplashActivity extends AppCompatActivity {
         animatorSetName.play(scaleXAnimationName).with(scaleYAnimationName).with(alphaAnimationName);
         animatorSetIcon.start();
         animatorSetName.start();
+
+        btnContinue.setVisibility(View.VISIBLE);
     }
 
     private void init() {
         ivSplashIcon=findViewById(R.id.img_splash_icon);
         ivSplashName=findViewById(R.id.img_splash_name);
         btnContinue=findViewById(R.id.btn_continue);
+
     }
+
+    private void moveToLogin() {
+        startActivity(new Intent(this, LoginActivity.class));
+        finish();
+    }
+
+    private void moveToHome() {
+        startActivity(new Intent(this, HomeActivity.class));
+        finish();
+    }
+
 }

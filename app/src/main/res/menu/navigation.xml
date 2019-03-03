@@ -13,8 +13,8 @@
 
     <item
         android:id="@+id/navigation_something"
-        android:icon="@drawable/ic_dashboard_black_24dp"
-        android:title="Something" />
+        android:icon="@drawable/ic_explore"
+        android:title="Explore" />
 
     <item
         android:id="@+id/navigation_itinerary"

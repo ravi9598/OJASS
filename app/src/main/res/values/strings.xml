@@ -7,4 +7,32 @@
 
     <string name="facebook_app_id">1973286816307174</string>
     <string name="fb_login_protocol_scheme">fb1973286816307174</string>
+    <string name="AboutUs">About Us</string>
+    <string name="techfest">NIT Jamshedpur</string>
+
+    <string-array name="tshirt_size">
+        <item>Select T-Shirt Size</item>
+        <item>XS (34)</item>
+        <item>S (36)</item>
+        <item>M (38)</item>
+        <item>L (40)</item>
+        <item>XL (42)</item>
+        <item>XXL (44)</item>
+    </string-array>
+
+    <string name="about_us">In the current era of advancing technology and automation, it is necessary that we be               updated with the practical methodologies. Thus, to promote the idea of constructive            thinking and sustainable growth, ​National Institute of Technology, Jamshedpur​ is          organising the Eleventh installment of its annual Techno-Management fest, Ojass’18 from           March 16​th​-18​th 2018​. Ojass is the second largest fest of its kind in East India. It is a                  grand theatre of technological innovation and business calibre.
+With events ranging from filmmaking and photography to quizzes and prototype           presentations, Ojass has events for everyone. Reinventing itself each year, Ojass sets            new standards and hence, new challenges for everyone with every edition. With this             year’s theme being centered around space, we plan to take you on “A Celestial              Voyage”. So, buckle up and join us on this journey on the 16​th​ of March.   </string>
+
+    <string name="activity_indicator">Activity Indicator : </string>
+    <string name="log_out">Log Out</string>
+    <string name="event_name">Event: </string>
+    <string name="team_result">Result: </string>
+    <string name="kit">Kit</string>
+
+
+    <string name="FACEBOOK_APP_ID">1973286816307174</string>
+    <string name="ACCOUNT_KIT_CLIENT_TOKEN">601d497cf08198061be9664786cb0d82</string>
+    <string name="AK_LOGIN_PROTOCOL_SCHEME">ak1973286816307174</string>
+    <string name="skip_this"><u>Skip this</u></string>
+
 </resources>

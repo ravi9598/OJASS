@@ -10,6 +10,7 @@ public class SharedPrefManager {
     private static final String SHARED_PREF = "SharedPref";
     private static final String IS_FIRST_OPEN = "isFirstOpen";
     private static final String IS_LOGGED_IN = "isLoggedIn";
+    private static final String IS_REGISTERED="isRegistered";
     private static final String LAST_NOTI_TIME = "lastNotiTime";
     private static final long OLD_TIME = 1517926000L;
 
@@ -32,6 +33,14 @@ public class SharedPrefManager {
 
     public void setIsLoggedIn(boolean isLoggedIn){
         editor.putBoolean(IS_LOGGED_IN, isLoggedIn).apply();
+    }
+
+    public boolean isRegistered(){
+        return sharedPref.getBoolean(IS_REGISTERED,false);
+    }
+
+    public void setIsRegistered(boolean isRegistered){
+        editor.putBoolean(IS_REGISTERED,isRegistered).apply();
     }
 
     public void setNotiTime(long timeInMillis){

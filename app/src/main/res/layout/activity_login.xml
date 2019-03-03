@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
+    android:background="@drawable/login_bg"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,33 +8,12 @@
     android:layout_height="match_parent"
     tools:context=".Activity.LoginActivity">
 
-    <ProgressBar
-        android:id="@+id/progress_bar_login"
-        android:layout_centerInParent="true"
-        android:layout_width="50dp"
-        android:layout_height="50dp" />
-
-    <LinearLayout
-        android:paddingRight="10dp"
-        android:paddingLeft="10dp"
-        android:layout_marginBottom="25dp"
-        android:layout_alignParentBottom="true"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
         <ImageView
+            android:layout_marginBottom="50dp"
+            android:layout_alignParentBottom="true"
             android:id="@+id/btn_login_google"
             android:src="@drawable/btngoogle"
             android:layout_width="match_parent"
             android:layout_height="70dp" />
-
-        <ImageView
-            android:id="@+id/btn_login_fb"
-            android:src="@drawable/btnfb"
-            android:layout_width="match_parent"
-            android:layout_height="70dp" />
-
-    </LinearLayout>
 
 </RelativeLayout>

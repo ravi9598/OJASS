@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:title="About"
+        android:id="@+id/about"
+        android:icon="@drawable/about"
+        />
+    <item
+        android:title="Details"
+        android:id="@+id/details"
+        android:icon="@drawable/details"
+        />
+    <item
+        android:title="Rules"
+        android:id="@+id/rules"
+        android:icon="@drawable/rules"
+        />
+    <item
+        android:title="Prize"
+        android:id="@+id/prize"
+        android:icon="@drawable/prize"
+        />
+    <item
+        android:title="Coordinator"
+        android:id="@+id/coord"
+        android:icon="@drawable/about"
+        />
+</menu>

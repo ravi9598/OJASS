@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
+    android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,31 +8,57 @@
     android:layout_height="match_parent"
     tools:context=".Activity.SplashActivity">
 
-
-    <ImageView
-        android:id="@+id/img_splash_name"
-        android:alpha="0.0"
-        android:elevation="150dp"
-        android:src="@drawable/name"
+    <LinearLayout
+        android:gravity="center_horizontal"
+        android:layout_weight="1.5"
+        android:background="#c9e4ed"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="150dp" />
+        android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/img_splash_icon"
-        android:elevation="150dp"
-        android:layout_centerInParent="true"
-        android:src="@drawable/ojass_icon"
-        android:layout_width="130dp"
-        android:layout_height="185dp"
-        android:alpha="0.0"/>
+        <ImageView
+            android:alpha="0.0"
+            android:id="@+id/img_splash_name"
+            android:elevation="150dp"
+            android:src="@drawable/ojass_theme"
+            android:layout_width="match_parent"
+            android:layout_height="150dp" />
 
-    <Button
-        android:id="@+id/btn_continue"
-        android:layout_marginBottom="50dp"
-        android:layout_alignParentBottom="true"
-        android:textAllCaps="false"
-        android:text="Continue"
+        <ImageView
+            android:alpha="0.0"
+            android:id="@+id/img_splash_icon"
+            android:elevation="150dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/ojass_icon"
+            android:layout_width="130dp"
+            android:layout_height="185dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:id="@+id/below_layout"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/btn_height" />
+        android:layout_height="match_parent"
+        android:layout_weight="5"
+        android:background="#2B535F">
 
-</RelativeLayout>
+        <Button
+            android:visibility="gone"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:background="@drawable/btn_bg"
+            android:id="@+id/btn_continue"
+            android:layout_marginBottom="50dp"
+            android:layout_alignParentBottom="true"
+            android:textAllCaps="false"
+            android:text="Continue"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/btn_height" />
+
+    </LinearLayout>
+
+</LinearLayout>
