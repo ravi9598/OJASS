@@ -177,7 +177,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(new Intent(HomeActivity.this,OjassDepartment.class));
                 return true;
             case R.id.menu_faq:
-                startActivity(new Intent(HomeActivity.this,FAQActivity.class));
+                startActivity(new Intent(HomeActivity.this,FAQsActivity.class));
                 return  true;
             case R.id.menu_sponsors:
                 startActivity(new Intent(HomeActivity.this, SponsorActivity.class));
