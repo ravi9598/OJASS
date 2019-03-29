@@ -1,5 +1,7 @@
 package in.nitjsr.ojass19.Utils;
-//New update
+
+//New Updated project
+
 import in.nitjsr.ojass19.R;
 
 public class Constants {
