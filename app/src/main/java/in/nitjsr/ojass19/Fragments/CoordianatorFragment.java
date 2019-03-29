@@ -22,6 +22,7 @@ import in.nitjsr.ojass19.Modals.CoordinatorsModel;
 import in.nitjsr.ojass19.Modals.EventModel;
 import in.nitjsr.ojass19.R;
 import in.nitjsr.ojass19.Utils.BtmNavVisCallback;
+import in.nitjsr.ojass19.Utils.OnSwipeTouchListener;
 
 public class CoordianatorFragment extends Fragment {
     //widgets
@@ -35,6 +36,39 @@ public class CoordianatorFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_coordinator,container,false);
         init(view);
         rView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mCallback.onCallback();
+            }
+        });
+        rView.setOnTouchListener(new OnSwipeTouchListener(getContext()){
+            @Override
+            public void onSwipeRight() {
+                super.onSwipeRight();
+                mCallback.onCallback();
+            }
+
+            @Override
+            public void onSwipeLeft() {
+                super.onSwipeLeft();
+                mCallback.onCallback();
+            }
+
+            @Override
+            public void onSwipeTop() {
+                super.onSwipeTop();
+                mCallback.onCallback();
+            }
+
+            @Override
+            public void onSwipeBottom() {
+                super.onSwipeBottom();
+                mCallback.onCallback();
+            }
+
+
+        });
+        pLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mCallback.onCallback();

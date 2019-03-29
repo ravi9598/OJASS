@@ -7,12 +7,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="5dp"
-        xmlns:android="http://schemas.android.com/apk/res/android">
+        xmlns:android="http://schemas.android.com/apk/res/android"
+
+        >
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        >
         <TextView
             android:typeface="serif"
             android:id="@+id/title_prize"
@@ -38,7 +42,9 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginBottom="7dp"
+            >
 
             <TextView
                 android:layout_width="wrap_content"
@@ -245,53 +251,7 @@
                 </LinearLayout>
 
 
-                <LinearLayout
-                    android:layout_marginTop="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
 
-                    <TextView
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:text="Total"
-                        android:textColor="#000000"
-                        android:textSize="22sp"/>
-
-                    <LinearLayout
-                        android:layout_weight="1"
-                        android:orientation="horizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <TextView
-                            android:layout_marginLeft="10dp"
-                            android:textStyle="bold"
-                            android:layout_gravity="center"
-                            android:textColor="#000000"
-                            android:textSize="20sp"
-                            android:text="@string/Rs"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/total_prize_first"
-                            android:layout_marginLeft="10dp"
-                            android:layout_centerVertical="true"
-                            android:layout_alignParentEnd="true"
-                            android:layout_marginRight="20dp"
-                            android:text=""
-                            android:textStyle="bold"
-                            android:layout_gravity="center"
-                            android:textColor="#000000"
-                            android:textSize="20sp"/>
-
-                    </LinearLayout>
-
-                </LinearLayout>
 
             </LinearLayout>
 
@@ -301,7 +261,9 @@
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginBottom="7dp"
+            >
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -507,53 +469,7 @@
 
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_marginTop="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
 
-                    <TextView
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:text="Total"
-                        android:textColor="#000000"
-                        android:textSize="22sp"/>
-
-                    <LinearLayout
-                        android:layout_weight="1"
-                        android:orientation="horizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <TextView
-                            android:layout_marginLeft="10dp"
-                            android:textStyle="bold"
-                            android:layout_gravity="center"
-                            android:textColor="#000000"
-                            android:textSize="20sp"
-                            android:text="@string/Rs"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/total_prize_second"
-                            android:layout_marginLeft="10dp"
-                            android:layout_centerVertical="true"
-                            android:layout_alignParentEnd="true"
-                            android:layout_marginRight="20dp"
-                            android:text=""
-                            android:textStyle="bold"
-                            android:layout_gravity="center"
-                            android:textColor="#000000"
-                            android:textSize="20sp"/>
-
-                    </LinearLayout>
-
-                </LinearLayout>
 
             </LinearLayout>
 
@@ -563,7 +479,8 @@
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginBottom="7dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -770,53 +687,7 @@
 
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_marginTop="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
 
-                    <TextView
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:text="Total"
-                        android:textColor="#000000"
-                        android:textSize="22sp"/>
-
-                    <LinearLayout
-                        android:layout_weight="1"
-                        android:orientation="horizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <TextView
-                            android:layout_marginLeft="10dp"
-                            android:textStyle="bold"
-                            android:layout_gravity="center"
-                            android:textColor="#000000"
-                            android:textSize="20sp"
-                            android:text="@string/Rs"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/total_prize_third"
-                            android:layout_marginLeft="10dp"
-                            android:layout_centerVertical="true"
-                            android:layout_alignParentEnd="true"
-                            android:layout_marginRight="20dp"
-                            android:text=""
-                            android:textStyle="bold"
-                            android:layout_gravity="center"
-                            android:textColor="#000000"
-                            android:textSize="20sp"/>
-
-                    </LinearLayout>
-
-                </LinearLayout>
 
             </LinearLayout>
 

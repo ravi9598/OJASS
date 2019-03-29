@@ -73,7 +73,7 @@ public class EventsFragment extends Fragment {
 
         mTab.setupWithViewPager(mPager);
         mTab.setTabGravity(Gravity.CENTER);
-        mTab.setSmoothScrollingEnabled(true);
+
         createTabs();
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,6 +88,7 @@ public class EventsFragment extends Fragment {
                 //first tym fab press
                 if(fabFlag==1){
                     int lenBH = Constants.branchHeadName[0].length;
+                    data.clear();
                     for(int i=0;i<lenBH;i++) {
                         BranchHeadModel model = new BranchHeadModel();
                         model.name = Constants.branchHeadName[0][i];
@@ -106,8 +107,8 @@ public class EventsFragment extends Fragment {
         mTab.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mPager){
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-
                 mPager.setCurrentItem(tab.getPosition(),false);
+                fabFlag=0;
                 //add Branch head
                 int lenBH = Constants.branchHeadName[tab.getPosition()].length;
                 data.clear();

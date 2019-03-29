@@ -21,6 +21,8 @@
         android:id="@+id/coord_phone"
         android:layout_marginLeft="15dp"
         android:textSize="20sp"
-        android:paddingRight="10dp"/>
+        android:paddingRight="10dp"
+        android:textColor="#123E92"
+        />
 
 </RelativeLayout>

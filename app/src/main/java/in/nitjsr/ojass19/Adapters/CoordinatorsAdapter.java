@@ -1,6 +1,8 @@
 package in.nitjsr.ojass19.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -29,15 +31,16 @@ public class CoordinatorsAdapter extends RecyclerView.Adapter<CoordinatorsAdapte
 
     @Override
     public void onBindViewHolder(@NonNull final MyHolder myHolder, int i) {
-        CoordinatorsModel model = list.get(i);
+        final CoordinatorsModel model = list.get(i);
         myHolder.name.setText(model.getName());
         myHolder.phone.setText(String.valueOf(model.getPhone()));
+
         myHolder.phone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(Intent.ACTION_DIAL);
-//                intent.setData(Uri.parse("tel:"+myHolder.phone));
-//                mCtx.startActivity(intent);
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse("tel:+91"+model.phone));
+                mCtx.startActivity(intent);
             }
         });
     }

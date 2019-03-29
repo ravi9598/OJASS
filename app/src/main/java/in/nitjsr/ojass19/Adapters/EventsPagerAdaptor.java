@@ -3,11 +3,12 @@ package in.nitjsr.ojass19.Adapters;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class EventsPagerAdaptor extends FragmentPagerAdapter {
+public class EventsPagerAdaptor extends FragmentStatePagerAdapter {
     private final List<Fragment> mFragList = new ArrayList<>();
     private final List<String> mFragTitle = new ArrayList<>();
     public EventsPagerAdaptor(FragmentManager fm) {
