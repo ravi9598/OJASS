@@ -29,12 +29,13 @@ public class SubEventsAdapter extends RecyclerView.Adapter<SubEventsAdapter.MyHo
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyHolder myHolder, int i) {
+    public void onBindViewHolder(@NonNull MyHolder myHolder, final int i) {
         myHolder.ev_name.setText(subEventList.get(i));
         myHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context,SubEventsActivity.class);
+                intent.putExtra("event_name",subEventList.get(i));
                 context.startActivity(intent);
             }
         });

@@ -1,5 +1,7 @@
 package in.nitjsr.ojass19.Utils;
 
+import in.nitjsr.ojass19.R;
+
 public class Constants {
     public static final String NOT_REGISTERED = "Not Registered";
     public static final String PAYMENT_DUE = "Payment Due";
@@ -47,9 +49,9 @@ public class Constants {
     public static final String FIREBASE_REF_GURU_GYAN_DATE = "date";
 
     public static final String[] ITINARY_IMAGES = new String[]{
-            "https://firebasestorage.googleapis.com/v0/b/firebase-autocart.appspot.com/o/Day1.jpg?alt=media&token=3de618ee-874d-45a6-9ccd-d55ea25dce94",
-            "https://firebasestorage.googleapis.com/v0/b/firebase-autocart.appspot.com/o/Day2.jpg?alt=media&token=4263d0f0-dafa-4115-a18a-ac35931f45af",
-            "https://firebasestorage.googleapis.com/v0/b/firebase-autocart.appspot.com/o/Day3.jpg?alt=media&token=da9f818f-b215-4270-8414-ec4c95d8941b"
+            "https://firebasestorage.googleapis.com/v0/b/ojass-19.appspot.com/o/itinaryDetailsImages%2Fitinary_day1.jpeg?alt=media&token=3266368a-2063-4bcb-9d10-4035787c3fd9",
+            "https://firebasestorage.googleapis.com/v0/b/ojass-19.appspot.com/o/itinaryDetailsImages%2Fitinary_day2.jpeg?alt=media&token=9a7879af-60dc-405b-91b9-2d61c5118f51",
+            "https://firebasestorage.googleapis.com/v0/b/ojass-19.appspot.com/o/itinaryDetailsImages%2Fitinary_day3.jpeg?alt=media&token=494b8aae-dc91-4374-863e-e44fef0d3f19"
     };
 
     public static final String[] homeEvent = new String[]{
@@ -120,31 +122,47 @@ public class Constants {
             "No Ground Zone",
             "NSCET",
             "LiveCS",
-            "Exposicion",
             "School Events"
     };
     public static final String[][] EventList = new String[][]{
-            {"Autoquiz","Accelodrome","Junkyard Wars","Samveg","Prakshepan","Enigma","Ansys"},
-            {"Codemania", "Hack-De-Science", "Code-O-Soccer", "ComGeeks","Sudo-O-Code","Imitation Game"},
-            {"High Voltage Concepts (HVC)","Elixir of Electricity","Pro-Lo-Co","Mat Sim","Nexus","Electro-Q","Who Am I"},
-            {"Tukvilla","Jigyasa","Codesense","Analog Hunter","Digizone","Netkraft","Embetrix"},
-            {"ABC","Neetishastra","Let's Start Up","Corporate Roadies","Bizzathlon","Wolf of Dalal Street", "Teenpreneur"},
-            {"Acumen","Sanrachna","Archmadeease","Exempler","Pipe-o-Mania","Metropolis"},
-            {"360 Mania","Tachyon","Battleship","Kurukshetra","MAC FIFA","Shapeshifter"},
-            {"Industrial Tycoon", "Utpreaks","Artifact", "DronaGyan", "M&I Quiz"},
-            {"Lights, Camera, Space", "TechArt", "Mad Ad", "Lens View", "Director's Cut"},
-            {"Codiyapa","Game of Troves","Scratch Easy","SimplySql","Tame the pyhton"},
-            {"Spectra","Agnikund","Metal Trivia","Innovision","K.O."},
-            {"FIFA 18","Counter Strike- Global Offensive","NFS Most Wanted","LUDO King","PUBG"},
-            {"Jagriti","Samvedna","Pratibimb"},
-            {"Touch Down the plane","MICAV"},
+            {"Gurutwa", "iANSYST", "Auto Quiz", "Box-Cipher", "Corporate Bytes","Junkyard Wars","Prakshepan"},
+            {"Codemania", "Hack-De-Science", "Code-o-Soccer", "Comp Geeks", "Sudo-Code", "Imitation Game"},
+            {"High Voltage Concepts", "Elixir of Electricity", "Electrospection", "Electro Scribble", "MAT-SIM", "Electro-Q", "Pro-Lo-Co"},
+            {"Tukvilla", "Jigyasa", "Codesense", "Analog Hunter", "Digizone", "Netkraft", "Embetrix"},
+            {"Toddler to Tycoon(TTT)", "Prabandh Yojana", "Let's Start Up", "Bizzathlon", "Wolf of Dalal Street", "Teenpreneur", "Corporate Roadies"},
+            {"Acumen", "Sanrachna", "Archmadeease", "Exempler", "Pipe-o-Mania", "Metropolis"},
+            {"360 Mania", "Bot-A Maze", "Battleship", "Kurukshetra", "MAC FIFA", "Hurdles Hunter"},
+            {"Industrial Tycoon","DronaGyan" ,"Utpreksh", "Crack the Case", "M&I Quiz"},
+            {"Director's Cut","Lens View","Mad-Ad","Sci-Fi", "Light, Camera, Ojass!"},
+            {"Codiyapa", "Game of Troves", "Code Relay", "Simply Sql", "Tame The Python"},
+            {"Spectra", "Agnikund", "Metal Trivia", "Innovision", "Knock out"},
+            {"FIFA 18","Counter Strike- Global Offensive", "NFS Most Wanted", "LUDO King", "PUBG"},
+            {"Jagriti", "Samvedna", "Pratibimb"},
+            {"Touch Down the plane", "MICAV"},
             {"NSCET"},
             {"LiveCS"},
-            {"Exposicion"},
-            {"Teenpreneur", "TechArt", "ScrapStar"}
+            {"Teenpreneur", "Scifari", "Scrap Star", "The Wiz Craft"}
 
     };
-
+    public static final int[] eventImageName = new int[]{
+            R.mipmap.rise_of_machines,
+            R.mipmap.code_genesis,
+            R.mipmap.circuit_house,
+            R.mipmap.silicon_valley,
+            R.mipmap.arthashastra,
+            R.mipmap.akriti,
+            R.mipmap.dxm,
+            R.mipmap.produs,
+            R.mipmap.paraphernalia,
+            R.mipmap.neo_drishti,
+            R.mipmap.avartan,
+            R.mipmap.armagedon,
+            R.mipmap.prayas,
+            R.mipmap.no_ground_zone,
+            R.mipmap.nscet,
+            R.mipmap.csgolive,
+            R.mipmap.school_events
+    };
     public static final String[][] branchHeadName = new String[][]{
             {"Manish Mishra", "Pawan Kumar", "Sanath Himasekhar"},
             {"Ritesh Prasad","Rishabh", "Shubham Kumar Singh"},
@@ -162,14 +180,13 @@ public class Constants {
             {"Shubham Burnwal"},
             {"Ritu Raj"},
             {"Balwant"},
-            {"Riu Raj"},
             {"Ritu Raj"},
 
     };
 
     public static final String[][] branchHeadNum = new String[][]{
             {"7004575192", "913593065", "8074473589"},
-            {"9470979069", "7209227678", "7903580340"},
+            {"8936892334", "7004916976", "7004743106"},
             {"9471126529", "7070654097", "8092348666"},
             {"7070613942", "7631184347", "8789522609"},
             {"7828077280", "7004871347"},
@@ -184,7 +201,6 @@ public class Constants {
             {"9304022913"},
             {"7980335651", "9963745816"},
             {"9530476929"},
-            {"7209359790"},
             {"9693944942", "9031649537"}
     };
 

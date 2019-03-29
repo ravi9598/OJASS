@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical"
+    android:background="@drawable/ojass_bg"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:id="@+id/ll_topbar"
+        android:layout_width="match_parent"
+        android:layout_height="55dp">
+
+        <ImageView
+            android:id="@+id/iv_header"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorPrimary"/>
+
+        <ImageButton
+            android:id="@+id/ib_back_developers"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingLeft="5dp"
+            android:paddingRight="10dp"
+            android:background="@android:color/transparent"
+            app:srcCompat="@drawable/ic_arrow_left_white_36px"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Developers"
+            android:paddingLeft="5dp"
+            android:layout_centerVertical="true"
+            android:textColor="@color/colorWhite"
+            android:textSize="18sp"
+            android:layout_toRightOf="@+id/ib_back_developers"/>
+
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_marginTop="3dp"
+        android:id="@+id/dev_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

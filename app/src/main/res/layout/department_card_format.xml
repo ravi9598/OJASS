@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!--<android.support.v7.widget.CardView-->
+        <!--android:layout_margin="5dp"-->
+        <!--android:layout_width="120dp"-->
+        <!--android:layout_height="110dp"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:elevation="10dp"-->
+        <!--app:cardPreventCornerOverlap="false"-->
+        <!--app:cardCornerRadius="5dp">-->
+
+        <!--<RelativeLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent">-->
+
+            <!--<ImageView-->
+                <!--android:id="@+id/departmentImageView"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="90dp"-->
+                <!--android:layout_gravity="center_horizontal"-->
+                <!--android:scaleType="centerCrop" />-->
+
+            <!--<LinearLayout-->
+                <!--android:layout_centerInParent="true"-->
+                <!--android:layout_centerHorizontal="true"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:gravity="center_vertical"-->
+                <!--android:orientation="vertical">-->
+
+                <!--<TextView-->
+                    <!--android:id="@+id/departmentTextView"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_gravity="center_horizontal"-->
+                    <!--android:gravity="center"-->
+                    <!--android:layout_marginBottom="0dp"-->
+                    <!--android:textColor="#fff"-->
+                    <!--android:textSize="17sp"-->
+                    <!--android:textStyle="bold"/>-->
+
+                <!--<View-->
+                    <!--android:id="@+id/whiteLine"-->
+                    <!--android:layout_width="60dp"-->
+                    <!--android:layout_height="2dp"-->
+                    <!--android:layout_marginTop="2dp"-->
+                    <!--android:layout_gravity="center_horizontal"-->
+                    <!--android:background="#fff"/>-->
+
+            <!--</LinearLayout>-->
+
+        <!--</RelativeLayout>-->
+
+    <!--</android.support.v7.widget.CardView>-->
+
+    <android.support.v7.widget.CardView
+        android:layout_width="100dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginTop="4dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center"
+        android:elevation="8dp"
+        app:cardPreventCornerOverlap="true"
+        app:cardCornerRadius="5dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/departmentImageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:scaleType="centerCrop" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:layout_alignLeft="@id/departmentImageView"
+                android:layout_alignTop="@id/departmentImageView"
+                android:layout_alignRight="@id/departmentImageView"
+                android:layout_alignBottom="@+id/departmentImageView"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/departmentTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center"
+                    android:layout_marginBottom="0dp"
+                    android:textColor="#fff"
+                    android:textSize="13sp"
+                    android:textStyle="bold"/>
+
+                <View
+                    android:id="@+id/whiteLine"
+                    android:layout_width="60dp"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="2dp"
+                    android:alpha="1"
+                    android:layout_gravity="center_horizontal"
+                    android:background="#fff"/>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>

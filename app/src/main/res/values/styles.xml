@@ -23,4 +23,9 @@
         <item name="itemTextColor">@color/sub_events_btm_bar_text</item>
     </style>
 
+    <style name="pop_up_anim">
+        <item name="android:windowEnterAnimation">@anim/slide_in</item>
+        <item name="android:windowExitAnimation">@anim/slide_out</item>
+    </style>
+
 </resources>

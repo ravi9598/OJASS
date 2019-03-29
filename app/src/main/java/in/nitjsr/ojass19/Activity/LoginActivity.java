@@ -25,9 +25,16 @@ import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import in.nitjsr.ojass19.R;
 import in.nitjsr.ojass19.Utils.SharedPrefManager;
+
+import static in.nitjsr.ojass19.Utils.Constants.FIREBASE_REF_USERS;
 
 public class LoginActivity extends AppCompatActivity{
 
@@ -51,6 +58,7 @@ public class LoginActivity extends AppCompatActivity{
 
         pd = new ProgressDialog(this);
         pd.setTitle("Please wait...");
+        pd.setMessage("Logging in...");
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
@@ -118,19 +126,21 @@ public class LoginActivity extends AppCompatActivity{
         }
     }
 
-    private void isRegisteredUser() {
-        SharedPrefManager sharedPrefManager=new SharedPrefManager(this);
-        if(sharedPrefManager.isRegistered())
-        {
-            Toast.makeText(this, "Welcome to Ojass'19! "+userName, Toast.LENGTH_SHORT).show();
-            moveToHomeActivity();
-        }
-        else
-        {
-            Toast.makeText(LoginActivity.this, "Hey "+userName+"! Let us know you better.", Toast.LENGTH_LONG).show();
-            moveToRegisterActivity();
-        }
-    }
+
+
+//    private void isRegisteredUser() {
+//        SharedPrefManager sharedPrefManager=new SharedPrefManager(this);
+//        if(sharedPrefManager.isRegistered())
+//        {
+//            Toast.makeText(this, "Welcome to Ojass'19! "+userName, Toast.LENGTH_SHORT).show();
+//            moveToHomeActivity();
+//        }
+//        else
+//        {
+//            Toast.makeText(LoginActivity.this, "Hey "+userName+"! Let us know you better.", Toast.LENGTH_LONG).show();
+//            moveToRegisterActivity();
+//        }
+//    }
 
     private void moveToHomeActivity() {
         startActivity(new Intent(this, HomeActivity.class));
@@ -140,6 +150,33 @@ public class LoginActivity extends AppCompatActivity{
     private void moveToRegisterActivity() {
         startActivity(new Intent(LoginActivity.this,RegisterActivity.class));
         finish();
+    }
+
+    private void isRegisteredUser() {
+        final String fName = mAuth.getCurrentUser().getDisplayName().split(" ")[0];
+        DatabaseReference userRef = FirebaseDatabase.getInstance().getReference(FIREBASE_REF_USERS).child(mAuth.getCurrentUser().getUid());
+        userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                try {
+                    if (dataSnapshot.exists()){
+                        moveToHomeActivity();
+                        Toast.makeText(LoginActivity.this, "Welcome to Ojass Dashboard! "+fName, Toast.LENGTH_LONG).show();
+                    } else {
+                        moveToRegisterActivity();
+                        Toast.makeText(LoginActivity.this, "Hey "+fName+"! Let us know you better.", Toast.LENGTH_LONG).show();
+                    }
+                } catch (Exception e){
+
+                }
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 
 }

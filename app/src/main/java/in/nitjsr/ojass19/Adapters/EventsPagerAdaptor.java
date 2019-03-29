@@ -23,6 +23,7 @@ public class EventsPagerAdaptor extends FragmentPagerAdapter {
     public int getCount() {
         return mFragList.size();
     }
+
     public void addFragment(Fragment fragment, String title){
         mFragList.add(fragment);
         mFragTitle.add(title);

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:orientation="vertical"
+<ScrollView
+    android:background="@drawable/ojass_bg"
+    android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -23,7 +25,7 @@
                 android:id="@+id/tv_profile_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="Abhishek Kumar"
+                tools:text="XYZ"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:layout_centerHorizontal="true" />
@@ -36,7 +38,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="12sp"
                 android:textStyle="bold"
-                tools:text="OJ210147"/>
+                tools:text="********"/>
 
             <ImageButton
                 android:id="@+id/ib_refresh"
@@ -53,7 +55,7 @@
         </RelativeLayout>
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:src="@drawable/ojass_icon"
+            android:src="@drawable/placeholder"
             android:id="@+id/iv_profile_img"
             android:layout_width="120dp"
             android:layout_height="120dp"
@@ -77,7 +79,7 @@
                     android:id="@+id/tv_profile_email"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="raviprakash9598@gmail.com"
+                    android:text="xyz@gmail.com"
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="12sp" />
 
@@ -86,7 +88,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="12sp"
-                    android:text="+91-7004635855"
+                    android:text="+91-**********"
                     android:textColor="@color/colorPrimaryDark"/>
 
             </LinearLayout>
@@ -155,19 +157,47 @@
 
         </LinearLayout>
 
-        <Button
-            android:id="@+id/ib_logOut"
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:text="@string/log_out"
-            android:layout_marginTop="16dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:textAllCaps="false"
-            android:textSize="14sp"
-            android:gravity="center"
-            android:background="@color/colorAccent"
-            android:textColor="@color/colorWhite"/>
+            android:layout_height="wrap_content">
+
+            <Button
+                android:visibility="gone"
+                android:id="@+id/ib_show_qr_code"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="Show QR"
+                android:layout_marginTop="16dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:textAllCaps="false"
+                android:textSize="14sp"
+                android:gravity="center"
+                android:background="@color/colorAccent"
+                android:textColor="@color/colorWhite"/>
+
+            <Space
+                android:layout_width="5dp"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/ib_logOut"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="@string/log_out"
+                android:layout_marginTop="16dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:textAllCaps="false"
+                android:textSize="14sp"
+                android:gravity="center"
+                android:background="@color/colorAccent"
+                android:textColor="@color/colorWhite"/>
+
+        </LinearLayout>
+
+
 
         <View
             android:layout_width="match_parent"

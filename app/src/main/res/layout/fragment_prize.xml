@@ -36,20 +36,19 @@
                         android:orientation="vertical"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:id="@+id/prize_layout"
-                        >
+                        android:id="@+id/prize_layout">
+
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
-                            android:layout_marginLeft="7dp"
-                            >
+                            android:layout_marginLeft="7dp">
+
                             <ImageView
                                 android:padding="4dp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:src="@drawable/first_place"
-                                />
+                                android:src="@drawable/first_place" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -59,18 +58,35 @@
                                 android:layout_gravity="center"
                                 android:textColor="#FFD700"
                                 android:textSize="20sp"/>
-                            <TextView
+
+                            <LinearLayout
+                                android:orientation="horizontal"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="10dp"
-                                android:layout_centerVertical="true"
-                                android:layout_alignParentEnd="true"
-                                android:layout_marginRight="20dp"
-                                android:text=""
-                                android:textStyle="bold"
-                                android:layout_gravity="center"
-                                android:textColor="#000000"
-                                android:textSize="20sp"/>
+                                android:layout_height="match_parent">
+
+                                <TextView
+                                    android:layout_marginLeft="10dp"
+                                    android:textStyle="bold"
+                                    android:layout_gravity="center"
+                                    android:textColor="#000000"
+                                    android:textSize="20sp"
+                                    android:text="@string/Rs"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_centerVertical="true"
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_marginRight="20dp"
+                                    android:text=""
+                                    android:textStyle="bold"
+                                    android:layout_gravity="center"
+                                    android:textColor="#000000"
+                                    android:textSize="20sp"/>
+
+                            </LinearLayout>
                         </LinearLayout>
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -93,6 +109,17 @@
                                 android:layout_gravity="center"
                                 android:textColor="#FFD700"
                                 android:textSize="20sp"/>
+
+                            <TextView
+                                android:layout_marginLeft="10dp"
+                                android:textStyle="bold"
+                                android:layout_gravity="center"
+                                android:textColor="#000000"
+                                android:textSize="20sp"
+                                android:text="@string/Rs"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -127,6 +154,17 @@
                                 android:layout_gravity="center"
                                 android:textColor="#FFD700"
                                 android:textSize="20sp"/>
+
+                            <TextView
+                                android:layout_marginLeft="10dp"
+                                android:textStyle="bold"
+                                android:layout_gravity="center"
+                                android:textColor="#000000"
+                                android:textSize="20sp"
+                                android:text="@string/Rs"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -142,15 +180,33 @@
                                 android:textSize="20sp"/>
                         </LinearLayout>
 
-                        <TextView
-                            android:id="@+id/prize_text"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:text="Total Prize worth"
-                            android:layout_gravity="center"
-                            android:textColor="#000000"
-                            android:textSize="22sp"/>
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:id="@+id/prize_text"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:text="Total Prize worth"
+                                android:layout_gravity="center"
+                                android:textColor="#000000"
+                                android:textSize="22sp"/>
+
+                            <TextView
+                                android:layout_marginLeft="10dp"
+                                android:textStyle="bold"
+                                android:layout_gravity="center"
+                                android:textColor="#000000"
+                                android:textSize="20sp"
+                                android:text="@string/Rs"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+
+                        </LinearLayout>
+
                     </LinearLayout>
                 </ScrollView>
             </LinearLayout>

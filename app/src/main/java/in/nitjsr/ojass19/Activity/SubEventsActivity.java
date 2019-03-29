@@ -33,6 +33,7 @@ public class SubEventsActivity extends AppCompatActivity implements View.OnClick
     private RelativeLayout mLayout;
     private Handler handler;
     private FragmentTransaction ft;
+    public static String event_name;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -95,6 +96,7 @@ public class SubEventsActivity extends AppCompatActivity implements View.OnClick
         fl = findViewById(R.id.sub_events_fl);
         mLayout = findViewById(R.id.sub_events_layout);
         handler = new Handler();
+        event_name = getIntent().getStringExtra("event_name");
     }
     void setInitialFragment(){
         ft = getSupportFragmentManager().beginTransaction();

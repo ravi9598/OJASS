@@ -8,13 +8,23 @@
     android:layout_height="match_parent"
     tools:context=".Activity.HomeActivity">
 
+    <android.support.v7.widget.Toolbar
+        app:titleTextColor="@color/colorWhite"
+        android:background="@color/colorPrimary"
+        android:id="@+id/home_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
     <FrameLayout
+        android:layout_below="@+id/home_toolbar"
         android:layout_above="@+id/navigation"
         android:orientation="vertical"
         android:id="@+id/frame_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+
 
     <android.support.design.widget.BottomNavigationView
         android:layout_alignParentBottom="true"

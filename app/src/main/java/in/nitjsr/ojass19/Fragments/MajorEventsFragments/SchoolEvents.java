@@ -37,8 +37,8 @@ public class SchoolEvents extends Fragment {
     }
     List<String> getSubEvents(){
         subEvents.clear();
-        for(int i = 0;i<EventList[17].length;i++){
-            subEvents.add(EventList[17][i]);
+        for(int i = 0;i<EventList[16].length;i++){
+            subEvents.add(EventList[16][i]);
         }
         return subEvents;
     }

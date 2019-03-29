@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/menu_qr_code"
+        android:title="QR Code"
+        android:icon="@drawable/qr_code"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/menu_about"
+        android:title="About Us" />
+
+    <item
+        app:showAsAction="always"
+        android:icon="@drawable/ic_action_team"
+        android:id="@+id/menu_ojass_team"
+        android:title="Ojass Team"/>
+
+    <item
+        android:id="@+id/menu_faq"
+        android:title="FAQ"/>
+
+    <item
+        android:id="@+id/menu_sponsors"
+        android:title="Sponsors"/>
+
+    <item
+        android:id="@+id/menu_app_dev"
+        android:title="App Dev" />
+
+</menu>

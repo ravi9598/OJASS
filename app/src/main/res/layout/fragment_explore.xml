@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_margin="15dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:id="@+id/ll_faq"
+        android:gravity="center_vertical"
+        android:background="@drawable/layout_border"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <TextView
+            android:paddingLeft="15dp"
+            android:textSize="19sp"
+            android:text="FAQ"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:layout_marginLeft="150dp"
+            android:layout_alignParentRight="true"
+            app:srcCompat="@drawable/ic_arrow_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="10dp" />
+
+    <LinearLayout
+        android:background="@drawable/layout_border"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <TextView
+            android:text="FAQ"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:layout_alignParentRight="true"
+            app:srcCompat="@drawable/ic_arrow_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="10dp" />
+
+    <LinearLayout
+        android:background="@drawable/layout_border"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <TextView
+            android:text="FAQ"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:layout_alignParentRight="true"
+            app:srcCompat="@drawable/ic_arrow_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="10dp" />
+
+    <LinearLayout
+        android:background="@drawable/layout_border"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <TextView
+            android:text="FAQ"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:layout_alignParentRight="true"
+            app:srcCompat="@drawable/ic_arrow_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="10dp" />
+
+    <LinearLayout
+        android:background="@drawable/layout_border"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <TextView
+            android:text="FAQ"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:layout_alignParentRight="true"
+            app:srcCompat="@drawable/ic_arrow_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+</LinearLayout>

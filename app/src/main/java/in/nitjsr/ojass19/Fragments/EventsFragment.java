@@ -1,19 +1,28 @@
 package in.nitjsr.ojass19.Fragments;
 
+import android.app.Dialog;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import in.nitjsr.ojass19.Adapters.BranchHeadAdapter;
 import in.nitjsr.ojass19.Adapters.EventsPagerAdaptor;
 import in.nitjsr.ojass19.Fragments.MajorEventsFragments.Aakriti;
 import in.nitjsr.ojass19.Fragments.MajorEventsFragments.Armageddon;
@@ -21,7 +30,6 @@ import in.nitjsr.ojass19.Fragments.MajorEventsFragments.ArthaShastra;
 import in.nitjsr.ojass19.Fragments.MajorEventsFragments.Avartan;
 import in.nitjsr.ojass19.Fragments.MajorEventsFragments.CircuitHouse;
 import in.nitjsr.ojass19.Fragments.MajorEventsFragments.DeusXMachina;
-import in.nitjsr.ojass19.Fragments.MajorEventsFragments.Exposicion;
 import in.nitjsr.ojass19.Fragments.MajorEventsFragments.LiveCS;
 import in.nitjsr.ojass19.Fragments.MajorEventsFragments.NSCET;
 import in.nitjsr.ojass19.Fragments.MajorEventsFragments.NeoDrishti;
@@ -33,8 +41,11 @@ import in.nitjsr.ojass19.Fragments.MajorEventsFragments.RiseOfMachines;
 import in.nitjsr.ojass19.Fragments.MajorEventsFragments.SchoolEvents;
 import in.nitjsr.ojass19.Fragments.MajorEventsFragments.SiliconValley;
 import in.nitjsr.ojass19.Fragments.MajorEventsFragments.ViswaCodeGenesis;
+import in.nitjsr.ojass19.Modals.BranchHeadModel;
 import in.nitjsr.ojass19.R;
+import in.nitjsr.ojass19.Utils.Constants;
 
+import static in.nitjsr.ojass19.Utils.Constants.eventImageName;
 import static in.nitjsr.ojass19.Utils.Constants.eventNames;
 
 public class EventsFragment extends Fragment {
@@ -44,27 +55,72 @@ public class EventsFragment extends Fragment {
 
     private int current_tab = 0;
     private EventsPagerAdaptor mAdapter;
-
+    private FloatingActionButton fab;
+    private Dialog mDialog;
+    private List<BranchHeadModel> data=new ArrayList<>();
+    private RecyclerView rDView;
+    private BranchHeadAdapter bhAdapter;
+    private int fabFlag=1;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_events,container,false);
-
+        init();
         mTab = view.findViewById(R.id.events_tab_layout);
         mPager = view.findViewById(R.id.events_vp);
-
+        fab = view.findViewById(R.id.events_fab);
         setVP();
 
         mTab.setupWithViewPager(mPager);
         mTab.setTabGravity(Gravity.CENTER);
         mTab.setSmoothScrollingEnabled(true);
         createTabs();
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mDialog = new Dialog(getContext());
+                mDialog.setContentView(R.layout.dialog_branch_head);
+                RecyclerView rview = mDialog.findViewById(R.id.dialog_rview);
+                rview.setLayoutManager(new LinearLayoutManager(getContext()));
+                bhAdapter = new BranchHeadAdapter(data);
+                rview.setAdapter(bhAdapter);
 
+                //first tym fab press
+                if(fabFlag==1){
+                    int lenBH = Constants.branchHeadName[0].length;
+                    for(int i=0;i<lenBH;i++) {
+                        BranchHeadModel model = new BranchHeadModel();
+                        model.name = Constants.branchHeadName[0][i];
+                        model.phone = Constants.branchHeadNum[0][i];
+                        data.add(model);
+                    }
+                    bhAdapter.notifyDataSetChanged();
+                    fabFlag=0;
+                }
+                mDialog.show();
+
+            }
+        });
+
+        mPager.setCurrentItem(0);
         mTab.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mPager){
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
+
                 mPager.setCurrentItem(tab.getPosition(),false);
-                for(int i=0;i<18;i++){
+                //add Branch head
+                int lenBH = Constants.branchHeadName[tab.getPosition()].length;
+                data.clear();
+                for(int i=0;i<lenBH;i++){
+                    BranchHeadModel model=new BranchHeadModel();
+                    model.name=Constants.branchHeadName[tab.getPosition()][i];
+                    model.phone=Constants.branchHeadNum[tab.getPosition()][i];
+                    data.add(model);
+                }
+                if(bhAdapter!=null)
+                    bhAdapter.notifyDataSetChanged();
+
+                for(int i=0;i<17;i++){
                     View view = mTab.getTabAt(i).getCustomView();
                     TextView tv = view.findViewById(R.id.events_tab_name);
                     View v = view.findViewById(R.id.underline);
@@ -76,13 +132,10 @@ public class EventsFragment extends Fragment {
                     else {
                         v.setVisibility(View.GONE);
                     }
-
                 }
-
             }
 
         });
-        
         return view;
     }
 
@@ -92,29 +145,30 @@ public class EventsFragment extends Fragment {
     }
 
     private void createTabs(){
-            for(int i=0;i<18;i++){
-                mTab.getTabAt(i).setCustomView(R.layout.tab_icon);
-                View view = mTab.getTabAt(i).getCustomView();
-                //Change image and name
-                TextView tv = view.findViewById(R.id.events_tab_name);
-                tv.setText(eventNames[i]);
-                if(i==0){
-                    View v = view.findViewById(R.id.underline);
-
-                    v.setVisibility(View.VISIBLE);
-                    tv.measure(View.MeasureSpec.UNSPECIFIED,View.MeasureSpec.UNSPECIFIED);
-                    v.getLayoutParams().width = tv.getMeasuredWidth();
-                }
+        for(int i=0;i<17;i++){
+            mTab.getTabAt(i).setCustomView(R.layout.tab_icon);
+            View view = mTab.getTabAt(i).getCustomView();
+            //Change image and name
+            ImageView iv = view.findViewById(R.id.events_tab_image);
+            TextView tv = view.findViewById(R.id.events_tab_name);
+            tv.setText(eventNames[i]);
+            iv.setImageResource(eventImageName[i]);
+            if(i==0){
+                View v = view.findViewById(R.id.underline);
+                v.setVisibility(View.VISIBLE);
+                tv.measure(View.MeasureSpec.UNSPECIFIED,View.MeasureSpec.UNSPECIFIED);
+                v.getLayoutParams().width = tv.getMeasuredWidth();
             }
         }
+    }
 
 
     private void init() {
+        mAdapter = new EventsPagerAdaptor(getFragmentManager());
 
     }
 
     private void setVP(){
-        mAdapter = new EventsPagerAdaptor(getFragmentManager());
         mAdapter.addFragment(new RiseOfMachines(),eventNames[0]);
         mAdapter.addFragment(new ViswaCodeGenesis(),eventNames[1]);
         mAdapter.addFragment(new CircuitHouse(),eventNames[2]);
@@ -131,8 +185,7 @@ public class EventsFragment extends Fragment {
         mAdapter.addFragment(new NoGroundZero(),eventNames[13]);
         mAdapter.addFragment(new NSCET(),eventNames[14]);
         mAdapter.addFragment(new LiveCS(),eventNames[15]);
-        mAdapter.addFragment(new Exposicion(),eventNames[16]);
-        mAdapter.addFragment(new SchoolEvents(),eventNames[17]);
+        mAdapter.addFragment(new SchoolEvents(),eventNames[16]);
 
         mPager.setAdapter(mAdapter);
     }

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorPrimary"
+        android:gravity="center_vertical"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp">
+
+        <ImageButton
+            android:id="@+id/ib_back_feed"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:background="@android:color/transparent"
+            app:srcCompat="@drawable/ic_arrow_left_white_36px"/>
+
+        <Spinner
+            android:id="@+id/spinner_feed"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/colorWhite"
+            android:textAlignment="center"
+            android:layout_centerHorizontal="true"
+            android:spinnerMode="dialog"
+            android:entries="@array/noti_channel"/>
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/iv_feed"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/myRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp" />
+
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:cardview="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/developerCardview"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="25dp"
+    android:layout_marginRight="25dp"
+    android:layout_marginTop="5dp"
+    android:clickable="true"
+    android:elevation="0dp"
+    android:layout_gravity="center"
+    android:foreground="?android:attr/selectableItemBackground"
+    cardview:cardCornerRadius="4dp"
+    android:transitionName="cardTransition">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/developerImage"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:background="#fff"
+            android:scaleType="centerCrop"
+            android:paddingTop="10dp" />
+
+        <TextView
+            android:id="@+id/developerName"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:textAlignment="center"
+            android:textColor="#000"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/developerBranch"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="#2d2d2d"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/developerSession"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="#2d2d2d"
+            android:textSize="13sp" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_marginLeft="70dp"
+            android:layout_marginRight="70dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp">
+
+            <Button
+                android:id="@+id/developerWhatsapp"
+                android:layout_width="30dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:autoLink="web"
+                android:background="@drawable/ic_icon_whatsapp"
+                android:textSize="0dp" />
+
+            <Space
+                android:layout_width="15dp"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/developerFacebook"
+                android:layout_width="30dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:autoLink="web"
+                android:background="@drawable/ic_icon_facebook"
+                android:text="WApp"
+                android:textSize="0dp" />
+
+            <Space
+                android:layout_width="15dp"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/developerLinkedn"
+                android:layout_width="30dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:autoLink="web"
+                android:background="@drawable/ic_icon_linkedin"
+                android:text="WApp"
+                android:textSize="0dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

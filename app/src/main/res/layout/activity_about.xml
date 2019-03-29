@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
+    android:background="@drawable/ojass_bg"
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -20,23 +21,23 @@
             android:background="@color/colorPrimary"/>
 
         <ImageButton
-            android:id="@+id/ib_back_about_us"
+            android:id="@+id/ib_back_faq"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:paddingLeft="5dp"
-            android:paddingRight="5dp"
+            android:paddingRight="10dp"
             android:background="@android:color/transparent"
             app:srcCompat="@drawable/ic_arrow_left_white_36px"/>
 
         <TextView
+            android:layout_toRightOf="@+id/ib_back_faq"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/AboutUs"
+            android:text="About Us"
             android:paddingLeft="5dp"
             android:layout_centerVertical="true"
             android:textColor="@color/colorWhite"
-            android:textSize="18sp"
-            android:layout_toRightOf="@+id/ib_back_about_us"/>
+            android:textSize="20sp"/>
 
         <ImageButton
             android:id="@+id/ib_app_share"
@@ -95,15 +96,21 @@
                         android:orientation="vertical"
                         android:paddingBottom="10dp">
 
+                        <ImageView
+                            android:layout_gravity="center_horizontal"
+                            android:src="@drawable/ojass_icon"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp" />
+
                         <TextView
                             android:id="@+id/title"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="20dp"
                             android:layout_marginRight="20dp"
-                            android:layout_marginTop="20dp"
+                            android:layout_marginTop="5dp"
                             android:gravity="center_horizontal"
-                            android:text="OJASS"
+                            android:text="Ojass '19"
                             android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                             android:textColor="#000"
                             android:textSize="28sp"
@@ -123,7 +130,7 @@
                             android:layout_marginLeft="20dp"
                             android:layout_marginRight="20dp"
                             android:gravity="center_horizontal"
-                            android:text="7th-9th April"
+                            android:text="5th-7th April"
                             android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                             android:textSize="12sp" />
 
@@ -140,7 +147,7 @@
                             android:justificationMode="inter_word"
                             android:layout_gravity="center"
                             android:gravity="center"
-                            android:text="@string/about_us"
+                            android:text="Ojass is the annual techno-management fest of NIT Jamshedpur. Started  in the year 2004, Ojass assembles a wide range of events comprising every genre of engineering, management and even film-making with the aim to foster and boost cogent engineering practices in the nation and stimulate the future generation to dream big. Certified Workshops in diversed fields are conducted every year before the fest to help students understand the different technology trends in the market. A three-day spectacle, Ojass also organizes many motivating guest lectures under the event cluster Guru Gyan. Since its inception, Ojass has been receiving immense participation from the student community from all over India with the 2018 edition accounting for over 4000 participants. The prize money for this edition was ₹18 Lac. OJASS 19 is slated to kick-off from 5th April 2019 and the grandeur will prevail for the next two days. Save these dates, for we are all set to make it Bigger and Better, than ever!"
                             android:textSize="18sp" />
 
 
@@ -176,8 +183,16 @@
                                 android:scaleType="centerCrop"
                                 app:srcCompat="@drawable/ic_icon_twitter"
                                 android:background="@android:color/transparent"
-                                android:id="@+id/twitter"
-                                />
+                                android:id="@+id/twitter" />
+
+                            <ImageButton
+                                android:layout_margin="10dp"
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"
+                                android:scaleType="centerCrop"
+                                app:srcCompat="@drawable/ic_icon_www"
+                                android:background="@android:color/transparent"
+                                android:id="@+id/web" />
 
                         </LinearLayout>
 
@@ -188,6 +203,7 @@
                             android:background="#000000"/>
 
                         <TextView
+                            android:visibility="invisible"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Helpdesk"
@@ -200,10 +216,11 @@
                             android:layout_height="wrap_content">
 
                             <TextView
+                                android:textStyle="bold"
                                 android:id="@+id/tv_helpdesk_name"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Akash Gupta"
+                                android:text="Contact Us"
                                 android:textSize="18sp"
                                 android:padding="5dp"
                                 android:layout_centerVertical="true"

@@ -8,7 +8,7 @@
     tools:context=".Activity.RegisterActivity">
 
     <android.support.v7.widget.Toolbar
-        android:background="#5287B6"
+        android:background="#696060"
         app:titleTextColor="@color/colorWhite"
         android:id="@+id/reg_toolbar"
         android:layout_width="match_parent"
@@ -22,6 +22,7 @@
         android:layout_height="100dp" />
 
     <ScrollView
+        android:layout_marginBottom="15dp"
         android:layout_below="@+id/theme"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

@@ -1,6 +1,7 @@
 package in.nitjsr.ojass19.Fragments;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
@@ -31,9 +32,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import java.util.ArrayList;
-import java.util.Collections;
+import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import in.nitjsr.ojass19.Activity.LoginActivity;
@@ -41,13 +40,11 @@ import in.nitjsr.ojass19.Activity.RegisterActivity;
 import in.nitjsr.ojass19.R;
 import in.nitjsr.ojass19.Utils.Constants;
 import in.nitjsr.ojass19.Utils.SharedPrefManager;
+import in.nitjsr.ojass19.Utils.Utilities;
 
 import static in.nitjsr.ojass19.Utils.Constants.FIREBASE_REF_NAME;
+import static in.nitjsr.ojass19.Utils.Constants.FIREBASE_REF_OJASS_ID;
 import static in.nitjsr.ojass19.Utils.Constants.FIREBASE_REF_PARTICIPATED_EVENTS;
-import static in.nitjsr.ojass19.Utils.Constants.FIREBASE_REF_PARTICIPATED_EVENT_BRANCH;
-import static in.nitjsr.ojass19.Utils.Constants.FIREBASE_REF_PARTICIPATED_EVENT_NAME;
-import static in.nitjsr.ojass19.Utils.Constants.FIREBASE_REF_PARTICIPATED_EVENT_RESULT;
-import static in.nitjsr.ojass19.Utils.Constants.FIREBASE_REF_PARTICIPATED_EVENT_TIME;
 import static in.nitjsr.ojass19.Utils.Constants.FIREBASE_REF_TSHIRT_SIZE;
 import static in.nitjsr.ojass19.Utils.Constants.FIREBASE_REF_USERS;
 
@@ -55,13 +52,14 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
 
     private FirebaseUser mUser;
     private TextView tvUserName, tvUserOjId, tvUserEmail, tvUserMobile, tvTshirtSize;
-    private CircleImageView userImage;
+    private CircleImageView circleImageView;
     private ImageView ivTShirt, ivKit;
     private ProgressDialog pd;
     private ImageButton ibRefresh;
-    private Button btnLogOut, btnRegister;
+    private Button btnLogOut, btnRegister, btnShowQR;
     private DatabaseReference userRef;
     private RecyclerView rvEvents;
+    private FirebaseAuth mAuth;
 
     public ProfileFragment(){
 
@@ -76,7 +74,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         tvUserOjId = view.findViewById(R.id.tv_profile_ojass_id);
         tvUserEmail = view.findViewById(R.id.tv_profile_email);
         tvUserMobile = view.findViewById(R.id.tv_profile_number);
-        userImage = view.findViewById(R.id.iv_profile_img);
+        circleImageView = view.findViewById(R.id.iv_profile_img);
         ivTShirt = view.findViewById(R.id.iv_tshirt);
         ivKit = view.findViewById(R.id.iv_kit);
         ibRefresh = view.findViewById(R.id.ib_refresh);
@@ -84,11 +82,13 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         btnRegister = view.findViewById(R.id.btn_click_to_register);
         rvEvents = view.findViewById(R.id.rv_profile_events);
         tvTshirtSize = view.findViewById(R.id.tv_tshirt_size);
+        //btnShowQR=view.findViewById(R.id.ib_app_show_qr);
 
+        mAuth = FirebaseAuth.getInstance();
         mUser = FirebaseAuth.getInstance().getCurrentUser();
         userRef = FirebaseDatabase.getInstance().getReference(FIREBASE_REF_USERS).child(mUser.getUid());
         userRef.keepSynced(true);
-        //Utilities.setPicassoImage(view.getContext(), mUser.getPhotoUrl().toString(), circleImageView, Constants.SQUA_PLACEHOLDER);
+        Utilities.setPicassoImage(view.getContext(), mUser.getPhotoUrl().toString(), circleImageView, Constants.SQUA_PLACEHOLDER);
         pd = new ProgressDialog(getContext());
         pd.setTitle("Please Wait");
         pd.setMessage("Loading...");
@@ -101,6 +101,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         ibRefresh.setOnClickListener(this);
         btnLogOut.setOnClickListener(this);
         btnRegister.setOnClickListener(this);
+        //btnShowQR.setOnClickListener(this);
 
         return view;
     }
@@ -164,41 +165,77 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         });
     }
 
-//    private void prepareRecyclerView(DataSnapshot child) {
-//        LinearLayoutManager ll = new LinearLayoutManager(rvEvents.getContext(), LinearLayoutManager.HORIZONTAL, false);
-//        rvEvents.setHasFixedSize(true);
-//        rvEvents.setLayoutManager(ll);
-//        ArrayList<Modal> modals = new ArrayList<>();
-//        int count = 0;
-//        for (DataSnapshot dataSnapshot : child.getChildren()){
-//            modals.add(new Modal(
-//                    getImage(dataSnapshot.child(FIREBASE_REF_PARTICIPATED_EVENT_BRANCH).getValue().toString()),
-//                    dataSnapshot.child(FIREBASE_REF_PARTICIPATED_EVENT_NAME).getValue().toString(),
-//                    dataSnapshot.child(FIREBASE_REF_PARTICIPATED_EVENT_RESULT).getValue().toString(),
-//                    dataSnapshot.child(FIREBASE_REF_PARTICIPATED_EVENT_TIME).getValue().toString()
-//            ));
-//            count++;
-//        }
-//        float per = (float) (Math.round(((count * 100) / 81.0) *100) / 100.0); //Rounding off to 2-decimal places, Don't worry :)
-//        tvPercentage.setText(""+per+"%");
-//        if (modals.size() != 0){
-//            Collections.sort(modals, new ProfileEventComparator());
-//            rvEvents.setAdapter(new ProfileEventAdapter(rvEvents.getContext(), modals));
-//        }
-//    }
-
     @Override
     public void onClick(View view) {
-        if (view == ibRefresh) {
+        if (view == ibRefresh)
+        {
             pd.show();
             fetchData(1);
-        } else if (view == btnLogOut) {
+        }
+        else if (view == btnLogOut)
+        {
             signOut();
-        } else if (view == btnRegister){
+        }
+        else if (view == btnRegister)
+        {
             startActivity(new Intent(getContext(), RegisterActivity.class));
             getActivity().finish();
         }
+        else if(view==btnShowQR)
+        {
+            //ceateQRPopup();
+        }
     }
+
+//    private void ceateQRPopup() {
+//        final Dialog QRDialog = new Dialog(getActivity());
+//        QRDialog.setContentView(R.layout.dialog_qr);
+//        final TextView tvOjassId = QRDialog.findViewById(R.id.tv_ojass_id);
+//        final ImageView ivQR = QRDialog.findViewById(R.id.iv_qr_code);
+//        QRDialog.getWindow().getAttributes().windowAnimations = R.style.pop_up_anim;
+//        QRDialog.show();
+//        QRDialog.findViewById(R.id.rl_qr).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                if (tvOjassId.getText().toString().equals(Constants.NOT_REGISTERED)) {
+//                    startActivity(new Intent(getActivity(), RegisterActivity.class));
+//                    getActivity().finish();
+//                }
+//            }
+//        });
+//
+//
+//        DatabaseReference ref = FirebaseDatabase.getInstance().getReference(FIREBASE_REF_USERS).child(mAuth.getCurrentUser().getUid());
+//        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @SuppressLint("NewApi")
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                if (dataSnapshot.exists()){
+//                    try {
+//                        Utilities.setPicassoImage(getActivity(), "https://api.qrserver.com/v1/create-qr-code/?data="+mAuth.getCurrentUser().getUid()+"&size=240x240&margin=10", ivQR, Constants.SQUA_PLACEHOLDER);
+//                        if (dataSnapshot.child(FIREBASE_REF_OJASS_ID).exists()){
+//                            tvOjassId.setText(dataSnapshot.child(FIREBASE_REF_OJASS_ID).getValue().toString());
+//                            tvOjassId.setTextColor(getResources().getColor(R.color.forest_green));
+//                        } else {
+//                            tvOjassId.setText(Constants.PAYMENT_DUE);
+//                            tvOjassId.setTextColor(Color.RED);
+//                        }
+//                    } catch (Exception e){
+//
+//                    }
+//                } else {
+//                    Picasso.with(getActivity()).load(R.drawable.notreg).fit().into(ivQR);
+//                    tvOjassId.setText(Constants.NOT_REGISTERED);
+//                    tvOjassId.setTextColor(Color.RED);
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
+//        });
+//    }
 
     private void signOut() {
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)

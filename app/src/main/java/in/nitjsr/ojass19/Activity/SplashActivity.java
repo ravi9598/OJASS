@@ -18,7 +18,7 @@ import in.nitjsr.ojass19.Utils.SharedPrefManager;
 public class SplashActivity extends AppCompatActivity {
 
     private static final int SPLASH_SCREEN_TIMER =  1600;
-    private ImageView ivSplashIcon, ivSplashName;
+    private ImageView ivSplashIcon/*, ivSplashName*/;
     private Button btnContinue;
     private SharedPrefManager sharedPrefManager;
 
@@ -56,11 +56,11 @@ public class SplashActivity extends AppCompatActivity {
 
     private void animate() {
         ObjectAnimator scaleXAnimationIcon = ObjectAnimator.ofFloat(ivSplashIcon, "scaleX", 5.0F, 1.0F);
-        ObjectAnimator scaleXAnimationName = ObjectAnimator.ofFloat(ivSplashName, "scaleX", 5.0F, 1.0F);
+        //ObjectAnimator scaleXAnimationName = ObjectAnimator.ofFloat(ivSplashName, "scaleX", 5.0F, 1.0F);
         scaleXAnimationIcon.setInterpolator(new AccelerateDecelerateInterpolator());
-        scaleXAnimationName.setInterpolator(new AccelerateDecelerateInterpolator());
+        //scaleXAnimationName.setInterpolator(new AccelerateDecelerateInterpolator());
         scaleXAnimationIcon.setDuration(1500);
-        scaleXAnimationName.setDuration(1500);
+        //scaleXAnimationName.setDuration(1500);
 
         ObjectAnimator scaleYAnimationIcon = ObjectAnimator.ofFloat(ivSplashIcon, "scaleY", 5.0F, 1.0F);
         ObjectAnimator scaleYAnimationName = ObjectAnimator.ofFloat(ivSplashIcon, "scaleY", 5.0F, 1.0F);
@@ -70,25 +70,25 @@ public class SplashActivity extends AppCompatActivity {
         scaleYAnimationName.setDuration(1500);
 
         ObjectAnimator alphaAnimationIcon = ObjectAnimator.ofFloat(ivSplashIcon, "alpha", 0.0F, 1.0F);
-        ObjectAnimator alphaAnimationName = ObjectAnimator.ofFloat(ivSplashName, "alpha", 0.0F, 1.0F);
+        //ObjectAnimator alphaAnimationName = ObjectAnimator.ofFloat(ivSplashName, "alpha", 0.0F, 1.0F);
         alphaAnimationIcon.setInterpolator(new AccelerateDecelerateInterpolator());
-        alphaAnimationName.setInterpolator(new AccelerateDecelerateInterpolator());
+        //alphaAnimationName.setInterpolator(new AccelerateDecelerateInterpolator());
         alphaAnimationIcon.setDuration(1500);
-        alphaAnimationName.setDuration(1500);
+        //alphaAnimationName.setDuration(1500);
 
         AnimatorSet animatorSetIcon = new AnimatorSet();
-        AnimatorSet animatorSetName=new AnimatorSet();
+        //AnimatorSet animatorSetName=new AnimatorSet();
         animatorSetIcon.play(scaleXAnimationIcon).with(scaleYAnimationIcon).with(alphaAnimationIcon);
-        animatorSetName.play(scaleXAnimationName).with(scaleYAnimationName).with(alphaAnimationName);
+        //animatorSetName.play(scaleXAnimationName).with(scaleYAnimationName).with(alphaAnimationName);
         animatorSetIcon.start();
-        animatorSetName.start();
+        //animatorSetName.start();
 
         btnContinue.setVisibility(View.VISIBLE);
     }
 
     private void init() {
         ivSplashIcon=findViewById(R.id.img_splash_icon);
-        ivSplashName=findViewById(R.id.img_splash_name);
+        //ivSplashName=findViewById(R.id.img_splash_name);
         btnContinue=findViewById(R.id.btn_continue);
 
     }

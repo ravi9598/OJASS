@@ -10,6 +10,27 @@
     <string name="AboutUs">About Us</string>
     <string name="techfest">NIT Jamshedpur</string>
 
+    <string-array name="noti_channel">
+        <item>OJASS</item>
+        <item>Arthashastra</item>
+        <item>CircuitHouse</item>
+        <item>VishwaCodeGenesis</item>
+        <item>NoGroundZone</item>
+        <item>Paraphernalia</item>
+        <item>Produs</item>
+        <item>SiliconValley</item>
+        <item>RiseOfMachines</item>
+        <item>NSCET</item>
+        <item>NeoDrishti</item>
+        <item>Exposicion</item>
+        <item>DeusXMachina</item>
+        <item>Avartan</item>
+        <item>Armageddon</item>
+        <item>Aakriti</item>
+        <item>Prayas</item>
+        <item>LiveCS</item>
+    </string-array>
+
     <string-array name="tshirt_size">
         <item>Select T-Shirt Size</item>
         <item>XS (34)</item>
@@ -20,8 +41,9 @@
         <item>XXL (44)</item>
     </string-array>
 
-    <string name="about_us">In the current era of advancing technology and automation, it is necessary that we be               updated with the practical methodologies. Thus, to promote the idea of constructive            thinking and sustainable growth, ​National Institute of Technology, Jamshedpur​ is          organising the Eleventh installment of its annual Techno-Management fest, Ojass’18 from           March 16​th​-18​th 2018​. Ojass is the second largest fest of its kind in East India. It is a                  grand theatre of technological innovation and business calibre.
-With events ranging from filmmaking and photography to quizzes and prototype           presentations, Ojass has events for everyone. Reinventing itself each year, Ojass sets            new standards and hence, new challenges for everyone with every edition. With this             year’s theme being centered around space, we plan to take you on “A Celestial              Voyage”. So, buckle up and join us on this journey on the 16​th​ of March.   </string>
+    <string name="about_us"></string>
+
+    <string name="Rs">\u20B9</string>
 
     <string name="activity_indicator">Activity Indicator : </string>
     <string name="log_out">Log Out</string>
