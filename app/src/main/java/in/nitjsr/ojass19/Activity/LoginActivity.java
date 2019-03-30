@@ -2,6 +2,7 @@ package in.nitjsr.ojass19.Activity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import java.util.Arrays;
 
 import com.facebook.FacebookSdk;
@@ -36,25 +38,30 @@ import in.nitjsr.ojass19.Utils.SharedPrefManager;
 
 import static in.nitjsr.ojass19.Utils.Constants.FIREBASE_REF_USERS;
 
-public class LoginActivity extends AppCompatActivity{
+public class LoginActivity extends AppCompatActivity {
 
     public static final int RequestSignInCode = 7;
     private FirebaseAuth mAuth;
     private GoogleSignInClient mGoogleSignInClient;
     private ImageView btnLoginGoogle;
     private ProgressDialog pd;
-    int isProgressShowing =1;
+    int isProgressShowing = 1;
     private static final String TAG = "LoginActivity";
-    private String userName="";
+    private String userName = "";
+    private SharedPreferences mSharedPrefs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        mSharedPrefs = getSharedPreferences("First", MODE_PRIVATE);
+        SharedPreferences.Editor edit = mSharedPrefs.edit();
+        edit.putBoolean("FirstTime", false);
+        edit.commit();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
         mAuth = FirebaseAuth.getInstance();
 
-        btnLoginGoogle=findViewById(R.id.btn_login_google);
+        btnLoginGoogle = findViewById(R.id.btn_login_google);
 
         pd = new ProgressDialog(this);
         pd.setTitle("Please wait...");
@@ -81,18 +88,15 @@ public class LoginActivity extends AppCompatActivity{
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful())
-                        {
+                        if (task.isSuccessful()) {
                             new SharedPrefManager(LoginActivity.this).setIsLoggedIn(true);
-                            userName=mAuth.getCurrentUser().getDisplayName();
+                            userName = mAuth.getCurrentUser().getDisplayName();
                             isRegisteredUser();
-                        }
-                        else
-                        {
-                            if (pd.isShowing()){
+                        } else {
+                            if (pd.isShowing()) {
                                 pd.dismiss();
                             }
-                            Log.d(TAG,"Authentication failed. Reason: "+ task.getException());
+                            Log.d(TAG, "Authentication failed. Reason: " + task.getException());
                         }
                     }
                 });
@@ -108,24 +112,21 @@ public class LoginActivity extends AppCompatActivity{
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == RequestSignInCode)
-        {
+        if (requestCode == RequestSignInCode) {
             pd.show();
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             try {
                 GoogleSignInAccount account = task.getResult(ApiException.class);
                 firebaseAuthWithGoogle(account);
-            } catch (ApiException e){
+            } catch (ApiException e) {
                 Toast.makeText(this, "Something went wrong!", Toast.LENGTH_SHORT).show();
                 Log.d(TAG, "Google Sign in failed. Reason: " + e.getMessage());
-                if (pd.isShowing())
-                {
+                if (pd.isShowing()) {
                     pd.dismiss();
                 }
             }
         }
     }
-
 
 
 //    private void isRegisteredUser() {
@@ -148,7 +149,7 @@ public class LoginActivity extends AppCompatActivity{
     }
 
     private void moveToRegisterActivity() {
-        startActivity(new Intent(LoginActivity.this,RegisterActivity.class));
+        startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
         finish();
     }
 
@@ -159,14 +160,14 @@ public class LoginActivity extends AppCompatActivity{
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 try {
-                    if (dataSnapshot.exists()){
+                    if (dataSnapshot.exists()) {
                         moveToHomeActivity();
-                        Toast.makeText(LoginActivity.this, "Welcome to Ojass Dashboard! "+fName, Toast.LENGTH_LONG).show();
+                        Toast.makeText(LoginActivity.this, "Welcome to Ojass Dashboard! " + fName, Toast.LENGTH_LONG).show();
                     } else {
                         moveToRegisterActivity();
-                        Toast.makeText(LoginActivity.this, "Hey "+fName+"! Let us know you better.", Toast.LENGTH_LONG).show();
+                        Toast.makeText(LoginActivity.this, "Hey " + fName + "! Let us know you better.", Toast.LENGTH_LONG).show();
                     }
-                } catch (Exception e){
+                } catch (Exception e) {
 
                 }
 

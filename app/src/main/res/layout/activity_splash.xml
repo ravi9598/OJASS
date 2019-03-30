@@ -1,64 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    android:orientation="vertical"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".Activity.SplashActivity">
 
-    <LinearLayout
-        android:gravity="center_horizontal"
-        android:layout_weight="1.5"
-        android:background="#c9e4ed"
-        android:orientation="vertical"
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:background="#FFFFFF"
+        android:src="@drawable/ojass_icon" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animation_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <ImageView
-            android:alpha="0.0"
-            android:id="@+id/img_splash_name"
-            android:elevation="150dp"
-            android:src="@drawable/ojass_theme"
-            android:layout_width="match_parent"
-            android:layout_height="150dp" />
-
-        <ImageView
-            android:alpha="0.0"
-            android:id="@+id/img_splash_icon"
-            android:elevation="150dp"
-            android:layout_centerInParent="true"
-            android:src="@drawable/ojass_icon"
-            android:layout_width="130dp"
-            android:layout_height="185dp"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:gravity="center_vertical"
-        android:orientation="vertical"
-        android:id="@+id/below_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="5"
-        android:background="#2B535F">
-
-        <Button
-            android:visibility="gone"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp"
-            android:background="@drawable/btn_bg"
-            android:id="@+id/btn_continue"
-            android:layout_marginBottom="50dp"
-            android:layout_alignParentBottom="true"
-            android:textAllCaps="false"
-            android:text="Continue"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/btn_height" />
-
-    </LinearLayout>
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#FFF"
+        app:lottie_autoPlay="true"
+        app:lottie_cacheStrategy="strong"
+        app:lottie_fileName="load.json"
+        app:lottie_imageAssetsFolder="images"
+        app:lottie_loop="true"/>
 
 </LinearLayout>
