@@ -153,6 +153,8 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         ivGuruGyan.setOnClickListener(this);
         ivAppDev.setOnClickListener(this);
         ivFaq.setOnClickListener(this);
+
+        compareAppVersion();
     }
 
     @Override
@@ -378,7 +380,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         builder.setPositiveButton("Update", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=in.nitjsr.ojass")));
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=in.nitjsr.ojass19")));
                 dialog.dismiss();
             }
         });

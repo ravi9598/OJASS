@@ -13,26 +13,4 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <!--<ImageButton-->
-        <!--android:id="@+id/ib_prev"-->
-        <!--android:layout_width="40dp"-->
-        <!--android:layout_height="40dp"-->
-        <!--android:scaleType="centerCrop"-->
-        <!--app:srcCompat="@drawable/ic_arrow_left_white_36px"-->
-        <!--android:layout_alignParentLeft="true"-->
-        <!--android:layout_marginLeft="5dp"-->
-        <!--android:padding="5dp"-->
-        <!--android:background="@android:color/transparent"/>-->
-
-    <!--<ImageButton-->
-        <!--android:id="@+id/ib_next"-->
-        <!--android:layout_width="40dp"-->
-        <!--android:layout_height="40dp"-->
-        <!--android:scaleType="centerCrop"-->
-        <!--app:srcCompat="@drawable/ic_right_arrow"-->
-        <!--android:layout_alignParentRight="true"-->
-        <!--android:layout_marginRight="5dp"-->
-        <!--android:padding="5dp"-->
-        <!--android:background="@android:color/transparent"/>-->
-
 </RelativeLayout>
