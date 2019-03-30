@@ -18,7 +18,7 @@ public class TitleCreater {
 
         for(int i = 0; i< FAQActivity.data.size(); i++)
         {
-            _titleParents.add(new TitleParent(FAQActivity.data.get(i).getQuestion()));
+            _titleParents.add(new TitleParent(FAQActivity.data.get(i).getQues()));
 
         }
     }
