@@ -41,6 +41,9 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
+        <activity
+            android:name="com.facebook.accountkit.ui.AccountKitActivity" />
+
         <activity android:name=".Activity.AboutActivity" />
 
         <activity android:name=".Activity.SplashActivity">
