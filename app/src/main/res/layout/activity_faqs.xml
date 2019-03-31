@@ -17,7 +17,7 @@
             android:layout_width="16dp"
             android:layout_height="16dp"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="12dp"
+            android:layout_marginLeft="13dp"
             android:scaleType="centerCrop"
             android:src="@drawable/icon_back" />
 
