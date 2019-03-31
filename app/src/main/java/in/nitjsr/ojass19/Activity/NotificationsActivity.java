@@ -1,47 +1,41 @@
 package in.nitjsr.ojass19.Activity;
 
+import android.animation.LayoutTransition;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.graphics.Color;
-import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.bignerdranch.expandablerecyclerview.Model.ParentObject;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.squareup.picasso.Picasso;
 
 
 import java.util.ArrayList;
-import java.util.List;
-
-import in.nitjsr.ojass19.Adapters.FAQAdapter;
 import in.nitjsr.ojass19.Modals.FaqModel;
-import in.nitjsr.ojass19.Modals.TitleChild;
-import in.nitjsr.ojass19.Modals.TitleCreater1;
-import in.nitjsr.ojass19.Modals.TitleParent;
 import in.nitjsr.ojass19.R;
 
 import static in.nitjsr.ojass19.Utils.Constants.FIREBASE_REF_NOTIFICATIONS;
 
 public class NotificationsActivity extends AppCompatActivity {
 
-    RecyclerView recyclerView;
-    FAQAdapter adapter;
+    ListView list;
+    FaqAdapter adapter;
     DatabaseReference ref;
-    public static ArrayList<FaqModel> data;
     ProgressDialog p;
     Spinner spinner;
 
@@ -52,10 +46,9 @@ public class NotificationsActivity extends AppCompatActivity {
 
         spinner = findViewById(R.id.spinner_feed);
 
-        recyclerView=(RecyclerView)findViewById(R.id.myRecyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        data=new ArrayList<>();
+        list=(ListView) findViewById(R.id.list);
+        adapter = new FaqAdapter(this, 0, new ArrayList<FaqModel>());
+        list.setAdapter(adapter);
 
         p=new ProgressDialog(this);
 
@@ -92,6 +85,7 @@ public class NotificationsActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 p.dismiss();
+                ArrayList<FaqModel> data = new ArrayList<>();
                 data.clear();
                 for(DataSnapshot ds: dataSnapshot.getChildren())
                 {
@@ -99,10 +93,8 @@ public class NotificationsActivity extends AppCompatActivity {
                     data.add(q);
                 }
 
-                adapter = new FAQAdapter(NotificationsActivity.this,initData());
-                adapter.setParentClickableViewAnimationDefaultDuration();
-                adapter.setParentAndIconExpandOnClick(true);
-                recyclerView.setAdapter(adapter);
+                addNotification(data);
+
             }
 
             @Override
@@ -111,24 +103,54 @@ public class NotificationsActivity extends AppCompatActivity {
             }
         });
 
-
-
     }
-    private List<ParentObject> initData() {
-        TitleCreater1 titleCreater= new TitleCreater1(NotificationsActivity.this);
-        //titleCreater= TitleCreater.get(this);
-        List<TitleParent> titles= TitleCreater1._titleParents;
-        List<ParentObject> parentObject = new ArrayList<>();
-        //Toast.makeText(FeedActivity.this,"Title:"+titles.size(),Toast.LENGTH_SHORT).show();
-        int i=data.size()-1;
-        for(TitleParent title:titles)
-        {
-            List<Object> childList = new ArrayList<>();
-            //childList.add(new TitleChild(("It is LSE web style to title a page of FAQs 'Frequently asked questions (FAQs)'. While the abbreviation is in quite common usage this ensures that there can be no mistaking what they are")));
-            childList.add(new TitleChild(data.get(i--).getAns()));
-            title.setChildObjectList(childList);
-            parentObject.add(title);
+
+    private void addNotification(ArrayList<FaqModel> data){
+        adapter.clear();
+        adapter.addAll(data);
+    }
+
+
+    public class FaqAdapter extends ArrayAdapter<FaqModel>{
+
+        public FaqAdapter(@NonNull Context context, int resource, ArrayList<FaqModel> questions) {
+            super(context, resource, questions);
         }
-        return parentObject;
+
+        @NonNull
+        @Override
+        public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+            if(convertView == null){
+                convertView = LayoutInflater.from(getContext()).inflate(R.layout.faq_item,
+                        null, false);
+            }
+
+            ((TextView)convertView.findViewById(R.id.question)).setText(getItem(position).
+                    getQues());
+            ((TextView)convertView.findViewById(R.id.answer)).setText(getItem(position).
+                    getAns());
+
+            final View faq_view = convertView;
+            convertView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    TextView answer = (TextView)faq_view.findViewById(R.id.answer);
+                    LinearLayout faq = (LinearLayout)faq_view.findViewById(R.id.faq);
+                    if(answer.getVisibility() == View.GONE){
+                        faq.setLayoutTransition(new LayoutTransition());
+                        answer.setVisibility(View.VISIBLE);
+                        answer.setAlpha(0.0f);
+                        answer.animate().alpha(1.0f);
+                    }
+                    else {
+                        faq.setLayoutTransition(null);
+                        answer.setVisibility(View.GONE);
+                    }
+                }
+            });
+
+            return convertView;
+        }
     }
+
 }

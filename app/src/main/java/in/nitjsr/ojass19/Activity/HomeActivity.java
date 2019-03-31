@@ -107,10 +107,11 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                     break;
 
                 case R.id.navigation_map:
-                    if (!(f instanceof MapsFragment)) {
-                        transaction.replace(R.id.frame_container, new MapsFragment()).commit();
-                        return true;
-                    }
+//                    if (!(f instanceof MapsFragment)) {
+//                        transaction.replace(R.id.frame_container, new MapsFragment()).commit();
+//                        return true;
+//                    }
+                    startActivity(new Intent(HomeActivity.this,MapsActivity.class));
                     break;
 
                 case R.id.navigation_itinerary:

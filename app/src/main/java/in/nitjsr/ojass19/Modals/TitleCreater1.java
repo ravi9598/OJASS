@@ -8,21 +8,16 @@ import java.util.List;
 import in.nitjsr.ojass19.Activity.NotificationsActivity;
 
 public class TitleCreater1 {
-    public static TitleCreater1 _titleCreator;
-
+    /*public static TitleCreater1 _titleCreator;
     public static List<TitleParent> _titleParents;
-
     public TitleCreater1(Context context) {
         _titleParents=new ArrayList<>();
         _titleParents.clear();
-
         for(int i = NotificationsActivity.data.size()-1; i>=0; i--)
         {
             _titleParents.add(new TitleParent(NotificationsActivity.data.get(i).getQues()));
             // Toast.makeText(context,"Q"+FAQActivity.data.get(i).getQues(),Toast.LENGTH_SHORT).show();
-
         }
-
        /*
         TitleParent title =new TitleParent(String.format("How should questions for FAQs be formatted?"));
         _titleParents.add(title);
@@ -36,17 +31,15 @@ public class TitleCreater1 {
         {
             title=new TitleParent(String.format("This is Question #%d",i));
             _titleParents.add(title);
-        }*/
+        }
     }
-
     public static TitleCreater1 get(Context context)
     {
         if(_titleCreator == null)
             _titleCreator=new TitleCreater1(context);
         return _titleCreator;
     }
-
     public List<TitleParent> getAll() {
         return _titleParents;
-    }
+    }*/
 }

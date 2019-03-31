@@ -47,11 +47,16 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/myRecyclerView"
+        <ListView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="7dp" />
+            android:layout_margin="8dp"
+            android:id="@+id/list"
+            android:padding="4dp"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="10.0sp"
+            android:animateLayoutChanges="true"
+            android:scrollbars="none"/>
 
     </RelativeLayout>
 
