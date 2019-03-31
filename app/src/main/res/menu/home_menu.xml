@@ -30,4 +30,8 @@
         android:id="@+id/menu_app_dev"
         android:title="App Dev" />
 
+    <item
+        android:id="@+id/menu_logout"
+        android:title="Logout"/>
+
 </menu>

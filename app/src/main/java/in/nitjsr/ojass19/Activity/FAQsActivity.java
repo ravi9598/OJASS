@@ -99,16 +99,6 @@ public class FAQsActivity extends AppCompatActivity {
         faqAdapter.addAll(questions);
     }
 
-    /*public void initFaqs(){
-        //adding dummy data
-        questions.add(new FaqModel("What is Ojass?", "Ojass is annual Techno-Management fest of NIT Jamshedpur"));
-        questions.add(new FaqModel("Are there any online events?", "Yes! There are plenty of online events. It includes branch events, gaming events, formal events, fun events. etc"));
-        questions.add(new FaqModel("How can we participate?", "Get registered through our android app or you can get registered in our campus at the time of the fest"));
-        questions.add(new FaqModel("What is Ojass?", "Ojass is annual Techno-Management fest of NIT Jamshedpur"));
-        questions.add(new FaqModel("Are there any online events?", "Yes! There are plenty of online events. It includes branch events, gaming events, formal events, fun events. etc"));
-        questions.add(new FaqModel("How can we participate?", "Get registered through our android app or you can get registered in our campus at the time of the fest"));
-    }*/
-
     public class FaqAdapter extends ArrayAdapter<FaqModel>{
 
         public FaqAdapter(@NonNull Context context, int resource, ArrayList<FaqModel> questions) {

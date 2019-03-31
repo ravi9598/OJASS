@@ -58,14 +58,17 @@
                 android:layout_marginRight="70dp"
                 android:paddingTop="10dp"
                 android:paddingBottom="5dp">
+
                 <ImageButton
                     android:id="@+id/memberWhatsapp"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:background="@drawable/ic_icon_whatsapp" />
+
                 <Space
                     android:layout_width="10dp"
                     android:layout_height="wrap_content" />
+
                 <ImageButton
                     android:id="@+id/memberPhone"
                     android:layout_width="40dp"
@@ -73,7 +76,11 @@
                     android:background="@drawable/icon_call"
                     android:text="WApp"
                     android:textSize="0dp" />
+
             </LinearLayout>
+
         </LinearLayout>
+
     </android.support.v7.widget.CardView>
+
 </RelativeLayout>

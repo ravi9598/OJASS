@@ -58,47 +58,40 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:layout_gravity="center"
-            android:layout_marginLeft="70dp"
-            android:layout_marginRight="70dp"
             android:paddingTop="10dp"
             android:paddingBottom="10dp">
 
-            <Button
+            <ImageButton
+                android:scaleType="centerCrop"
+                android:layout_gravity="center"
                 android:id="@+id/developerWhatsapp"
-                android:layout_width="30dp"
+                android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_weight="1"
-                android:autoLink="web"
-                android:background="@drawable/ic_icon_whatsapp"
-                android:textSize="0dp" />
+                android:background="@drawable/ic_icon_whatsapp" />
 
             <Space
                 android:layout_width="15dp"
                 android:layout_height="wrap_content" />
 
-            <Button
+            <ImageButton
+                android:scaleType="centerCrop"
+                android:layout_gravity="center"
                 android:id="@+id/developerFacebook"
-                android:layout_width="30dp"
+                android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_weight="1"
-                android:autoLink="web"
-                android:background="@drawable/ic_icon_facebook"
-                android:text="WApp"
-                android:textSize="0dp" />
+                android:background="@drawable/ic_icon_facebook" />
 
             <Space
                 android:layout_width="15dp"
                 android:layout_height="wrap_content" />
 
-            <Button
+            <ImageButton
+                android:scaleType="centerCrop"
+                android:layout_gravity="center"
                 android:id="@+id/developerLinkedn"
-                android:layout_width="30dp"
+                android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_weight="1"
-                android:autoLink="web"
-                android:background="@drawable/ic_icon_linkedin"
-                android:text="WApp"
-                android:textSize="0dp" />
+                android:background="@drawable/ic_icon_linkedin" />
 
         </LinearLayout>
 
