@@ -40,7 +40,7 @@ public class FAQActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_faq);
 
-        Picasso.with(this).load(R.drawable.ojass_bg).fit().into((ImageView)findViewById(R.id.iv_faq));
+        Picasso.with(this).load(R.mipmap.ojass_bg).fit().into((ImageView)findViewById(R.id.iv_faq));
 
         recyclerView=(RecyclerView)findViewById(R.id.myRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

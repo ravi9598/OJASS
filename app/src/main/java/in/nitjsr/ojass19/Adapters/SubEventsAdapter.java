@@ -4,9 +4,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.List;
@@ -31,6 +33,8 @@ public class SubEventsAdapter extends RecyclerView.Adapter<SubEventsAdapter.MyHo
     @Override
     public void onBindViewHolder(@NonNull MyHolder myHolder, final int i) {
         myHolder.ev_name.setText(subEventList.get(i));
+        myHolder.ev_name.measure(0, 0);
+        myHolder.view.getLayoutParams().width = myHolder.ev_name.getMeasuredWidth();
         myHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -48,9 +52,12 @@ public class SubEventsAdapter extends RecyclerView.Adapter<SubEventsAdapter.MyHo
 
     class MyHolder extends RecyclerView.ViewHolder{
         private TextView ev_name;
+        private View view;
         public MyHolder(@NonNull View itemView) {
             super(itemView);
             ev_name = itemView.findViewById(R.id.sub_event_name);
+            view = itemView.findViewById(R.id.sub_events_line);
+
         }
     }
 }

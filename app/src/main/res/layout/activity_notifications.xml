@@ -38,7 +38,7 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:background="@drawable/ojass_bg"
+        android:background="@mipmap/ojass_bg"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 

@@ -6,7 +6,9 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColorSecondary">@color/colorWhite</item>
     </style>
+
 
     <style name="tabstyle" parent="Widget.Design.TabLayout">
         <item name="tabPaddingStart">3dp</item>

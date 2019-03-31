@@ -13,7 +13,8 @@
         android:background="@color/colorPrimary"
         android:id="@+id/home_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        />
 
     <FrameLayout
         android:layout_below="@+id/home_toolbar"
@@ -32,7 +33,11 @@
         android:id="@+id/navigation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="?android:attr/windowBackground"
-        app:menu="@menu/navigation" />
+        app:menu="@menu/navigation"
+        app:itemTextColor="@color/bnv_tab_item_foreground"
+        app:itemIconTint="@color/bnv_tab_item_foreground"
+        app:itemBackground="@color/colorPrimary"
+
+        />
 
 </RelativeLayout>

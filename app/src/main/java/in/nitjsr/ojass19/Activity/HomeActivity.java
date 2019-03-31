@@ -46,6 +46,7 @@ import java.util.List;
 import in.nitjsr.ojass19.Fragments.EventsFragment;
 import in.nitjsr.ojass19.Fragments.HomeFragment;
 import in.nitjsr.ojass19.Fragments.ItinaryFragment;
+import in.nitjsr.ojass19.Fragments.NotificationFragment;
 import in.nitjsr.ojass19.Modals.CoordinatorsModel;
 import in.nitjsr.ojass19.Modals.EventModel;
 import in.nitjsr.ojass19.Modals.PrizeModel1;
@@ -113,8 +114,12 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                     break;
 
                 case R.id.navigation_notification:
-                    startActivity(new Intent(HomeActivity.this,NotificationsActivity.class));
-                    break;
+                    if(!(f instanceof NotificationFragment)) {
+                        //startActivity(new Intent(HomeActivity.this,NotificationsActivity.class));
+                        transaction.replace(R.id.frame_container, new NotificationFragment()).commit();
+                        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+                        return true;
+                    }
             }
             return false;
         }
@@ -301,33 +306,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                             prize1_T = ds.child("prize").child("thirdyear").child("first").getValue(Long.class);
                             prize2_T = ds.child("prize").child("thirdyear").child("second").getValue(Long.class);
                             prize3_T = ds.child("prize").child("thirdyear").child("third").getValue(Long.class);
-                            if(prize1_F==null){
-                                prize1_F = ds.child("prize").child("app").child("first").getValue(Long.class);
-                            }
-                            if(prize2_F==null){
-                                prize2_F = ds.child("prize").child("app").child("first").getValue(Long.class);
-                            }
-                            if(prize3_F==null){
-                                prize3_F = ds.child("prize").child("app").child("first").getValue(Long.class);
-                            }
-                            if(prize1_S==null){
-                                prize1_F = ds.child("prize").child("web").child("first").getValue(Long.class);
-                            }
-                            if(prize2_S==null){
-                                prize1_F = ds.child("prize").child("web").child("first").getValue(Long.class);
-                            }
-                            if(prize3_S==null){
-                                prize1_F = ds.child("prize").child("web").child("first").getValue(Long.class);
-                            }
-                            if(prize1_T==null){
-                                prize1_F = ds.child("prize").child("others").child("first").getValue(Long.class);
-                            }
-                            if(prize2_T==null){
-                                prize1_F = ds.child("prize").child("others").child("first").getValue(Long.class);
-                            }
-                            if(prize3_T==null){
-                                prize1_F = ds.child("prize").child("others").child("first").getValue(Long.class);
-                            }
+
                             p2 = new PrizeModel2(prizeT,prize1_F,prize2_F,prize3_F,prize1_S,prize2_S,prize3_S,prize1_T,prize2_T,prize3_T);
                         }
 

@@ -29,9 +29,7 @@ public class ArthaShastra extends Fragment {
         RecyclerView rView = view.findViewById(R.id.rview);
         RecyclerView.LayoutManager lm = new LinearLayoutManager(getContext());
         rView.setLayoutManager(lm);
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getContext(),((LinearLayoutManager) lm).getOrientation());
-        rView.addItemDecoration(dividerItemDecoration);
-        rView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(getContext(), R.anim.layout_animation));
+                rView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(getContext(), R.anim.layout_animation));
         SubEventsAdapter mAdapter = new SubEventsAdapter(getSubEvents());
         mAdapter.notifyDataSetChanged();
         rView.scheduleLayoutAnimation();

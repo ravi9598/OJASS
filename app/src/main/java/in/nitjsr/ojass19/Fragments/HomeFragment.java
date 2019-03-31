@@ -84,6 +84,7 @@ public class HomeFragment extends Fragment implements BlurCallback {
     private NavigationView mNavigationView;
     private CardView regCard;
     private ObjectAnimator alphaAnimator;
+    private LinearLayout days_layout;
     private Button regBtn;
     @Nullable
     @Override
@@ -100,6 +101,7 @@ public class HomeFragment extends Fragment implements BlurCallback {
         fl= view.findViewById(R.id.gurugyan_fl);
         regCard = view.findViewById(R.id.register_card);
         regBtn = view.findViewById(R.id.reg_btn);
+        days_layout = view.findViewById(R.id.home_progress_rl);
         FragmentTransaction ft = getChildFragmentManager().beginTransaction();
         ft.add(R.id.gurugyan_fl,new GuruGyanFragment()).commit();
         btnRegister.setVisibility(View.GONE);
@@ -249,6 +251,9 @@ public class HomeFragment extends Fragment implements BlurCallback {
                     DateTime end = new DateTime(yr, mon+1, 5,0,0,0);
                     int days = Days.daysBetween(start, end).getDays();
                     tvDaysToGo.setText(days+" ");
+                    if(days==0){
+                        days_layout.setVisibility(View.INVISIBLE);
+                    }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
