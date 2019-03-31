@@ -10,6 +10,6 @@ public class GuruGyanActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_guru_gyan);
+        setContentView(R.layout.gurugyan_layout);
     }
 }

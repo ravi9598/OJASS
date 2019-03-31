@@ -1,35 +1,43 @@
 package in.nitjsr.ojass19.Fragments;
 
+import android.animation.Animator;
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
-import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.graphics.drawable.DrawerArrowDrawable;
+import android.support.v7.widget.CardView;
+import android.support.v7.widget.Toolbar;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewAnimationUtils;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
-import android.view.animation.RotateAnimation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.ImageView;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.os.Handler;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -38,24 +46,25 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.squareup.picasso.Picasso;
+
 
 import org.joda.time.DateTime;
 import org.joda.time.Days;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import in.nitjsr.ojass19.Activity.HomeActivity;
 import in.nitjsr.ojass19.Activity.RegisterActivity;
 import in.nitjsr.ojass19.R;
+import in.nitjsr.ojass19.Utils.BlurCallback;
 import in.nitjsr.ojass19.Utils.Constants;
 import in.nitjsr.ojass19.Utils.Utilities;
+import jp.wasabeef.blurry.Blurry;
 
 import static in.nitjsr.ojass19.Utils.Constants.FIREBASE_REF_NAME;
-import static in.nitjsr.ojass19.Utils.Constants.FIREBASE_REF_OJASS_ID;
 import static in.nitjsr.ojass19.Utils.Constants.FIREBASE_REF_PARTICIPATED_EVENTS;
-import static in.nitjsr.ojass19.Utils.Constants.FIREBASE_REF_TSHIRT_SIZE;
 import static in.nitjsr.ojass19.Utils.Constants.FIREBASE_REF_USERS;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements BlurCallback {
 
     private FirebaseUser mUser;
     private TextView tvUserName, tvUserOjId, tvDaysToGo;
@@ -63,26 +72,37 @@ public class HomeFragment extends Fragment {
     private ProgressDialog pd;
     private DatabaseReference userRef;
     private FirebaseAuth mAuth;
-    private Button btnRegister;
+    private FloatingActionButton btnRegister;
+
+    private DrawerLayout drawerLayout;
+    private LinearLayout llUserInfo;
+    private TextView viewpuller;
+    private FrameLayout fl;
+    public static final String POSITION_PARAM = "position";
     private Handler handler;
     private Runnable runnable;
-    private ProgressBar progressBar;
-    private RelativeLayout rl;
-    private LinearLayout llUserInfo;
-
+    private NavigationView mNavigationView;
+    private CardView regCard;
+    private ObjectAnimator alphaAnimator;
+    private Button regBtn;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_home,container,false);
-
+        tvDaysToGo =view.findViewById(R.id.tv_days_to_go);
         tvUserName=view.findViewById(R.id.user_name);
         tvUserOjId=view.findViewById(R.id.user_ojass_id);
         userImage=view.findViewById(R.id.user_image);
         btnRegister=view.findViewById(R.id.btn_register);
-        tvDaysToGo=view.findViewById(R.id.tv_days_to_go);
-        progressBar=view.findViewById(R.id.home_progressBar);
-        rl=view.findViewById(R.id.home_progress_rl);
         llUserInfo=view.findViewById(R.id.ll_user_info);
+        drawerLayout = view.findViewById(R.id.drawer_layout);
+        viewpuller = view.findViewById(R.id.view_puller);
+        fl= view.findViewById(R.id.gurugyan_fl);
+        regCard = view.findViewById(R.id.register_card);
+        regBtn = view.findViewById(R.id.reg_btn);
+        FragmentTransaction ft = getChildFragmentManager().beginTransaction();
+        ft.add(R.id.gurugyan_fl,new GuruGyanFragment()).commit();
+        btnRegister.setVisibility(View.GONE);
 
         mAuth = FirebaseAuth.getInstance();
         mUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -92,19 +112,123 @@ public class HomeFragment extends Fragment {
         pd = new ProgressDialog(getContext());
         pd.setTitle("Please Wait");
         pd.setMessage("Loading...");
-
+        setAlphaAnimation(btnRegister);
         btnRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(regCard.getVisibility()==View.GONE) {
+                    alphaAnimator.cancel();
+                    regCard.setVisibility(View.VISIBLE);
+                    Animation a1 = AnimationUtils.loadAnimation(getContext(), R.anim.scale_up);
+                    regCard.startAnimation(a1);
+                }else{
+                    alphaAnimator.start();
+                    regCard.setVisibility(View.GONE);
+                    Animation a1 = AnimationUtils.loadAnimation(getContext(), R.anim.scale_down);
+                    regCard.startAnimation(a1);
+                }
+
+
+            }
+        });
+        regBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getActivity(),RegisterActivity.class));
             }
         });
-
+        viewpuller.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawerLayout.openDrawer(Gravity.END);
+            }
+        });
         fetchData(0);
 
         countDownStart();
+        manageDrawerLayout();
+
+        mNavigationView = view.findViewById(R.id.nav_view);
+        DisplayMetrics metrics = new DisplayMetrics();
+        getActivity().getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        DrawerLayout.LayoutParams params = (DrawerLayout.LayoutParams) mNavigationView.getLayoutParams();
+        params.width = metrics.widthPixels;
+        mNavigationView.setLayoutParams(params);
 
         return view;
+    }
+    void setAlphaAnimation(View view){
+        alphaAnimator = ObjectAnimator.ofFloat(view,View.ALPHA, 0.7f, 1f);
+        alphaAnimator.setDuration(400);
+        alphaAnimator.setRepeatMode(ValueAnimator.REVERSE);
+        alphaAnimator.setRepeatCount(ValueAnimator.INFINITE);
+        alphaAnimator.start();
+    }
+    void manageDrawerLayout(){
+        drawerLayout.openDrawer(Gravity.END);
+        viewpuller.setVisibility(View.GONE);
+
+        DrawerArrowDrawable arrowDrawable = new DrawerArrowDrawable(getContext());
+        arrowDrawable.setDirection(DrawerArrowDrawable.ARROW_DIRECTION_END);
+        HomeActivity activity = (HomeActivity)getActivity();
+        activity.toolbar.setNavigationIcon(arrowDrawable);
+        activity.getSupportActionBar().setHomeAsUpIndicator(arrowDrawable);
+        activity.setSupportActionBar(activity.toolbar);
+        activity.toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (drawerLayout.isDrawerOpen(Gravity.RIGHT)) {
+                    drawerLayout.closeDrawer(Gravity.RIGHT);
+                } else {
+                    drawerLayout.openDrawer(Gravity.RIGHT);
+                }
+            }
+        });
+        ActionBarDrawerToggle mToggle = new ActionBarDrawerToggle(getActivity(),
+                drawerLayout,
+                R.string.drawer_open,
+                R.string.drawer_close){
+            @Override
+            public void onDrawerSlide(View drawerView, float slideOffset) {
+                super.onDrawerSlide(drawerView, slideOffset);
+                viewpuller.setTranslationX(drawerView.getX()-drawerView.getWidth());
+            }
+
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                super.onDrawerClosed(drawerView);
+                viewpuller.setVisibility(View.VISIBLE);
+                Blurry.delete(fl);
+                Blurry.delete(fl);
+                Log.e("LOL","FUCK");
+
+            }
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+                viewpuller.setVisibility(View.GONE);
+                Blurry.with(getContext()).radius(20).sampling(2).onto(fl);
+
+
+            }
+        };
+        mToggle.syncState();
+
+
+        mToggle.setDrawerArrowDrawable(arrowDrawable);
+        mToggle.setHomeAsUpIndicator(arrowDrawable);
+        drawerLayout.addDrawerListener(mToggle);
+
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     public void countDownStart() {
@@ -120,32 +244,31 @@ public class HomeFragment extends Fragment {
                     int yr = 2019;
                     int mon = 3;
                     int day = Integer.parseInt(currentDate.substring(8,10));
-                    Log.d("DAY", day + "");
+
                     DateTime start = new DateTime(yr,mon,day,0,0,0);
                     DateTime end = new DateTime(yr, mon+1, 5,0,0,0);
                     int days = Days.daysBetween(start, end).getDays();
-                    progressBar.setProgress(days*10);
-                    tvDaysToGo.setText(days+"");
+                    tvDaysToGo.setText(days+" ");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
         };
         handler.postDelayed(runnable, 1 * 1000);
+
     }
 
-    private void textViewGone() {
-        rl.setVisibility(View.GONE);
-    }
 
     private void fetchData(final int flag) {
+        userRef.keepSynced(true);
         userRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @SuppressLint("NewApi")
+            @SuppressLint({"NewApi", "RestrictedApi"})
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()){
                     try {
                         btnRegister.setVisibility(View.GONE);
+
                         tvUserName.setText(dataSnapshot.child(FIREBASE_REF_NAME).getValue().toString());
                         if (dataSnapshot.child(Constants.FIREBASE_REF_OJASS_ID).getValue() != null) {
                             tvUserOjId.setText(dataSnapshot.child(Constants.FIREBASE_REF_OJASS_ID).getValue().toString());
@@ -183,4 +306,14 @@ public class HomeFragment extends Fragment {
         });
     }
 
+    @Override
+    public void onBlurCallback() {
+
+
+        if (drawerLayout.isDrawerOpen(Gravity.END)) {
+            Blurry.with(getContext()).radius(20).sampling(2).onto(fl);
+        } else {
+            Blurry.delete(fl);
+        }
+    }
 }

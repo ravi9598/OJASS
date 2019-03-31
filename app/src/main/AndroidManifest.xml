@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     package="in.nitjsr.ojass19">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -8,18 +7,16 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
+
     <application
         android:allowBackup="true"
+        android:largeHeap="true"
         android:icon="@drawable/ojass_icon"
         android:label="@string/app_name"
         android:roundIcon="@drawable/ojass_icon"
         android:supportsRtl="true"
-        tools:replace="android:icon"
         android:theme="@style/AppTheme">
-
-
-        <activity android:name=".Activity.FAQsActivity"></activity>
-        <activity android:name=".Activity.SponsorActivity" />
+        <activity android:name=".Activity.SponsorActivity"></activity>
         <activity android:name=".Activity.NotificationsActivity" />
         <activity android:name=".Activity.MapsActivity" />
         <activity android:name=".Activity.FullScreenActivity" />
@@ -45,10 +42,8 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity
-            android:name="com.facebook.accountkit.ui.AccountKitActivity" />
-
         <activity android:name=".Activity.AboutActivity" />
+
         <activity android:name=".Activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -56,6 +51,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name="com.facebook.CustomTabActivity"
             android:exported="true">
@@ -70,8 +66,8 @@
         </activity>
         <activity android:name=".Activity.LoginActivity" />
         <activity android:name=".Activity.RegisterActivity" />
-        <activity android:name=".Activity.OjassDepartment" />
-        <activity android:name=".Activity.DeveloperView" />
+        <activity android:name=".Activity.OjassDepartment"/>
+        <activity android:name=".Activity.DeveloperView"/>
         <activity
             android:name=".Activity.HomeActivity"
             android:label="@string/title_activity_home" />
@@ -82,14 +78,12 @@
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
+
         <service android:name=".Utils.FirebaseMessagingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-
-
-        <activity android:name=".Activity.WalkthroughActivity"></activity>
 
     </application>
 

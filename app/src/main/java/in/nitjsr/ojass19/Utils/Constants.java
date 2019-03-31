@@ -135,7 +135,7 @@ public class Constants {
             {"Acumen", "Sanrachna", "Archmadeease", "Exempler", "Pipe-o-Mania", "Metropolis"},
             {"360 Mania", "Bot-A Maze", "Battleship", "Kurukshetra", "MAC FIFA", "Hurdles Hunter"},
             {"Industrial Tycoon","DronaGyan" ,"Utpreksh", "Crack the Case", "M&I Quiz"},
-            {"Director's Cut","Lens View","Mad-Ad","Sci-Fi", "Light, Camera, Ojass!"},
+            {"Director's Cut","Lens View","Mad-Ad","Sci-Fi", "Lights, Camera, Ojass!"},
             {"Codiyapa", "Game of Troves", "Code Relay", "Simply Sql", "Tame The Python"},
             {"Spectra", "Agnikund", "Metal Trivia", "Innovision", "Knock out"},
             {"FIFA 18","Counter Strike- Global Offensive", "NFS Most Wanted", "LUDO King", "PUBG"},
@@ -146,47 +146,6 @@ public class Constants {
             {"Teenpreneur", "Scifari", "Scrap Star", "The Wiz Craft"}
 
     };
-
-    public static final String[][] branchHeadName = new String[][]{
-            {"Manish Mishra", "Pawan Kumar", "Sanath"},
-            {"Ritesh Prasad","Rishabh Kumar", "Shubham Kumar Singh"},
-            {"Adarsh Raj","Pragya Rani","Pranav Tiwary"},
-            {"Balram Vishwakarma", "Harsh Tulsyan", "Sukriti Raj"},
-            {"Nikhil Rai", "Rolee Agarwal"},
-            {"Drishti Singh","Hrishabh Chandra", "Rishabh Ratnam"},
-            {"Abhishek", "Shiva Ram Krishna", "Sumit"},
-            {"Anurag Priyadarshi", "Komal Kumari", "Vivek Kumar Sharma"},
-            {"Monu Kumar"},
-            {"Mohit Tarani", "Simant", "Megha sinha"},
-            {"Anuj Gupta", "Ishani Sarkar", "Rahul Raj"},
-            {"Atul Kumar", "Sourav Agarwal"},
-            {"Vikash", "Manoj", "Ayushi"},
-            {"Shubham Baranwal","Dheeraj Kumar Singh"},
-            {"Vikram Kumar"},
-            {"Balwant Kumar"},
-            {"Ritu Raj"}
-    };
-
-    public static final String[][] branchHeadNum = new String[][]{
-            {"7004575192", "913593065", "8074473589"},
-            {"8936892334", "7004916976", "7004743106"},
-            {"7870071256", "7870104882", "7352861747"},
-            {"7004493404", "9304292465", "9709030504"},
-            {"7828077280", "7004871347"},
-            {"8404911024", "9097980289", "9431028045"},
-            {"8008458784","9471105567", "9905183679"},
-            {"7654452337", "9113795334", "7505695890"},
-            {"8603788210"},
-            {"8630055287", "8051223209", "9065469765"},
-            {"9931167630", "8434002821", "9777988058"},
-            {"9470177612", "7903136223"},
-            {"8757080513", "9097791968", "8825160694"},
-            {"8507680655","7070635149"},
-            {"9661660522"},
-            {"9576116650"},
-            {"9006299179"}
-    };
-
     public static final int[] eventImageName = new int[]{
             R.mipmap.rise_of_machines,
             R.mipmap.code_genesis,
@@ -206,4 +165,46 @@ public class Constants {
             R.mipmap.csgolive,
             R.mipmap.school_events
     };
+    public static final String[][] branchHeadName = new String[][]{
+            {"Manish Mishra", "Pawan Kumar", "Sanath Himasekhar"},
+            {"Ritesh Prasad","Rishabh", "Shubham Kumar Singh"},
+            {"Adarsh Rajak","Pragya","Pranav Tiwari"},
+            {"Balram Vishwakarma", "Harsh Tulsyan", "Sukriti Raj"},
+            {"Nikhil Rai", "Rolee Agarwal"},
+            {"Drishti Singh","Rishabh Chandra", "Rishabh Ratnam"},
+            {"Abhishek", "Shiva Ram Krishna", "Sumit"},
+            {"Anurag Priyadarshi", "Komal Kumari", "Vivek Sharma"},
+            {"Monu Kumar"},
+            {"Mohit Tarini", "Kanika Parnami", "Abhishek Sharma"},
+            {"Anuj Gupta", "Ishani Sarkar", "Rahul Raj"},
+            {"Atul Kumar", "Saurav Kumar"},
+            {"Vikash", "Manoj", "Ayushi"},
+            {"Shubham Burnwal"},
+            {"Ritu Raj"},
+            {"Balwant"},
+            {"Ritu Raj"},
+
+    };
+
+    public static final String[][] branchHeadNum = new String[][]{
+            {"7004575192", "913593065", "8074473589"},
+            {"8936892334", "7004916976", "7004743106"},
+            {"9471126529", "7070654097", "8092348666"},
+            {"7070613942", "7631184347", "8789522609"},
+            {"7828077280", "7004871347"},
+            {"7783825879", "9973949841", "8406080962"},
+            {"8008458784","9471105567", "9905183679"},
+            {"7050544344", "9304018524", "9304359578"},
+            {"8797361542"},
+            {"9504047586", "9651010322", "9711487046"},
+            {"9931167630", "8340674404", "9777988058"},
+            {"9470177612", "7992455725"},
+            {"8757080513", "8541833888", "9771935189"},
+            {"9304022913"},
+            {"7980335651", "9963745816"},
+            {"9530476929"},
+            {"9693944942", "9031649537"}
+    };
+
+
 }

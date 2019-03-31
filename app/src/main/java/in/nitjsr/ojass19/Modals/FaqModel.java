@@ -25,7 +25,7 @@ public class FaqModel {
         return ans;
     }
 
-    public String getQues() {
+    public String getQuestion() {
         return ques;
     }
 }

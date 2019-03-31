@@ -12,14 +12,13 @@
     <RelativeLayout
         android:id="@+id/ll_topbar"
         android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:background="@color/colorPrimary"
-        android:paddingLeft="8dp">
+        android:layout_height="55dp">
 
         <ImageView
             android:id="@+id/iv_header"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:background="@color/colorToolbar"/>
 
         <ImageButton
             android:id="@+id/ib_back_faq"
@@ -44,8 +43,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingBottom="3dp">
+        android:layout_height="match_parent">
 
         <ImageView
             android:id="@+id/iv_faq"

@@ -4,16 +4,12 @@ import android.Manifest;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.AdapterView;
@@ -23,11 +19,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.facebook.accountkit.AccountKitLoginResult;
-import com.facebook.accountkit.PhoneNumber;
-import com.facebook.accountkit.ui.AccountKitActivity;
-import com.facebook.accountkit.ui.AccountKitConfiguration;
-import com.facebook.accountkit.ui.LoginType;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.TaskExecutors;
@@ -52,8 +43,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private Toolbar toolbar;
     private TextView tvSkipThis;
     private Spinner spinner;
-    private CardView verifybtn_card;
-    private Button btnRegister,verify_btn;
+    private Button btnRegister;
     private EditText inputName, inputEmail, inputMobile, inputCollege, inputRegId, inputBranch;
     private String tshirtSize;
     private FirebaseUser mUser;
@@ -66,7 +56,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private Button btnVerify;
     private String mobileNumber;
     private boolean numVerified=false;
-    private boolean mobileVerified=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,30 +88,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             }
         });
 
-        verify_btn.setOnClickListener(this);
-
-        inputMobile.addTextChangedListener(new TextWatcher() {
-
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (charSequence.toString().length() == 10){
-                    verifybtn_card.setVisibility(View.VISIBLE);
-                } else {
-                    verifybtn_card.setVisibility(View.GONE);
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
-
         tvSkipThis.setOnClickListener(this);
         btnRegister.setOnClickListener(this);
 
@@ -132,7 +97,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private void autoFill() {
         inputName.setText(mUser.getDisplayName());
         inputEmail.setText(mUser.getEmail());
-        inputMobile.setText(mUser.getPhoneNumber());
         inputEmail.setEnabled(false);
     }
 
@@ -147,8 +111,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         inputBranch=findViewById(R.id.input_branch);
         btnRegister=findViewById(R.id.btn_register);
         spinner=findViewById(R.id.spinner_tshirt_size);
-        verify_btn=findViewById(R.id.verify_button);
-        verifybtn_card=findViewById(R.id.verifybtn_card);
     }
 
     @Override
@@ -160,84 +122,117 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         }
         else if(view==btnRegister)
         {
-            if(validate()&&mobileVerified) {
-                registerUser();
+            if(validate() /*&& verifyNumber()*/)
+            {
+                //if(numberVerified)
+                //{
+                    registerUser();
+                //}
             }
-            else if (!mobileVerified){
-                Toast.makeText(RegisterActivity.this, "Verify Mobile Number", Toast.LENGTH_SHORT).show();
-            }
-            else {
-                Toast.makeText(RegisterActivity.this, "Enter details", Toast.LENGTH_SHORT).show();
-            }
-        }
-        else if(view==verify_btn)
-        {
-            if (verify_btn.getText().toString().equals("Edit")) {
-                verify_btn.setText("Verify");
-                inputMobile.setEnabled(true);
-                mobileVerified = false;
-            } else phoneLogin();
         }
     }
 
-    public void phoneLogin() {
-        PhoneNumber phoneNumber=new PhoneNumber("+91",inputMobile.getText().toString(),"IN");
-        final Intent intent = new Intent(this, AccountKitActivity.class);
-        AccountKitConfiguration.AccountKitConfigurationBuilder configurationBuilder =
-                new AccountKitConfiguration.AccountKitConfigurationBuilder(
-                        LoginType.PHONE,
-                        AccountKitActivity.ResponseType.CODE);
-        configurationBuilder.setInitialPhoneNumber(phoneNumber);
-        intent.putExtra(
-                AccountKitActivity.ACCOUNT_KIT_ACTIVITY_CONFIGURATION,
-                configurationBuilder.build());
-        startActivityForResult(intent, APP_REQUEST_CODE);
-    }
+    private boolean verifyNumber() {
+        mobileNumber="+91 "+inputMobile.getText().toString().trim();
+        sendVerificationCode(mobileNumber);
+        Dialog dialog=new Dialog(RegisterActivity.this);
+        dialog.setContentView(R.layout.verify_number_layout);
+        dialog.show();
+        etCode=dialog.findViewById(R.id.verify_code);
+        btnVerify=dialog.findViewById(R.id.verify_btn);
 
-    @Override
-    protected void onActivityResult(
-            final int requestCode,
-            final int resultCode,
-            final Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == APP_REQUEST_CODE) { // confirm that this response matches your request
-            AccountKitLoginResult loginResult = data.getParcelableExtra(AccountKitLoginResult.RESULT_KEY);
-            String toastMessage;
-            if (loginResult.getError() != null) {
-                toastMessage = loginResult.getError().getErrorType().getMessage();
-            } else if (loginResult.wasCancelled()) {
-                toastMessage = "Login Cancelled";
-            } else {
-                if (loginResult.getAccessToken() != null) {
-                    toastMessage = "Success:" + loginResult.getAccessToken().getAccountId();
-                } else {
-                    toastMessage = String.format(
-                            "Success:%s...",
-                            loginResult.getAuthorizationCode().substring(0,10));
+        btnVerify.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String code=etCode.getText().toString().trim();
+                if(code.isEmpty() || code.length()<6)
+                {
+                    etCode.setError("Enter valid code");
+                    etCode.requestFocus();
                 }
-                mobileVerified = true;
-                inputMobile.setEnabled(false);
-                verify_btn.setText("Edit");
+                else
+                {
+                    verifyVerificationCode(code);
+                }
             }
-
-        }
+        });
+        return true;
     }
 
+    private void sendVerificationCode(String mobile) {
+        PhoneAuthProvider.getInstance().verifyPhoneNumber(
+                "+91" + mobile,
+                60,
+                TimeUnit.SECONDS,
+                TaskExecutors.MAIN_THREAD,
+                mCallbacks);
+    }
 
+    private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+        @Override
+        public void onVerificationCompleted(PhoneAuthCredential phoneAuthCredential) {
+            String code = phoneAuthCredential.getSmsCode();
+            if (code != null) {
+                etCode.setText(code);
+                verifyVerificationCode(code);
+            }
+        }
+
+        @Override
+        public void onVerificationFailed(FirebaseException e) {
+            Toast.makeText(RegisterActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
+        }
+
+        @Override
+        public void onCodeSent(String s, PhoneAuthProvider.ForceResendingToken forceResendingToken) {
+            super.onCodeSent(s, forceResendingToken);
+            mVerificationID = s;
+        }
+    };
+
+    private void verifyVerificationCode(String code) {
+        PhoneAuthCredential credential = PhoneAuthProvider.getCredential(mVerificationID, code);
+        signInWithPhoneAuthCredential(credential);
+    }
+
+    private void signInWithPhoneAuthCredential(PhoneAuthCredential credential) {
+        mAuth.signInWithCredential(credential)
+                .addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            numberVerified=true;
+                        }
+                        else
+                        {
+                            String message = "Somthing is wrong, we will fix it soon...";
+                            if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
+                                message = "Invalid code entered...";
+                            }
+                            numVerified=false;
+                            Toast.makeText(RegisterActivity.this, ""+message, Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+    }
 
     private boolean validate() {
         boolean valid =true;
-
+//        if(inputEmail.getText().toString().trim().isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(inputEmail.getText().toString().trim()).matches())
+//        {
+//            inputEmail.setError("Please enter a valid Email address");
+//            valid=false;
+//        }
 //        if(inputMobile.getText().toString().trim().isEmpty() || Patterns.PHONE.matcher(inputMobile.getText().toString().trim()).matches())
 //        {
 //            inputMobile.setError("Please enter valid Mobile Number");
 //            valid=false;
 //        }
-        if(inputName.getText().toString().trim().isEmpty())
-        {
-            inputName.setError("Please enter your Name");
-            valid=false;
-        }
+//        if(inputName.getText().toString().trim().isEmpty())
+//        {
+//            inputName.setError("Please enter your Name");
+//            valid=false;
+//        }
         if(inputCollege.getText().toString().trim().isEmpty())
         {
             inputCollege.setError("Please enter your College Name");
@@ -251,11 +246,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         if(inputBranch.getText().toString().trim().isEmpty())
         {
             inputBranch.setError("Please enter your Branch");
-            valid=false;
-        }
-        if(spinner.getSelectedItemPosition()==0)
-        {
-            //Toast.makeText(RegisterActivity.this,"Please select your T-Shirt size",Toast.LENGTH_SHORT).show();
             valid=false;
         }
         return valid;

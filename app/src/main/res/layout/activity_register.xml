@@ -8,7 +8,7 @@
     tools:context=".Activity.RegisterActivity">
 
     <android.support.v7.widget.Toolbar
-        android:background="@color/colorPrimary"
+        android:background="#696060"
         app:titleTextColor="@color/colorWhite"
         android:id="@+id/reg_toolbar"
         android:layout_width="match_parent"
@@ -31,8 +31,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:orientation="vertical">
 
             <android.support.design.widget.TextInputLayout
@@ -67,48 +67,22 @@
 
             </android.support.design.widget.TextInputLayout>
 
-            <LinearLayout
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:orientation="horizontal"
-                android:layout_height="wrap_content">
-                <android.support.design.widget.TextInputLayout
-                    android:layout_weight="2"
-                    android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textColorHint="#569bef">
+
+                <EditText
+                    android:imeOptions="actionNext"
+                    android:maxLines="1"
+                    android:inputType="phone"
+                    android:maxLength="10"
+                    android:id="@+id/input_mobile"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColorHint="#569bef">
+                    android:hint="Mobile" />
 
-                    <EditText
-                        android:imeOptions="actionNext"
-                        android:maxLines="1"
-                        android:inputType="phone"
-                        android:maxLength="10"
-                        android:id="@+id/input_mobile"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Mobile" />
-
-                </android.support.design.widget.TextInputLayout>
-                <android.support.v7.widget.CardView
-                    android:layout_width="0dp"
-                    android:id="@+id/verifybtn_card"
-                    android:visibility="gone"
-                    android:layout_weight="1"
-                    android:elevation="8dp"
-                    app:cardCornerRadius="0dp"
-                    android:layout_height="wrap_content">
-
-                    <Button
-                        android:id="@+id/verify_button"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@color/colorWhite"
-                        android:text="Verify"
-                        android:textAllCaps="true"
-                        android:textColor="@color/black" />
-                </android.support.v7.widget.CardView>
-
-            </LinearLayout>
-
+            </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
