@@ -18,8 +18,8 @@ public class TitleCreater1 {
 
         for(int i = NotificationsActivity.data.size()-1; i>=0; i--)
         {
-            _titleParents.add(new TitleParent(NotificationsActivity.data.get(i).getQuestion()));
-            // Toast.makeText(context,"Q"+FAQActivity.data.get(i).getQuestion(),Toast.LENGTH_SHORT).show();
+            _titleParents.add(new TitleParent(NotificationsActivity.data.get(i).getQues()));
+            // Toast.makeText(context,"Q"+FAQActivity.data.get(i).getQues(),Toast.LENGTH_SHORT).show();
 
         }
 
