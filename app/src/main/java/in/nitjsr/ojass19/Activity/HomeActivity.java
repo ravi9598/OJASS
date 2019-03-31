@@ -52,6 +52,8 @@ import java.util.List;
 import in.nitjsr.ojass19.Fragments.EventsFragment;
 import in.nitjsr.ojass19.Fragments.HomeFragment;
 import in.nitjsr.ojass19.Fragments.ItinaryFragment;
+import in.nitjsr.ojass19.Fragments.MapsFragment;
+import in.nitjsr.ojass19.Fragments.NotificationFragment;
 import in.nitjsr.ojass19.Modals.CoordinatorsModel;
 import in.nitjsr.ojass19.Modals.EventModel;
 import in.nitjsr.ojass19.Modals.PrizeModel1;
@@ -105,7 +107,10 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                     break;
 
                 case R.id.navigation_map:
-                    startActivity(new Intent(HomeActivity.this, MapsActivity.class));
+                    if (!(f instanceof MapsFragment)) {
+                        transaction.replace(R.id.frame_container, new MapsFragment()).commit();
+                        return true;
+                    }
                     break;
 
                 case R.id.navigation_itinerary:
@@ -116,7 +121,10 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                     break;
 
                 case R.id.navigation_notification:
-                    startActivity(new Intent(HomeActivity.this, NotificationsActivity.class));
+                    if (!(f instanceof NotificationFragment)) {
+                        transaction.replace(R.id.frame_container, new NotificationFragment()).commit();
+                        return true;
+                    }
                     break;
             }
             return false;
