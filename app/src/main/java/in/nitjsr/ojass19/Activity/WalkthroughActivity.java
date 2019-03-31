@@ -23,9 +23,9 @@ public class WalkthroughActivity extends FancyWalkthroughActivity {
         super.onCreate(savedInstanceState);
         // setContentView(R.layout.activity_walkthrough);
         FancyWalkthroughCard fancywalkthroughCard1 = new FancyWalkthroughCard("Dashboard", "Immerse into the brand new user dashboard.", R.drawable.ic_dashboard_black_24dp);
-        FancyWalkthroughCard fancywalkthroughCard2 = new FancyWalkthroughCard("Location", "Enjoy the new Maps Location Feature.", R.drawable.ic_location_on_black_24dp);
-        FancyWalkthroughCard fancywalkthroughCard3 = new FancyWalkthroughCard("Notifications", "Get Notifications on the event of your choice and never miss out on an event ever again.", R.drawable.ic_notifications_active_black_24dp);
-        FancyWalkthroughCard fancywalkthroughCard4 = new FancyWalkthroughCard("So, why Wait ?", "Let's make this Official.", R.drawable.ic_person_add_black_24dp);
+        FancyWalkthroughCard fancywalkthroughCard2 = new FancyWalkthroughCard("Location", "Reach event venues easily using Maps.", R.drawable.ic_location_on_black_24dp);
+        FancyWalkthroughCard fancywalkthroughCard3 = new FancyWalkthroughCard("Notifications", "All notifications at one place. Never miss an event now!", R.drawable.ic_notifications_active_black_24dp);
+        FancyWalkthroughCard fancywalkthroughCard4 = new FancyWalkthroughCard("Let's begin, shall we?", "Dream.Dare.Achieve", R.drawable.ic_person_add_black_24dp);
 
 
         fancywalkthroughCard1.setBackgroundColor(R.color.white);
