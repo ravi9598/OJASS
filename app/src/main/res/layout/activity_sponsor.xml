@@ -63,18 +63,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
+
                     <TextView
                         android:id="@+id/i1"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="Title Sponsor"
                         android:background="#d5d1d1"
+                        android:fontFamily="@font/adamina"
                         android:gravity="center"
                         android:padding="2dp"
-                        android:textSize="18sp"
+                        android:text="Title Sponsor"
                         android:textColor="#170f11"
-                        android:fontFamily="casual"
-                        android:textStyle="bold|italic"/>
+                        android:textSize="18sp" />
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -107,8 +107,7 @@
                         android:padding="2dp"
                         android:textSize="18sp"
                         android:textColor="#170f11"
-                        android:fontFamily="casual"
-                        android:textStyle="bold|italic"/>
+                        android:fontFamily="@font/adamina"/>
 
                 </LinearLayout>
 
@@ -141,8 +140,7 @@
                         android:padding="2dp"
                         android:textSize="18sp"
                         android:textColor="#170f11"
-                        android:fontFamily="casual"
-                        android:textStyle="bold|italic"/>
+                        android:fontFamily="@font/adamina"/>
 
                 </LinearLayout>
 
@@ -214,8 +212,7 @@
                         android:padding="2dp"
                         android:textSize="18sp"
                         android:textColor="#170f11"
-                        android:fontFamily="casual"
-                        android:textStyle="bold|italic"/>
+                        android:fontFamily="@font/adamina"/>
 
                 </LinearLayout>
                 <LinearLayout
@@ -248,8 +245,7 @@
                         android:padding="2dp"
                         android:textSize="18sp"
                         android:textColor="#170f11"
-                        android:fontFamily="casual"
-                        android:textStyle="bold|italic"/>
+                        android:fontFamily="@font/adamina"/>
 
                 </LinearLayout>
                 <LinearLayout
@@ -287,8 +283,8 @@
                         android:padding="2dp"
                         android:textSize="18sp"
                         android:textColor="#170f11"
-                        android:fontFamily="casual"
-                        android:textStyle="bold|italic"/>
+                        android:background="#d5d1d1"
+                        android:fontFamily="@font/adamina"/>
 
                 </LinearLayout>
                 <LinearLayout
@@ -334,8 +330,7 @@
                         android:padding="2dp"
                         android:textSize="18sp"
                         android:textColor="#170f11"
-                        android:fontFamily="casual"
-                        android:textStyle="bold|italic"/>
+                        android:fontFamily="@font/adamina"/>
 
                 </LinearLayout>
                 <LinearLayout
@@ -369,8 +364,7 @@
                         android:padding="2dp"
                         android:textSize="18sp"
                         android:textColor="#170f11"
-                        android:fontFamily="casual"
-                        android:textStyle="bold|italic"/>
+                        android:fontFamily="@font/adamina"/>
 
                 </LinearLayout>
 
@@ -403,8 +397,7 @@
                         android:padding="2dp"
                         android:textSize="18sp"
                         android:textColor="#170f11"
-                        android:fontFamily="casual"
-                        android:textStyle="bold|italic"/>
+                        android:fontFamily="@font/adamina"/>
 
                 </LinearLayout>
 
@@ -478,8 +471,7 @@
                         android:padding="2dp"
                         android:textSize="18sp"
                         android:textColor="#170f11"
-                        android:fontFamily="casual"
-                        android:textStyle="bold|italic"/>
+                        android:fontFamily="@font/adamina"/>
 
 
                 </LinearLayout>
@@ -513,8 +505,7 @@
                         android:padding="2dp"
                         android:textSize="18sp"
                         android:textColor="#170f11"
-                        android:fontFamily="casual"
-                        android:textStyle="bold|italic"/>
+                        android:fontFamily="@font/adamina"/>
 
                 </LinearLayout>
                 <LinearLayout
@@ -603,8 +594,7 @@
                         android:padding="2dp"
                         android:textSize="18sp"
                         android:textColor="#170f11"
-                        android:fontFamily="casual"
-                        android:textStyle="bold|italic"/>
+                        android:fontFamily="@font/adamina"/>
 
                 </LinearLayout>
                 <LinearLayout
@@ -636,8 +626,7 @@
                         android:padding="2dp"
                         android:textSize="18sp"
                         android:textColor="#170f11"
-                        android:fontFamily="casual"
-                        android:textStyle="bold|italic"/>
+                        android:fontFamily="@font/adamina"/>
 
 
                 </LinearLayout>
@@ -669,8 +658,7 @@
                         android:padding="2dp"
                         android:textSize="18sp"
                         android:textColor="#170f11"
-                        android:fontFamily="casual"
-                        android:textStyle="bold|italic"/>
+                        android:fontFamily="@font/adamina"/>
 
 
                 </LinearLayout>
@@ -703,8 +691,7 @@
                         android:padding="2dp"
                         android:textSize="18sp"
                         android:textColor="#170f11"
-                        android:fontFamily="casual"
-                        android:textStyle="bold|italic"/>
+                        android:fontFamily="@font/adamina"/>
 
                 </LinearLayout>
                 <LinearLayout
@@ -735,8 +722,7 @@
                         android:padding="2dp"
                         android:textSize="18sp"
                         android:textColor="#170f11"
-                        android:fontFamily="casual"
-                        android:textStyle="bold|italic"/>
+                        android:fontFamily="@font/adamina"/>
 
                 </LinearLayout>
                 <LinearLayout
@@ -774,8 +760,7 @@
                         android:padding="2dp"
                         android:textSize="18sp"
                         android:textColor="#170f11"
-                        android:fontFamily="casual"
-                        android:textStyle="bold|italic"/>
+                        android:fontFamily="@font/adamina"/>
 
                 </LinearLayout>
 
@@ -813,8 +798,7 @@
                         android:padding="2dp"
                         android:textSize="18sp"
                         android:textColor="#170f11"
-                        android:fontFamily="casual"
-                        android:textStyle="bold|italic"/>
+                        android:fontFamily="@font/adamina"/>
 
                 </LinearLayout>
                 <LinearLayout
@@ -847,8 +831,7 @@
                         android:padding="2dp"
                         android:textSize="18sp"
                         android:textColor="#170f11"
-                        android:fontFamily="casual"
-                        android:textStyle="bold|italic"/>
+                        android:fontFamily="@font/adamina"/>
 
                 </LinearLayout>
 

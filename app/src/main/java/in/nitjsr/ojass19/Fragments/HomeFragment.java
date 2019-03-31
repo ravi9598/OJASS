@@ -100,6 +100,7 @@ public class HomeFragment extends Fragment {
             }
         });
 
+
         fetchData(0);
 
         countDownStart();

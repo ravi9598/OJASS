@@ -84,6 +84,7 @@ public class EventsFragment extends Fragment {
                 rview.setLayoutManager(new LinearLayoutManager(getContext()));
                 bhAdapter = new BranchHeadAdapter(data);
                 rview.setAdapter(bhAdapter);
+                mDialog.getWindow().getAttributes().windowAnimations=R.style.pop_up_anim;
 
                 //first tym fab press
                 if(fabFlag==1){

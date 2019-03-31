@@ -97,8 +97,6 @@ public class NotificationsActivity extends AppCompatActivity {
                 {
                     FaqModel q = ds.getValue(FaqModel.class);
                     data.add(q);
-                    //Toast.makeText(NotificationsActivity.this,"Q"+q.getQues()+"\nA:"+q.getAns(),Toast.LENGTH_SHORT).show();
-
                 }
 
                 adapter = new FAQAdapter(NotificationsActivity.this,initData());

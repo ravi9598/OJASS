@@ -35,6 +35,9 @@ import android.widget.Toast;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -182,9 +185,11 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.menu_about:
                 startActivity(new Intent(HomeActivity.this, AboutActivity.class));
                 return true;
+
             case R.id.menu_ojass_team:
                 startActivity(new Intent(HomeActivity.this, OjassDepartment.class));
                 return true;
+
             case R.id.menu_faq:
                 startActivity(new Intent(HomeActivity.this,FAQsActivity.class));
                 return  true;
@@ -192,12 +197,33 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.menu_sponsors:
                 startActivity(new Intent(HomeActivity.this, SponsorActivity.class));
                 return true;
+
             case R.id.menu_app_dev:
                 startActivity(new Intent(HomeActivity.this, DeveloperView.class));
                 return true;
+
+            case R.id.menu_logout:
+                signOut();
+                return true;
+
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    private void signOut() {
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build();
+
+        GoogleSignInClient mGoogleSignInClient = GoogleSignIn.getClient(HomeActivity.this, gso);
+        mGoogleSignInClient.signOut();
+        FirebaseAuth.getInstance().signOut();
+        SharedPrefManager shared = new SharedPrefManager(HomeActivity.this);
+        shared.setIsLoggedIn(false);
+        startActivity(new Intent(HomeActivity.this, LoginActivity.class));
+        finishAffinity();
     }
 
     private void ceateQRPopup() {
@@ -278,9 +304,8 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                         String about = ds.child("about").getValue(String.class);
                         String details = ds.child("detail").getValue(String.class);
                         String branch = ds.child("branch").getValue(String.class);
-                        ;
+
                         String name = ds.child("name").getValue(String.class);
-                        //                Long prize1 = Long.valueOf(0),prize2 = Long.valueOf(0),prize3 = Long.valueOf(0),prizeT= Long.valueOf(0);
                         PrizeModel2 p2 = null;
                         PrizeModel1 p1 = null;
                         if (checkPrizeType(name)) {
@@ -292,7 +317,9 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                             Long prize6 = ds.child("prize").child("sixth").getValue(Long.class);
                             Long prizeT = ds.child("prize").child("total").getValue(Long.class);
                             p1 = new PrizeModel1(prize1, prize2, prize3, prize4, prize5, prize6, prizeT);
-                        } else {
+                        }
+                        else
+                        {
 
                             Long prizeT, prize1_F, prize2_F, prize3_F, prize1_S, prize2_S, prize3_S, prize1_T, prize2_T, prize3_T;
                             prizeT = ds.child("prize").child("total").getValue(Long.class);
