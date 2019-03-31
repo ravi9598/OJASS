@@ -111,7 +111,7 @@ public class FAQActivity extends AppCompatActivity {
             title.setChildObjectList(childList);
             parentObject.add(title);
         }
-        return parentObject;                    
+        return parentObject;
     }
 
 }
