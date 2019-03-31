@@ -124,7 +124,7 @@ public class FAQsActivity extends AppCompatActivity {
             }
 
             ((TextView)convertView.findViewById(R.id.question)).setText(getItem(position).
-                    getQues());
+                    getQuestion());
             ((TextView)convertView.findViewById(R.id.answer)).setText(getItem(position).
                     getAns());
 
