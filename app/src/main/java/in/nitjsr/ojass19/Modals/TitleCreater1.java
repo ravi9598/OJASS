@@ -8,7 +8,7 @@ import java.util.List;
 import in.nitjsr.ojass19.Activity.NotificationsActivity;
 
 public class TitleCreater1 {
-    public static TitleCreater1 _titleCreator;
+    /*public static TitleCreater1 _titleCreator;
 
     public static List<TitleParent> _titleParents;
 
@@ -36,7 +36,7 @@ public class TitleCreater1 {
         {
             title=new TitleParent(String.format("This is Question #%d",i));
             _titleParents.add(title);
-        }*/
+        }
     }
 
     public static TitleCreater1 get(Context context)
@@ -48,5 +48,5 @@ public class TitleCreater1 {
 
     public List<TitleParent> getAll() {
         return _titleParents;
-    }
+    }*/
 }
