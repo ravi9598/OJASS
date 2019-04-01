@@ -29,15 +29,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -45,6 +45,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.messaging.FirebaseMessaging;
+
+import com.google.gson.JsonObject;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -62,14 +64,14 @@ import in.nitjsr.ojass19.Modals.RulesModel;
 import in.nitjsr.ojass19.R;
 import in.nitjsr.ojass19.Utils.BlurCallback;
 import in.nitjsr.ojass19.Utils.Constants;
-import in.nitjsr.ojass19.Utils.CustomViewPager;
+import in.nitjsr.ojass19.Utils.DataLoadedInterface;
 import in.nitjsr.ojass19.Utils.SharedPrefManager;
 import in.nitjsr.ojass19.Utils.Utilities;
 
 import static in.nitjsr.ojass19.Utils.Constants.FIREBASE_REF_OJASS_ID;
 import static in.nitjsr.ojass19.Utils.Constants.FIREBASE_REF_USERS;
 
-public class HomeActivity extends AppCompatActivity implements View.OnClickListener,BlurCallback {
+public class HomeActivity extends AppCompatActivity implements View.OnClickListener,BlurCallback, DataLoadedInterface {
 
     public Toolbar toolbar;
 
@@ -83,6 +85,8 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     private ProgressDialog pDialog;
     private BlurCallback mCallback;
     private int k=0;
+
+
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -140,9 +144,9 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         pDialog = new ProgressDialog(this);
         pDialog.setTitle("Please wait");
         pDialog.setMessage("Loading data...");
-        pDialog.setCancelable(false);
+        pDialog.setCancelable(true);
         pDialog.show();
-        data = getAllEventsData();
+        getAllEventsData();
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.getMenu().getItem(2).setChecked(true);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
@@ -289,75 +293,83 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    private List<EventModel> getAllEventsData() {
-        List<EventModel> list = new ArrayList<>();
-        mRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                data.clear();
-                //add progress dialog
-                subscribeToTopic();
-                pDialog.dismiss();
-                try {
+    private void getAllEventsData() {
+        subscribeToTopic();
+        final SharedPrefManager manager = new SharedPrefManager(this);
+            mRef.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    data.clear();
+                    manager.setData(dataSnapshot.toString());
+                    Log.e("TAG",dataSnapshot.toString());
+                    //add progress dialog
+                    data = parseDataToList(dataSnapshot);
+                    pDialog.dismiss();
 
-                    for(DataSnapshot ds: dataSnapshot.getChildren()) {
-                        String about=ds.child("about").getValue(String.class);
-                        String details=ds.child("detail").getValue(String.class);
-                        String branch=ds.child("branch").getValue(String.class);;
-                        String name=ds.child("name").getValue(String.class);
-                        PrizeModel2 p2=null;
-                        PrizeModel1 p1=null;
-                        if(checkPrizeType(name)){
-                            Long prize1=ds.child("prize").child("first").getValue(Long.class);
-                            Long prize2=ds.child("prize").child("second").getValue(Long.class);
-                            Long prize3=ds.child("prize").child("third").getValue(Long.class);
-                            Long prize4=ds.child("prize").child("fourth").getValue(Long.class);
-                            Long prize5=ds.child("prize").child("fifth").getValue(Long.class);
-                            Long prize6=ds.child("prize").child("sixth").getValue(Long.class);
-                            Long prizeT=ds.child("prize").child("total").getValue(Long.class);
-                            p1 = new PrizeModel1(prize1,prize2,prize3,prize4,prize5,prize6,prizeT);
-                        }
-                        else{
-
-                            Long prizeT,prize1_F,prize2_F,prize3_F,prize1_S,prize2_S,prize3_S,prize1_T,prize2_T,prize3_T;
-                            prizeT = ds.child("prize").child("total").getValue(Long.class);
-                            prize1_F = ds.child("prize").child("firstyear").child("first").getValue(Long.class);
-                            prize2_F = ds.child("prize").child("firstyear").child("second").getValue(Long.class);
-                            prize3_F = ds.child("prize").child("firstyear").child("third").getValue(Long.class);
-                            prize1_S = ds.child("prize").child("secondyear").child("first").getValue(Long.class);
-                            prize2_S = ds.child("prize").child("secondyear").child("second").getValue(Long.class);
-                            prize3_S = ds.child("prize").child("secondyear").child("third").getValue(Long.class);
-                            prize1_T = ds.child("prize").child("thirdyear").child("first").getValue(Long.class);
-                            prize2_T = ds.child("prize").child("thirdyear").child("second").getValue(Long.class);
-                            prize3_T = ds.child("prize").child("thirdyear").child("third").getValue(Long.class);
-
-                            p2 = new PrizeModel2(prizeT,prize1_F,prize2_F,prize3_F,prize1_S,prize2_S,prize3_S,prize1_T,prize2_T,prize3_T);
-                        }
-
-                        ArrayList<CoordinatorsModel> coordinatorsModelArrayList=new ArrayList<>();
-                        coordinatorsModelArrayList.clear();
-                        ArrayList<RulesModel> rulesModelArrayList=new ArrayList<>();
-                        rulesModelArrayList.clear();
-                        for(DataSnapshot d:ds.child("coordinators").getChildren()) {
-                            CoordinatorsModel coordinatorsModel=d.getValue(CoordinatorsModel.class);
-                            coordinatorsModelArrayList.add(coordinatorsModel);
-                        }
-                        for(DataSnapshot d:ds.child("rules").getChildren()) {
-                            RulesModel rulesModel=d.getValue(RulesModel.class);
-                            rulesModelArrayList.add(rulesModel);
-                        }
-                        data.add(new EventModel(about,branch,details,name,p1,p2,coordinatorsModelArrayList,rulesModelArrayList));
-                    }
-                } catch(Exception e){
-                    Log.e("EXCEPTION",e.toString());
                 }
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(HomeActivity.this,"Failed to get data",Toast.LENGTH_SHORT).show();
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                    Toast.makeText(HomeActivity.this, "Failed to get data", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+
+
+    private List<EventModel> parseDataToList( DataSnapshot dataSnapshot) {
+        List<EventModel> list = new ArrayList<>();
+
+        try {
+            for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                String about = ds.child("about").getValue(String.class);
+                String details = ds.child("detail").getValue(String.class);
+                String branch = ds.child("branch").getValue(String.class);
+                String name = ds.child("name").getValue(String.class);
+                PrizeModel2 p2 = null;
+                PrizeModel1 p1 = null;
+                if (checkPrizeType(name)) {
+                    Long prize1 = ds.child("prize").child("first").getValue(Long.class);
+                    Long prize2 = ds.child("prize").child("second").getValue(Long.class);
+                    Long prize3 = ds.child("prize").child("third").getValue(Long.class);
+                    Long prize4 = ds.child("prize").child("fourth").getValue(Long.class);
+                    Long prize5 = ds.child("prize").child("fifth").getValue(Long.class);
+                    Long prize6 = ds.child("prize").child("sixth").getValue(Long.class);
+                    Long prizeT = ds.child("prize").child("total").getValue(Long.class);
+                    p1 = new PrizeModel1(prize1, prize2, prize3, prize4, prize5, prize6, prizeT);
+                } else {
+
+                    Long prizeT, prize1_F, prize2_F, prize3_F, prize1_S, prize2_S, prize3_S, prize1_T, prize2_T, prize3_T;
+                    prizeT = ds.child("prize").child("total").getValue(Long.class);
+                    prize1_F = ds.child("prize").child("firstyear").child("first").getValue(Long.class);
+                    prize2_F = ds.child("prize").child("firstyear").child("second").getValue(Long.class);
+                    prize3_F = ds.child("prize").child("firstyear").child("third").getValue(Long.class);
+                    prize1_S = ds.child("prize").child("secondyear").child("first").getValue(Long.class);
+                    prize2_S = ds.child("prize").child("secondyear").child("second").getValue(Long.class);
+                    prize3_S = ds.child("prize").child("secondyear").child("third").getValue(Long.class);
+                    prize1_T = ds.child("prize").child("thirdyear").child("first").getValue(Long.class);
+                    prize2_T = ds.child("prize").child("thirdyear").child("second").getValue(Long.class);
+                    prize3_T = ds.child("prize").child("thirdyear").child("third").getValue(Long.class);
+
+                    p2 = new PrizeModel2(prizeT, prize1_F, prize2_F, prize3_F, prize1_S, prize2_S, prize3_S, prize1_T, prize2_T, prize3_T);
+                }
+
+                ArrayList<CoordinatorsModel> coordinatorsModelArrayList = new ArrayList<>();
+                coordinatorsModelArrayList.clear();
+                ArrayList<RulesModel> rulesModelArrayList = new ArrayList<>();
+                rulesModelArrayList.clear();
+                for (DataSnapshot d : ds.child("coordinators").getChildren()) {
+                    CoordinatorsModel coordinatorsModel = d.getValue(CoordinatorsModel.class);
+                    coordinatorsModelArrayList.add(coordinatorsModel);
+                }
+                for (DataSnapshot d : ds.child("rules").getChildren()) {
+                    RulesModel rulesModel = d.getValue(RulesModel.class);
+                    rulesModelArrayList.add(rulesModel);
+                }
+                list.add(new EventModel(about, branch, details, name, p1, p2, coordinatorsModelArrayList, rulesModelArrayList));
             }
-        });
+        } catch (Exception e) {
+            Log.e("EXCEPTION", e.toString());
+        }
         return list;
     }
 
@@ -367,8 +379,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
 
     private boolean checkPrizeType(String name){
-        if((name.compareToIgnoreCase("embetrix")==0 ) ||
-                (name.compareToIgnoreCase("High Voltage Concepts")==0) ||
+        if(     (name.compareToIgnoreCase("High Voltage Concepts")==0) ||
                 (name.compareToIgnoreCase("electrospection")==0) ||
                 (name.compareToIgnoreCase("Electro Scribble")==0) ||
                 (name.compareToIgnoreCase("matsim")==0) ||
@@ -389,6 +400,15 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             mCallback = (BlurCallback) f;
             mCallback.onBlurCallback();
         }
+    }
+
+
+    @Override
+    public boolean isDataLoaded() {
+        if(data ==null)
+            return false;
+        else
+            return true;
     }
 
     private class GetCurrentVersion extends AsyncTask<Void, Void, Void> {
@@ -441,4 +461,9 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         builder.show();
     }
 
+    @Override
+    public void onAttachFragment(Fragment fragment) {
+        super.onAttachFragment(fragment);
+
+    }
 }

@@ -1,6 +1,9 @@
 package in.nitjsr.ojass19.Fragments;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -11,18 +14,28 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import in.nitjsr.ojass19.Activity.HomeActivity;
 import in.nitjsr.ojass19.Adapters.BranchHeadAdapter;
 import in.nitjsr.ojass19.Adapters.EventsPagerAdaptor;
 import in.nitjsr.ojass19.Fragments.MajorEventsFragments.Aakriti;
@@ -43,13 +56,20 @@ import in.nitjsr.ojass19.Fragments.MajorEventsFragments.SchoolEvents;
 import in.nitjsr.ojass19.Fragments.MajorEventsFragments.SiliconValley;
 import in.nitjsr.ojass19.Fragments.MajorEventsFragments.ViswaCodeGenesis;
 import in.nitjsr.ojass19.Modals.BranchHeadModel;
+import in.nitjsr.ojass19.Modals.CoordinatorsModel;
+import in.nitjsr.ojass19.Modals.EventModel;
+import in.nitjsr.ojass19.Modals.PrizeModel1;
+import in.nitjsr.ojass19.Modals.PrizeModel2;
+import in.nitjsr.ojass19.Modals.RulesModel;
 import in.nitjsr.ojass19.R;
+import in.nitjsr.ojass19.Utils.BtmNavVisCallback;
 import in.nitjsr.ojass19.Utils.Constants;
+import in.nitjsr.ojass19.Utils.DataLoadedInterface;
 
 import static in.nitjsr.ojass19.Utils.Constants.eventImageName;
 import static in.nitjsr.ojass19.Utils.Constants.eventNames;
 
-public class EventsFragment extends Fragment {
+public class EventsFragment extends Fragment  {
 
     private TabLayout mTab;
     private ViewPager mPager;
@@ -58,10 +78,16 @@ public class EventsFragment extends Fragment {
     private EventsPagerAdaptor mAdapter;
     private FloatingActionButton fab;
     private Dialog mDialog;
+
     private List<BranchHeadModel> data=new ArrayList<>();
     private RecyclerView rDView;
     private BranchHeadAdapter bhAdapter;
+    public FrameLayout fl;
     private int fabFlag=1;
+    private DataLoadedInterface mDataLoadedCallback;
+    public FrameLayout vp_frame;
+    private DatabaseReference mRef;
+    AlertDialog alertDialog;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -70,11 +96,17 @@ public class EventsFragment extends Fragment {
         mTab = view.findViewById(R.id.events_tab_layout);
         mPager = view.findViewById(R.id.events_vp);
         fab = view.findViewById(R.id.events_fab);
+        fl = view.findViewById(R.id.progress_bar_layout);
+        vp_frame = view.findViewById(R.id.vplayout);
         setVP();
 
         mTab.setupWithViewPager(mPager);
         mTab.setTabGravity(Gravity.CENTER);
 
+        if(HomeActivity.data!=null){
+            fl.setVisibility(View.GONE);
+            vp_frame.setVisibility(View.VISIBLE);
+        }
         createTabs();
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -144,6 +176,8 @@ public class EventsFragment extends Fragment {
         return view;
     }
 
+
+
     private void expand(View v) {
         Animation animation = AnimationUtils.loadAnimation(getActivity(),R.anim.expand);
         v.startAnimation(animation);
@@ -192,5 +226,18 @@ public class EventsFragment extends Fragment {
         mAdapter.addFragment(new SchoolEvents(),eventNames[16]);
 
         mPager.setAdapter(mAdapter);
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        mDataLoadedCallback = (DataLoadedInterface) context;
+
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mDataLoadedCallback = null;
     }
 }

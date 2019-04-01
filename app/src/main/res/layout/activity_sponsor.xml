@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-    android:background="@drawable/ojass_bg"
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -87,7 +86,7 @@
                         android:layout_weight="2"
                         android:padding="5dp"
                         android:layout_height="100dp"
-                        android:src="@drawable/spons_title_sponsor"/>
+                        android:src="@mipmap/spons_title_sponsor"/>
 
 
                 </LinearLayout>
@@ -121,7 +120,7 @@
                         android:layout_width="match_parent"
                         android:padding="5dp"
                         android:layout_height="100dp"
-                        android:src="@drawable/spons_major_sponsor"/>
+                        android:src="@mipmap/spons_major_sponsor"/>
 
                 </LinearLayout>
 
@@ -154,13 +153,13 @@
                         android:layout_weight="1"
                         android:padding="5dp"
                         android:layout_height="100dp"
-                        android:src="@drawable/spons_event_sponsor1"/>
+                        android:src="@mipmap/spons_event_sponsor1"/>
                     <ImageView
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:padding="5dp"
                         android:layout_height="100dp"
-                        android:src="@drawable/spons_event_sponsor2"/>
+                        android:src="@mipmap/spons_event_sponsor2"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -173,13 +172,13 @@
                         android:layout_weight="1"
                         android:padding="5dp"
                         android:layout_height="100dp"
-                        android:src="@drawable/spons_event_sponsor3"/>
+                        android:src="@mipmap/spons_event_sponsor3"/>
                     <ImageView
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:padding="5dp"
                         android:layout_height="100dp"
-                        android:src="@drawable/spons_event_sponsor4"/>
+                        android:src="@mipmap/spons_event_sponsor4"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -193,7 +192,7 @@
                         android:layout_weight="1"
                         android:padding="5dp"
                         android:layout_height="100dp"
-                        android:src="@drawable/spons_event_sponsor5"/>
+                        android:src="@mipmap/spons_event_sponsor5"/>
 
                 </LinearLayout>
 
@@ -226,7 +225,7 @@
                         android:layout_width="wrap_content"
                         android:padding="5dp"
                         android:layout_height="100dp"
-                        android:src="@drawable/spons_delivered_by"/>
+                        android:src="@mipmap/spons_delivered_by"/>
 
                 </LinearLayout>
 
@@ -258,14 +257,14 @@
                         android:layout_weight="1"
                         android:padding="5dp"
                         android:layout_height="100dp"
-                        android:src="@drawable/spons_food_partner2"/>
+                        android:src="@mipmap/spons_food_partner2"/>
 
                     <ImageView
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:padding="5dp"
                         android:layout_height="100dp"
-                        android:src="@drawable/spons_food_partner1"/>
+                        android:src="@mipmap/spons_food_partner1"/>
 
                 </LinearLayout>
 
@@ -297,14 +296,14 @@
                         android:layout_weight="1"
                         android:padding="5dp"
                         android:layout_height="100dp"
-                        android:src="@drawable/spons_beverage_partner1"/>
+                        android:src="@mipmap/spons_beverage_partner1"/>
 
                     <ImageView
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:padding="5dp"
                         android:layout_height="100dp"
-                        android:src="@drawable/spons_beverage_partner2"/>
+                        android:src="@mipmap/spons_beverage_partner2"/>
 
                 </LinearLayout>
 
@@ -313,7 +312,7 @@
                     android:layout_gravity="center_horizontal"
                     android:padding="5dp"
                     android:layout_height="100dp"
-                    android:src="@drawable/spons_beverage_partner3"/>
+                    android:src="@mipmap/spons_beverage_partner3"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -344,7 +343,7 @@
                         android:layout_width="wrap_content"
                         android:padding="5dp"
                         android:layout_height="100dp"
-                        android:src="@drawable/spons_snacks_partner"/>
+                        android:src="@mipmap/spons_snacks_partner"/>
 
                 </LinearLayout>
 
@@ -378,7 +377,7 @@
                         android:layout_weight="2"
                         android:padding="5dp"
                         android:layout_height="100dp"
-                        android:src="@drawable/spons_certificate_partner"/>
+                        android:src="@mipmap/spons_certificate_partner"/>
 
                 </LinearLayout>
 
@@ -412,7 +411,7 @@
                         android:layout_weight="2"
                         android:padding="5dp"
                         android:layout_height="150dp"
-                        android:src="@drawable/spons_internship_partner"/>
+                        android:src="@mipmap/spons_internship_partner"/>
 
 
                 </LinearLayout>
@@ -447,13 +446,13 @@
                         <!--android:layout_weight="1"-->
                         <!--android:padding="5dp"-->
                         <!--android:layout_height="100dp"-->
-                        <!--android:src="@drawable/ic_em20"/>-->
+                        <!--android:src="@mipmap/ic_em20"/>-->
                     <!--<ImageView-->
                         <!--android:layout_width="0dp"-->
                         <!--android:layout_weight="1"-->
                         <!--android:padding="5dp"-->
                         <!--android:layout_height="100dp"-->
-                        <!--android:src="@drawable/ic_em21"/>-->
+                        <!--android:src="@mipmap/ic_em21"/>-->
                 <!--</LinearLayout>-->
 
                 <LinearLayout
@@ -486,7 +485,7 @@
                         android:layout_weight="2"
                         android:padding="5dp"
                         android:layout_height="100dp"
-                        android:src="@drawable/spons_optical_partner"/>
+                        android:src="@mipmap/spons_optical_partner"/>
 
                 </LinearLayout>
 
@@ -518,14 +517,14 @@
                         android:layout_weight="1"
                         android:padding="5dp"
                         android:layout_height="100dp"
-                        android:src="@drawable/spons_media_partner1"/>
+                        android:src="@mipmap/spons_media_partner1"/>
 
                     <ImageView
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:padding="5dp"
                         android:layout_height="100dp"
-                        android:src="@drawable/spons_media_partner2"/>
+                        android:src="@mipmap/spons_media_partner2"/>
 
                 </LinearLayout>
 
@@ -539,14 +538,14 @@
                         android:layout_weight="1"
                         android:padding="5dp"
                         android:layout_height="100dp"
-                        android:src="@drawable/spons_media_partner3"/>
+                        android:src="@mipmap/spons_media_partner3"/>
 
                     <ImageView
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:padding="5dp"
                         android:layout_height="100dp"
-                        android:src="@drawable/spons_media_partner4"/>
+                        android:src="@mipmap/spons_media_partner4"/>
 
                 </LinearLayout>
 
@@ -560,14 +559,14 @@
                         android:layout_weight="1"
                         android:padding="5dp"
                         android:layout_height="100dp"
-                        android:src="@drawable/spons_media_partner5"/>
+                        android:src="@mipmap/spons_media_partner5"/>
 
                     <ImageView
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:padding="5dp"
                         android:layout_height="100dp"
-                        android:src="@drawable/spons_media_partner6"/>
+                        android:src="@mipmap/spons_media_partner6"/>
 
                 </LinearLayout>
 
@@ -577,7 +576,7 @@
                     android:layout_weight="2"
                     android:padding="5dp"
                     android:layout_height="100dp"
-                    android:src="@drawable/spons_media_partner7"/>
+                    android:src="@mipmap/spons_media_partner7"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -607,7 +606,7 @@
                         android:layout_weight="2"
                         android:padding="5dp"
                         android:layout_height="100dp"
-                        android:src="@drawable/spons_platform_partner"/>
+                        android:src="@mipmap/spons_platform_partner"/>
 
                 </LinearLayout>
 
@@ -640,7 +639,7 @@
                         android:layout_weight="2"
                         android:padding="5dp"
                         android:layout_height="100dp"
-                        android:src="@drawable/spons_electronics_partner"/>
+                        android:src="@mipmap/spons_electronics_partner"/>
 
                 </LinearLayout>
                 <LinearLayout
@@ -672,7 +671,7 @@
                         android:layout_weight="2"
                         android:padding="5dp"
                         android:layout_height="100dp"
-                        android:src="@drawable/spons_sound_partner"/>
+                        android:src="@mipmap/spons_sound_partner"/>
 
                 </LinearLayout>
 
@@ -704,7 +703,7 @@
                         android:layout_weight="2"
                         android:padding="5dp"
                         android:layout_height="100dp"
-                        android:src="@drawable/spons_career_partner"/>
+                        android:src="@mipmap/spons_career_partner"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -735,14 +734,14 @@
                         android:layout_weight="1"
                         android:padding="5dp"
                         android:layout_height="100dp"
-                        android:src="@drawable/spons_bakery_partner1"/>
+                        android:src="@mipmap/spons_bakery_partner1"/>
 
                     <ImageView
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:padding="5dp"
                         android:layout_height="100dp"
-                        android:src="@drawable/spons_bakery_partner2"/>
+                        android:src="@mipmap/spons_bakery_partner2"/>
 
                 </LinearLayout>
                 <LinearLayout
@@ -774,13 +773,13 @@
                         android:layout_weight="1"
                         android:padding="5dp"
                         android:layout_height="100dp"
-                        android:src="@drawable/spons_beauty_partner1"/>
+                        android:src="@mipmap/spons_beauty_partner1"/>
                     <ImageView
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:padding="5dp"
                         android:layout_height="100dp"
-                        android:src="@drawable/spons_beauty_partner"/>
+                        android:src="@mipmap/spons_beauty_partner"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -812,7 +811,7 @@
                         android:layout_weight="2"
                         android:padding="5dp"
                         android:layout_height="100dp"
-                        android:src="@drawable/spons_confectionary_partner"/>
+                        android:src="@mipmap/spons_confectionary_partner"/>
 
                 </LinearLayout>
 
@@ -845,7 +844,7 @@
                         android:layout_width="wrap_content"
                         android:padding="5dp"
                         android:layout_height="100dp"
-                        android:src="@drawable/spons_banking_partner"/>
+                        android:src="@mipmap/spons_banking_partner"/>
 
                 </LinearLayout>
 

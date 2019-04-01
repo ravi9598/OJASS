@@ -13,7 +13,7 @@ public class SharedPrefManager {
     private static final String IS_REGISTERED="isRegistered";
     private static final String LAST_NOTI_TIME = "lastNotiTime";
     private static final long OLD_TIME = 1517926000L;
-
+    private static final String EVENTS_DATA = "eventsData";
     public SharedPrefManager(Context context){
         sharedPref = context.getSharedPreferences(SHARED_PREF, Context.MODE_PRIVATE);
         editor = sharedPref.edit();
@@ -31,6 +31,12 @@ public class SharedPrefManager {
         return sharedPref.getBoolean(IS_LOGGED_IN, false);
     }
 
+    public void setData(String data){
+        editor.putString(EVENTS_DATA,data).apply();
+    }
+    public String getData(){
+        return sharedPref.getString(EVENTS_DATA,"");
+    }
     public void setIsLoggedIn(boolean isLoggedIn){
         editor.putBoolean(IS_LOGGED_IN, isLoggedIn).apply();
     }

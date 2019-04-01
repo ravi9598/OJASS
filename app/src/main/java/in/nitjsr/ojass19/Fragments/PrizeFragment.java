@@ -32,6 +32,7 @@ public class PrizeFragment extends Fragment {
     private TextView text_firstyear,text_secondyear,text_thirdyear;
     private TextView note_nscet;
     private int first_T=0,second_T=0,third_T=0;
+    private LinearLayout hell,hellyeah;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -62,8 +63,7 @@ public class PrizeFragment extends Fragment {
         return view;
     }
     boolean checkLayout(String name){
-        if((name.compareToIgnoreCase("embetrix")==0 ) ||
-                (name.compareToIgnoreCase("High Voltage Concepts")==0) ||
+        if(     (name.compareToIgnoreCase("High Voltage Concepts")==0) ||
                 (name.compareToIgnoreCase("electrospection")==0) ||
                 (name.compareToIgnoreCase("Electro Scribble")==0) ||
                 (name.compareToIgnoreCase("matsim")==0) ||
@@ -96,51 +96,61 @@ public class PrizeFragment extends Fragment {
             director_cut_layout.setVisibility(View.GONE);
         }
         PrizeModel1 p1 = em.getP1();
-        if(p1.getPrize1()!=null && p1.getPrize1()!=Long.valueOf(0)) {
-            prize1.setText(String.valueOf(p1.getPrize1()));
-            first.setVisibility(View.VISIBLE);
+        if(p1!=null) {
+            if (p1.getPrize1() != null && p1.getPrize1() != Long.valueOf(0)) {
+                prize1.setText(String.valueOf(p1.getPrize1()));
+                first.setVisibility(View.VISIBLE);
 
-        }
-        else{
-            first.setVisibility(View.GONE);
-        }
-        if(p1.getPrize2()!=null && p1.getPrize2()!=Long.valueOf(0)) {
-            prize2.setText(String.valueOf(p1.getPrize2()));
-            second.setVisibility(View.VISIBLE);
+            } else {
+                first.setVisibility(View.GONE);
+            }
+            if (p1.getPrize2() != null && p1.getPrize2() != Long.valueOf(0)) {
+                prize2.setText(String.valueOf(p1.getPrize2()));
+                second.setVisibility(View.VISIBLE);
 
-        }else{
-            second.setVisibility(View.GONE);
-        }
-        if(p1.getPrize3()!=null && p1.getPrize3()!=Long.valueOf(0)) {
-            prize3.setText(String.valueOf(p1.getPrize3()));
-            third.setVisibility(View.VISIBLE);
-        }else{
-            third.setVisibility(View.GONE);
-        }
-        if(p1.getPrize4()!=null && p1.getPrize4()!=Long.valueOf(0)) {
-            prize4.setText(String.valueOf(p1.getPrize4()));
-            fourth.setVisibility(View.VISIBLE);
-        }else{
-            fourth.setVisibility(View.GONE);
-        }
-        if(p1.getPrize5()!=null && p1.getPrize5()!=Long.valueOf(0)) {
-            prize5.setText(String.valueOf(p1.getPrize5()));
-            fifth.setVisibility(View.VISIBLE);
-        }else{
-            fifth.setVisibility(View.GONE);
-        }
-        if(p1.getPrize6()!=null && p1.getPrize6()!=Long.valueOf(0)) {
-            prize6.setText(String.valueOf(p1.getPrize6()));
-            sixth.setVisibility(View.VISIBLE);
-        }else{
-            sixth.setVisibility(View.GONE);
+            } else {
+                second.setVisibility(View.GONE);
+            }
+            if (p1.getPrize3() != null && p1.getPrize3() != Long.valueOf(0)) {
+                prize3.setText(String.valueOf(p1.getPrize3()));
+                third.setVisibility(View.VISIBLE);
+            } else {
+                third.setVisibility(View.GONE);
+            }
+            if (p1.getPrize4() != null && p1.getPrize4() != Long.valueOf(0)) {
+                prize4.setText(String.valueOf(p1.getPrize4()));
+                fourth.setVisibility(View.VISIBLE);
+            } else {
+                fourth.setVisibility(View.GONE);
+            }
+            if (p1.getPrize5() != null && p1.getPrize5() != Long.valueOf(0)) {
+                prize5.setText(String.valueOf(p1.getPrize5()));
+                fifth.setVisibility(View.VISIBLE);
+            } else {
+                fifth.setVisibility(View.GONE);
+            }
+            if (p1.getPrize6() != null && p1.getPrize6() != Long.valueOf(0)) {
+                prize6.setText(String.valueOf(p1.getPrize6()));
+                sixth.setVisibility(View.VISIBLE);
+            } else {
+                sixth.setVisibility(View.GONE);
+            }
         }
         if(em.getName().compareToIgnoreCase("Digizone")==0 ||  em.getName().compareToIgnoreCase("Analog Hunter")==0 ||
-                em.getName().compareToIgnoreCase("Netkraft")==0 ){
+                em.getName().compareToIgnoreCase("Netkraft")==0 || em.getName().compareToIgnoreCase("Embetrix")==0){
             first_first.setVisibility(View.VISIBLE);
             text_firstyear.setVisibility(View.VISIBLE);
             prize1_F.setVisibility(View.VISIBLE);
+            if(em.getName().compareToIgnoreCase("Embetrix")==0){
+                hellyeah.setVisibility(View.VISIBLE);
+                hell.setVisibility(View.GONE);
+            }else{
+                hellyeah.setVisibility(View.GONE);
+                hell.setVisibility(View.VISIBLE);
+            }
         }else{
+            hellyeah.setVisibility(View.GONE);
+            hell.setVisibility(View.GONE);
             first_first.setVisibility(View.GONE);
             text_firstyear.setVisibility(View.GONE);
             prize1_F.setVisibility(View.GONE);
@@ -236,6 +246,7 @@ public class PrizeFragment extends Fragment {
         prize5 = view.findViewById(R.id.prize5);
         prize6 = view.findViewById(R.id.prize6);
         prize1_F = view.findViewById(R.id.prize1_first);
+        prize2_F = view.findViewById(R.id.prize2_first);
         first_first = view.findViewById(R.id.first_first);
         text_firstyear = view.findViewById(R.id.text_first_year);
 
@@ -249,6 +260,8 @@ public class PrizeFragment extends Fragment {
         no_ground_zone_layout = view.findViewById(R.id.no_ground_zone_layout);
         prizeT = view.findViewById(R.id.total_prize);
         note_nscet = view.findViewById(R.id.note_nscet);
+        hell = view.findViewById(R.id.hell);
+        hellyeah = view.findViewById(R.id.hell_yeah);
     }
     void init2(View view){
         prize_layout = view.findViewById(R.id.prize_layout);

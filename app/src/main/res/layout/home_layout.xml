@@ -104,7 +104,7 @@
                 android:id="@+id/user_ojass_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="OJ19120"
+                android:text="OJ19"
                 android:textSize="18sp"
                 android:typeface="serif"
                 android:textColor="@color/colorWhite"

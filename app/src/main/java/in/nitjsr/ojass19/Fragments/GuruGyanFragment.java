@@ -192,7 +192,8 @@ public class GuruGyanFragment extends Fragment implements View.OnClickListener,V
 
     @Override
     public void onBlurCallback() {
-        mCallback.onBlurCallback();
+        if(mCallback!=null)
+            mCallback.onBlurCallback();
     }
 
     @Override

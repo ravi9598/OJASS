@@ -89,7 +89,8 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            new SharedPrefManager(LoginActivity.this).setIsLoggedIn(true);
+                            SharedPrefManager sm = new SharedPrefManager(LoginActivity.this);
+                            sm.setIsLoggedIn(true);
                             userName = mAuth.getCurrentUser().getDisplayName();
                             isRegisteredUser();
                         } else {
