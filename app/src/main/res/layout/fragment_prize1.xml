@@ -5,715 +5,713 @@
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-        <android.support.v7.widget.CardView
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp">
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="10dp">
+            android:orientation="vertical">
 
-            <LinearLayout
+            <TextView
+                android:typeface="serif"
+                android:id="@+id/title_prize"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="10dp"
+                android:textColor="#000"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Prize"
+                android:textSize="22dp"/>
+
+            <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:fillViewport="true">
 
-                <TextView
-                    android:typeface="serif"
-                    android:id="@+id/title_prize"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginBottom="10dp"
-                    android:textColor="#000"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="Prize"
-                    android:textSize="22dp"/>
-
-                <ScrollView
+                <LinearLayout
+                    android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:fillViewport="true">
+                    android:id="@+id/prize_layout">
 
                     <LinearLayout
-                        android:orientation="vertical"
+                        android:orientation="horizontal"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:id="@+id/prize_layout">
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="7dp"
+                        android:id="@+id/prize_first_layout">
 
                         <LinearLayout
+                            android:layout_weight="1"
                             android:orientation="horizontal"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginLeft="7dp"
-                            android:id="@+id/prize_first_layout">
+                            android:layout_height="wrap_content">
 
-                            <LinearLayout
-                                android:layout_weight="1"
-                                android:orientation="horizontal"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
-
-                                <ImageView
-                                    android:padding="4dp"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:src="@drawable/first_place" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="6dp"
-                                    android:text="First Prize"
-                                    android:layout_gravity="center"
-                                    android:textColor="#FFD700"
-                                    android:textSize="20sp"/>
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_weight="1"
-                                android:layout_gravity="center_horizontal"
-                                android:orientation="horizontal"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent">
-
-                                <TextView
-                                    android:layout_marginLeft="10dp"
-                                    android:textStyle="bold"
-                                    android:layout_gravity="center"
-                                    android:textColor="#000000"
-                                    android:textSize="20sp"
-                                    android:text="@string/Rs"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="10dp"
-                                    android:layout_centerVertical="true"
-                                    android:layout_alignParentEnd="true"
-                                    android:layout_marginRight="20dp"
-                                    android:text=""
-                                    android:textStyle="bold"
-                                    android:layout_gravity="center"
-                                    android:textColor="#000000"
-                                    android:textSize="20sp"
-                                    android:id="@+id/prize1" />
-
-                            </LinearLayout>
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:orientation="horizontal"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginLeft="7dp"
-                            android:id="@+id/prize_second_layout">
-
-                            <LinearLayout
-                                android:layout_weight="1"
-                                android:orientation="horizontal"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
-
-                                <ImageView
-                                    android:padding="4dp"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:src="@drawable/second_place"
-                                    />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="6dp"
-                                    android:text="Second Prize"
-                                    android:layout_gravity="center"
-                                    android:textColor="#FFD700"
-                                    android:textSize="20sp"/>
-
-                            </LinearLayout>
-                            <LinearLayout
-                                android:layout_weight="1"
-                                android:orientation="horizontal"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
-
-                                <TextView
-                                    android:layout_marginLeft="10dp"
-                                    android:textStyle="bold"
-                                    android:layout_gravity="center"
-                                    android:textColor="#000000"
-                                    android:textSize="20sp"
-                                    android:text="@string/Rs"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content" />
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:id="@+id/prize2"
-                                    android:layout_marginLeft="10dp"
-                                    android:layout_centerVertical="true"
-                                    android:layout_alignParentEnd="true"
-                                    android:layout_marginRight="20dp"
-                                    android:text=""
-                                    android:textStyle="bold"
-                                    android:layout_gravity="center"
-                                    android:textColor="#000000"
-                                    android:textSize="20sp"/>
-
-                            </LinearLayout>
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:orientation="horizontal"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginLeft="7dp"
-                            android:id="@+id/prize_third_layout">
-
-                            <LinearLayout
-                                android:layout_weight="1"
-                                android:orientation="horizontal"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
-
-                                <ImageView
-                                    android:padding="4dp"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:src="@drawable/third_place" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="6dp"
-                                    android:text="Third Prize"
-                                    android:layout_gravity="center"
-                                    android:textColor="#FFD700"
-                                    android:textSize="20sp"/>
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_weight="1"
-                                android:orientation="horizontal"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
-
-                                <TextView
-                                    android:layout_marginLeft="10dp"
-                                    android:textStyle="bold"
-                                    android:layout_gravity="center"
-                                    android:textColor="#000000"
-                                    android:textSize="20sp"
-                                    android:text="@string/Rs"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content" />
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:id="@+id/prize3"
-                                    android:layout_marginLeft="10dp"
-                                    android:layout_centerVertical="true"
-                                    android:layout_alignParentEnd="true"
-                                    android:layout_marginRight="20dp"
-                                    android:text=""
-                                    android:textStyle="bold"
-                                    android:layout_gravity="center"
-                                    android:textColor="#000000"
-                                    android:textSize="20sp"/>
-
-                            </LinearLayout>
-
-                        </LinearLayout>
-                        <LinearLayout
-                            android:orientation="horizontal"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginLeft="7dp"
-                            android:id="@+id/prize_fourth_layout">
-
-                            <LinearLayout
-                                android:layout_weight="1"
-                                android:orientation="horizontal"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
-
-                                <ImageView
-                                    android:padding="4dp"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:src="@drawable/third_place" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="6dp"
-                                    android:text="Fourth Prize"
-                                    android:layout_gravity="center"
-                                    android:textColor="#FFD700"
-                                    android:textSize="20sp"/>
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_weight="1"
-                                android:orientation="horizontal"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
-
-                                <TextView
-                                    android:layout_marginLeft="10dp"
-                                    android:textStyle="bold"
-                                    android:layout_gravity="center"
-                                    android:textColor="#000000"
-                                    android:textSize="20sp"
-                                    android:text="@string/Rs"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content" />
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:id="@+id/prize4"
-                                    android:layout_marginLeft="10dp"
-                                    android:layout_centerVertical="true"
-                                    android:layout_alignParentEnd="true"
-                                    android:layout_marginRight="20dp"
-                                    android:text=""
-                                    android:textStyle="bold"
-                                    android:layout_gravity="center"
-                                    android:textColor="#000000"
-                                    android:textSize="20sp"/>
-
-                            </LinearLayout>
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:orientation="horizontal"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginLeft="7dp"
-                            android:id="@+id/prize_fifth_layout">
-
-                            <LinearLayout
-                                android:layout_weight="1"
-                                android:orientation="horizontal"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
-
-                                <ImageView
-                                    android:padding="4dp"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:src="@drawable/third_place" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="6dp"
-                                    android:text="Fifth Prize"
-                                    android:layout_gravity="center"
-                                    android:textColor="#FFD700"
-                                    android:textSize="20sp"/>
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_weight="1"
-                                android:orientation="horizontal"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
-
-                                <TextView
-                                    android:layout_marginLeft="10dp"
-                                    android:textStyle="bold"
-                                    android:layout_gravity="center"
-                                    android:textColor="#000000"
-                                    android:textSize="20sp"
-                                    android:text="@string/Rs"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content" />
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:id="@+id/prize5"
-                                    android:layout_marginLeft="10dp"
-                                    android:layout_centerVertical="true"
-                                    android:layout_alignParentEnd="true"
-                                    android:layout_marginRight="20dp"
-                                    android:text=""
-                                    android:textStyle="bold"
-                                    android:layout_gravity="center"
-                                    android:textColor="#000000"
-                                    android:textSize="20sp"/>
-
-                            </LinearLayout>
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:orientation="horizontal"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginLeft="7dp"
-                            android:id="@+id/prize_sixth_layout">
-
-                            <LinearLayout
-                                android:layout_weight="1"
-                                android:orientation="horizontal"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
-
-                                <ImageView
-                                    android:padding="4dp"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:src="@drawable/third_place" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="6dp"
-                                    android:text="Sixth Prize"
-                                    android:layout_gravity="center"
-                                    android:textColor="#FFD700"
-                                    android:textSize="20sp"/>
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_weight="1"
-                                android:orientation="horizontal"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
-
-                                <TextView
-                                    android:layout_marginLeft="10dp"
-                                    android:textStyle="bold"
-                                    android:layout_gravity="center"
-                                    android:textColor="#000000"
-                                    android:textSize="20sp"
-                                    android:text="@string/Rs"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content" />
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:id="@+id/prize6"
-                                    android:layout_marginLeft="10dp"
-                                    android:layout_centerVertical="true"
-                                    android:layout_alignParentEnd="true"
-                                    android:layout_marginRight="20dp"
-                                    android:text=""
-                                    android:textStyle="bold"
-                                    android:layout_gravity="center"
-                                    android:textColor="#000000"
-                                    android:textSize="20sp"/>
-
-                            </LinearLayout>
-
-                        </LinearLayout>
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:layout_marginBottom="7dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginLeft="10dp"
-                            >
+                            <ImageView
+                                android:padding="4dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/first_place" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="First Year:"
+                                android:layout_marginLeft="6dp"
+                                android:text="First Prize"
+                                android:layout_gravity="center"
+                                android:textColor="#FFD700"
+                                android:textSize="20sp"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_weight="1"
+                            android:layout_gravity="center_horizontal"
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:layout_marginLeft="10dp"
+                                android:textStyle="bold"
+                                android:layout_gravity="center"
+                                android:textColor="#000000"
                                 android:textSize="20sp"
-                                android:id="@+id/text_first_year" />
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical"
-                                android:layout_below="@+id/text_first_year">
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="5dp"
-                                    android:layout_marginLeft="7dp"
-                                    android:id="@+id/first_first">
-
-                                    <LinearLayout
-                                        android:layout_weight="1"
-                                        android:orientation="horizontal"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content">
-
-                                        <ImageView
-                                            android:padding="4dp"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:src="@drawable/first_place" />
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_marginLeft="6dp"
-                                            android:text="First Prize"
-                                            android:layout_gravity="center"
-                                            android:textColor="#FFD700"
-                                            android:textSize="20sp"/>
-
-                                    </LinearLayout>
-
-                                    <LinearLayout
-                                        android:layout_weight="1"
-                                        android:orientation="horizontal"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content">
-
-                                        <TextView
-                                            android:layout_marginLeft="10dp"
-                                            android:textStyle="bold"
-                                            android:layout_gravity="center"
-                                            android:textColor="#000000"
-                                            android:textSize="20sp"
-                                            android:text="@string/Rs"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content" />
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_marginLeft="10dp"
-                                            android:layout_centerVertical="true"
-                                            android:layout_alignParentEnd="true"
-                                            android:layout_marginRight="20dp"
-                                            android:text="1000"
-                                            android:textStyle="bold"
-                                            android:layout_gravity="center"
-                                            android:textColor="#000000"
-                                            android:textSize="20sp"
-                                            android:id="@+id/prize1_first" />
-
-                                    </LinearLayout>
-
-                                </LinearLayout>
-
-
-
-
-
-                            </LinearLayout>
-
-                        </RelativeLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:gravity="center"
-                            android:visibility="gone"
-                            android:id="@+id/director_cut_layout">
-                            <!--<LinearLayout-->
-                                <!--android:layout_width="wrap_content"-->
-                                <!--android:layout_height="wrap_content">-->
-                                <!--<TextView-->
-                                    <!--android:layout_width="wrap_content"-->
-                                    <!--android:layout_height="wrap_content"-->
-                                    <!--android:text="Best Trailer:"-->
-                                    <!--android:textSize="20sp"-->
-                                    <!--/>-->
-                                <!--<TextView-->
-                                    <!--android:layout_width="wrap_content"-->
-                                    <!--android:layout_height="wrap_content"-->
-                                    <!--android:text="1000"-->
-                                    <!--android:id="@+id/prize_best_trailer"-->
-                                    <!--/>-->
-                            <!--</LinearLayout>-->
-                            <!--<LinearLayout-->
-                                <!--android:layout_width="wrap_content"-->
-                                <!--android:layout_height="wrap_content">-->
-                                <!--<TextView-->
-                                    <!--android:layout_width="wrap_content"-->
-                                    <!--android:layout_height="wrap_content"-->
-                                    <!--android:text="Best Actor:"-->
-                                    <!--android:textSize="20sp" />-->
-                                <!--<TextView-->
-                                    <!--android:layout_width="wrap_content"-->
-                                    <!--android:layout_height="wrap_content"-->
-                                    <!--android:text="1000"-->
-                                    <!--android:id="@+id/prize_best_actor" />-->
-                            <!--</LinearLayout>-->
-                            <LinearLayout
+                                android:text="@string/Rs"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content">
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Best Acting:"
-                                    android:textSize="20sp"
-                                    />
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="1500"
-                                    android:id="@+id/prize_best_actress"
-                                    />
-                            </LinearLayout>
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content">
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Best Cinematographer:"
-                                    android:textSize="20sp"
-                                    />
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="1500"
-                                    android:id="@+id/prize_best_cinematographer"
-                                    />
-                            </LinearLayout>
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content">
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Best Story:"
-                                    android:textSize="20sp"
-                                    />
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="1500"
-                                    android:id="@+id/prize_best_story"
-                                    />
-                            </LinearLayout>
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content">
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Best Editor:"
-                                    android:textSize="20sp"
-                                    />
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="1500"
-                                    android:id="@+id/prize_best_editor"
-                                    />
-                            </LinearLayout>
-                        </LinearLayout>
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:gravity="center"
-                            android:layout_marginTop="10dp"
-                            android:id="@+id/no_ground_zone_layout"
-                            >
+                                android:layout_height="wrap_content" />
+
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Fabulous Four teams will get Rs. 2000 each"
-                                android:textSize="15sp"
-                                />
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="For best innovative design Rs. 1000"
-                                android:textSize="15sp"
-                                />
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="For best Design Report Rs. 1500"
-                                android:textSize="15sp"
-                                />
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="For best presentation Rs. 500"
-                                android:textSize="15sp"
-                                />
+                                android:layout_marginLeft="10dp"
+                                android:layout_centerVertical="true"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginRight="20dp"
+                                android:text=""
+                                android:textStyle="bold"
+                                android:layout_gravity="center"
+                                android:textColor="#000000"
+                                android:textSize="20sp"
+                                android:id="@+id/prize1" />
+
                         </LinearLayout>
 
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="7dp"
+                        android:id="@+id/prize_second_layout">
+
                         <LinearLayout
-                            android:layout_marginTop="20dp"
+                            android:layout_weight="1"
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <ImageView
+                                android:padding="4dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/second_place"
+                                />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="6dp"
+                                android:text="Second Prize"
+                                android:layout_gravity="center"
+                                android:textColor="#FFD700"
+                                android:textSize="20sp"/>
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_weight="1"
+                            android:orientation="horizontal"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
 
                             <TextView
-                                android:layout_weight="1"
-                                android:id="@+id/prize_text"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
                                 android:layout_marginLeft="10dp"
-                                android:text="Total Prize worth"
+                                android:textStyle="bold"
+                                android:layout_gravity="center"
                                 android:textColor="#000000"
-                                android:textSize="22sp"/>
+                                android:textSize="20sp"
+                                android:text="@string/Rs"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/prize2"
+                                android:layout_marginLeft="10dp"
+                                android:layout_centerVertical="true"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginRight="20dp"
+                                android:text=""
+                                android:textStyle="bold"
+                                android:layout_gravity="center"
+                                android:textColor="#000000"
+                                android:textSize="20sp"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="7dp"
+                        android:id="@+id/prize_third_layout">
+
+                        <LinearLayout
+                            android:layout_weight="1"
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <ImageView
+                                android:padding="4dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/third_place" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="6dp"
+                                android:text="Third Prize"
+                                android:layout_gravity="center"
+                                android:textColor="#FFD700"
+                                android:textSize="20sp"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_weight="1"
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_marginLeft="10dp"
+                                android:textStyle="bold"
+                                android:layout_gravity="center"
+                                android:textColor="#000000"
+                                android:textSize="20sp"
+                                android:text="@string/Rs"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/prize3"
+                                android:layout_marginLeft="10dp"
+                                android:layout_centerVertical="true"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginRight="20dp"
+                                android:text=""
+                                android:textStyle="bold"
+                                android:layout_gravity="center"
+                                android:textColor="#000000"
+                                android:textSize="20sp"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="7dp"
+                        android:id="@+id/prize_fourth_layout">
+
+                        <LinearLayout
+                            android:layout_weight="1"
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <ImageView
+                                android:padding="4dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/third_place" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="6dp"
+                                android:text="Fourth Prize"
+                                android:layout_gravity="center"
+                                android:textColor="#FFD700"
+                                android:textSize="20sp"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_weight="1"
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_marginLeft="10dp"
+                                android:textStyle="bold"
+                                android:layout_gravity="center"
+                                android:textColor="#000000"
+                                android:textSize="20sp"
+                                android:text="@string/Rs"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/prize4"
+                                android:layout_marginLeft="10dp"
+                                android:layout_centerVertical="true"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginRight="20dp"
+                                android:text=""
+                                android:textStyle="bold"
+                                android:layout_gravity="center"
+                                android:textColor="#000000"
+                                android:textSize="20sp"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="7dp"
+                        android:id="@+id/prize_fifth_layout">
+
+                        <LinearLayout
+                            android:layout_weight="1"
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <ImageView
+                                android:padding="4dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/third_place" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="6dp"
+                                android:text="Fifth Prize"
+                                android:layout_gravity="center"
+                                android:textColor="#FFD700"
+                                android:textSize="20sp"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_weight="1"
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_marginLeft="10dp"
+                                android:textStyle="bold"
+                                android:layout_gravity="center"
+                                android:textColor="#000000"
+                                android:textSize="20sp"
+                                android:text="@string/Rs"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/prize5"
+                                android:layout_marginLeft="10dp"
+                                android:layout_centerVertical="true"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginRight="20dp"
+                                android:text=""
+                                android:textStyle="bold"
+                                android:layout_gravity="center"
+                                android:textColor="#000000"
+                                android:textSize="20sp"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="7dp"
+                        android:id="@+id/prize_sixth_layout">
+
+                        <LinearLayout
+                            android:layout_weight="1"
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <ImageView
+                                android:padding="4dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/third_place" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="6dp"
+                                android:text="Sixth Prize"
+                                android:layout_gravity="center"
+                                android:textColor="#FFD700"
+                                android:textSize="20sp"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_weight="1"
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_marginLeft="10dp"
+                                android:textStyle="bold"
+                                android:layout_gravity="center"
+                                android:textColor="#000000"
+                                android:textSize="20sp"
+                                android:text="@string/Rs"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/prize6"
+                                android:layout_marginLeft="10dp"
+                                android:layout_centerVertical="true"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginRight="20dp"
+                                android:text=""
+                                android:textStyle="bold"
+                                android:layout_gravity="center"
+                                android:textColor="#000000"
+                                android:textSize="20sp"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginBottom="7dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="10dp"
+                        >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="First Year:"
+                            android:textSize="20sp"
+                            android:id="@+id/text_first_year" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_below="@+id/text_first_year">
 
                             <LinearLayout
-                                android:layout_weight="1"
-                                android:orientation="horizontal"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginLeft="7dp"
+                                android:id="@+id/first_first">
 
-                                <TextView
-                                    android:layout_marginLeft="10dp"
-                                    android:textStyle="bold"
-                                    android:layout_gravity="center"
-                                    android:textColor="#000000"
-                                    android:textSize="20sp"
-                                    android:text="@string/Rs"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content" />
+                                <LinearLayout
+                                    android:layout_weight="1"
+                                    android:orientation="horizontal"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
 
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:id="@+id/total_prize"
-                                    android:layout_marginLeft="10dp"
-                                    android:layout_centerVertical="true"
-                                    android:layout_alignParentEnd="true"
-                                    android:layout_marginRight="20dp"
-                                    android:text=""
-                                    android:textStyle="bold"
-                                    android:layout_gravity="center"
-                                    android:textColor="#000000"
-                                    android:textSize="20sp"/>
+                                    <ImageView
+                                        android:padding="4dp"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:src="@drawable/first_place" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="6dp"
+                                        android:text="First Prize"
+                                        android:layout_gravity="center"
+                                        android:textColor="#FFD700"
+                                        android:textSize="20sp"/>
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_weight="1"
+                                    android:orientation="horizontal"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                    <TextView
+                                        android:layout_marginLeft="10dp"
+                                        android:textStyle="bold"
+                                        android:layout_gravity="center"
+                                        android:textColor="#000000"
+                                        android:textSize="20sp"
+                                        android:text="@string/Rs"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="10dp"
+                                        android:layout_centerVertical="true"
+                                        android:layout_alignParentEnd="true"
+                                        android:layout_marginRight="20dp"
+                                        android:text="1000"
+                                        android:textStyle="bold"
+                                        android:layout_gravity="center"
+                                        android:textColor="#000000"
+                                        android:textSize="20sp"
+                                        android:id="@+id/prize1_first" />
+
+                                </LinearLayout>
 
                             </LinearLayout>
 
+
+
                         </LinearLayout>
+
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:visibility="gone"
+                        android:id="@+id/director_cut_layout">
+                        <!--<LinearLayout-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content">-->
+                        <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="Best Trailer:"-->
+                        <!--android:textSize="20sp"-->
+                        <!--/>-->
+                        <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="1000"-->
+                        <!--android:id="@+id/prize_best_trailer"-->
+                        <!--/>-->
+                        <!--</LinearLayout>-->
+                        <!--<LinearLayout-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content">-->
+                        <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="Best Actor:"-->
+                        <!--android:textSize="20sp" />-->
+                        <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="1000"-->
+                        <!--android:id="@+id/prize_best_actor" />-->
+                        <!--</LinearLayout>-->
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Best Acting:"
+                                android:textSize="20sp"
+                                />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="1500"
+                                android:id="@+id/prize_best_actress"
+                                />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Best Cinematographer:"
+                                android:textSize="20sp"
+                                />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="1500"
+                                android:id="@+id/prize_best_cinematographer"
+                                />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Best Story:"
+                                android:textSize="20sp"
+                                />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="1500"
+                                android:id="@+id/prize_best_story"
+                                />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Best Editor:"
+                                android:textSize="20sp"
+                                />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="1500"
+                                android:id="@+id/prize_best_editor"
+                                />
+                        </LinearLayout>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:id="@+id/no_ground_zone_layout"
+                        >
                         <TextView
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Note: For Each department"
-                            android:gravity="center_horizontal"
-                            android:textStyle="bold"
-                            android:id="@+id/note_nscet"
-                            android:layout_marginTop="10dp"
+                            android:text="Fabulous Four teams will get Rs. 2000 each"
+                            android:textSize="15sp"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="For best innovative design Rs. 1000"
+                            android:textSize="15sp"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="For best Design Report Rs. 1500"
+                            android:textSize="15sp"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="For best presentation Rs. 500"
+                            android:textSize="15sp"
                             />
                     </LinearLayout>
-                </ScrollView>
-            </LinearLayout>
 
-        </android.support.v7.widget.CardView>
+                    <LinearLayout
+                        android:layout_marginTop="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
 
-    </LinearLayout>
+                        <TextView
+                            android:layout_weight="1"
+                            android:id="@+id/prize_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:text="Total Prize worth"
+                            android:textColor="#000000"
+                            android:textSize="22sp"/>
+
+                        <LinearLayout
+                            android:layout_weight="1"
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_marginLeft="10dp"
+                                android:textStyle="bold"
+                                android:layout_gravity="center"
+                                android:textColor="#000000"
+                                android:textSize="20sp"
+                                android:text="@string/Rs"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/total_prize"
+                                android:layout_marginLeft="10dp"
+                                android:layout_centerVertical="true"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginRight="20dp"
+                                android:text=""
+                                android:textStyle="bold"
+                                android:layout_gravity="center"
+                                android:textColor="#000000"
+                                android:textSize="20sp"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Note: For Each department"
+                        android:gravity="center_horizontal"
+                        android:textStyle="bold"
+                        android:id="@+id/note_nscet"
+                        android:layout_marginTop="10dp"
+                        />
+                </LinearLayout>
+            </ScrollView>
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>

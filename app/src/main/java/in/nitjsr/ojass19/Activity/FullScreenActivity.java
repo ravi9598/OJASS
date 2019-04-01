@@ -2,11 +2,7 @@ package in.nitjsr.ojass19.Activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.ImageButton;
 import android.widget.ImageView;
-
-import com.bogdwellers.pinchtozoom.ImageMatrixTouchHandler;
 
 import in.nitjsr.ojass19.R;
 import in.nitjsr.ojass19.Utils.Constants;
@@ -15,7 +11,7 @@ import in.nitjsr.ojass19.Utils.Utilities;
 import static in.nitjsr.ojass19.Fragments.ItinaryFragment.INTENT_PARAM_DAY;
 import static in.nitjsr.ojass19.Utils.Constants.ITINARY_IMAGES;
 
-public class FullScreenActivity extends AppCompatActivity/* implements View.OnClickListener*/ {
+public class FullScreenActivity extends AppCompatActivity{
 
     private int currPos = 0;
     private ImageView iv_itinary;

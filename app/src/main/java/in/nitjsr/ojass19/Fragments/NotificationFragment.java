@@ -26,8 +26,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-
-import in.nitjsr.ojass19.Activity.NotificationsActivity;
 import in.nitjsr.ojass19.Modals.FaqModel;
 import in.nitjsr.ojass19.R;
 
@@ -38,7 +36,6 @@ public class NotificationFragment extends Fragment implements View.OnClickListen
     ListView list;
     DatabaseReference ref;
     ProgressDialog p;
-    Spinner spinner;
     FaqAdapter adapter;
 
     @Nullable
@@ -46,29 +43,13 @@ public class NotificationFragment extends Fragment implements View.OnClickListen
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_notification,container,false);
 
-        spinner = view.findViewById(R.id.spinner_feed);
-
         list= (ListView) view. findViewById(R.id.list);
         adapter =new FaqAdapter(getContext(), 0, new ArrayList<FaqModel>());
         list.setAdapter(adapter);
 
         p=new ProgressDialog(getContext());
 
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                ((TextView)adapterView.getChildAt(0)).setTextColor(Color.WHITE);
-                onItemSelect();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
-
-
-
+        onItemSelect();
         return view;
     }
 
@@ -76,7 +57,7 @@ public class NotificationFragment extends Fragment implements View.OnClickListen
         p.setMessage("Loading Feed....");
         p.setCancelable(true);
         p.show();
-        ref= FirebaseDatabase.getInstance().getReference().child(FIREBASE_REF_NOTIFICATIONS).child(spinner.getSelectedItem().toString());
+        ref= FirebaseDatabase.getInstance().getReference().child(FIREBASE_REF_NOTIFICATIONS).child("OJASS");
         ref.keepSynced(true);
         ref.addValueEventListener(new ValueEventListener() {
             @Override

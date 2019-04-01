@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -50,6 +51,8 @@ public class SplashActivity extends AppCompatActivity {
             }
         }, SPLASH_SCREEN_TIMER);
     }
+
+
 
     private void moveToLogin() {
         startActivity(new Intent(this, LoginActivity.class));

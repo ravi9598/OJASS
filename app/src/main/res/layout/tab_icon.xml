@@ -19,7 +19,6 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@mipmap/img"
                 android:scaleType="fitXY"
                 android:id="@+id/events_tab_image" />
 

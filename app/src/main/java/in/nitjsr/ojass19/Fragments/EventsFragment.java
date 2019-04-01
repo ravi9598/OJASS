@@ -8,6 +8,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
@@ -81,10 +82,12 @@ public class EventsFragment extends Fragment {
                 mDialog = new Dialog(getContext());
                 mDialog.setContentView(R.layout.dialog_branch_head);
                 RecyclerView rview = mDialog.findViewById(R.id.dialog_rview);
-                rview.setLayoutManager(new LinearLayoutManager(getContext()));
+                RecyclerView.LayoutManager lm = new LinearLayoutManager(getContext());
+                rview.setLayoutManager(lm);
+                DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getContext(),((LinearLayoutManager) lm).getOrientation());
+                rview.addItemDecoration(dividerItemDecoration);
                 bhAdapter = new BranchHeadAdapter(data);
                 rview.setAdapter(bhAdapter);
-                mDialog.getWindow().getAttributes().windowAnimations=R.style.pop_up_anim;
 
                 //first tym fab press
                 if(fabFlag==1){
@@ -167,7 +170,6 @@ public class EventsFragment extends Fragment {
 
     private void init() {
         mAdapter = new EventsPagerAdaptor(getFragmentManager());
-
     }
 
     private void setVP(){

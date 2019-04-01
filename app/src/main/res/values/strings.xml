@@ -9,6 +9,8 @@
     <string name="fb_login_protocol_scheme">fb1973286816307174</string>
     <string name="AboutUs">About Us</string>
     <string name="techfest">NIT Jamshedpur</string>
+    <string name="drawer_open">drawer open</string>
+    <string name="drawer_close">drawer close</string>
 
     <string-array name="noti_channel">
         <item>OJASS</item>

@@ -135,8 +135,7 @@ public class PrizeFragment extends Fragment {
         }else{
             sixth.setVisibility(View.GONE);
         }
-        if(em.getName().compareToIgnoreCase("Digizone")==0 ||
-                em.getName().compareToIgnoreCase("Analog Hunter")==0 ||
+        if(em.getName().compareToIgnoreCase("Digizone")==0 ||  em.getName().compareToIgnoreCase("Analog Hunter")==0 ||
                 em.getName().compareToIgnoreCase("Netkraft")==0 ){
             first_first.setVisibility(View.VISIBLE);
             text_firstyear.setVisibility(View.VISIBLE);
