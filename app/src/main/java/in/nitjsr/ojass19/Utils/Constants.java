@@ -51,9 +51,9 @@ public class Constants {
     public static final String FIREBASE_REF_GURU_GYAN_DATE = "date";
 
     public static final String[] ITINARY_IMAGES = new String[]{
-            "https://firebasestorage.googleapis.com/v0/b/ojass-19.appspot.com/o/itinaryDetailsImages%2Fitinary_day1.jpg?alt=media&token=4e8cf4a8-9c7e-428a-a11f-74d1cec5797a",
-            "https://firebasestorage.googleapis.com/v0/b/ojass-19.appspot.com/o/itinaryDetailsImages%2Fitinary_day2.jpg?alt=media&token=88701439-4438-43f5-8bc5-346cd79369d8",
-            "https://firebasestorage.googleapis.com/v0/b/ojass-19.appspot.com/o/itinaryDetailsImages%2Fitinary_day3.jpg?alt=media&token=3256c632-6d3a-4b98-9f12-82d9087982eb"
+            "https://firebasestorage.googleapis.com/v0/b/ojass-19.appspot.com/o/itinaryDetailsImages%2Fday_1.jpeg?alt=media&token=4dae79f7-e9cd-4dc7-b800-b41bc97624dc",
+            "https://firebasestorage.googleapis.com/v0/b/ojass-19.appspot.com/o/itinaryDetailsImages%2Fday_2.jpeg?alt=media&token=93b27dc2-5c8a-42aa-875f-54176d050320",
+            "https://firebasestorage.googleapis.com/v0/b/ojass-19.appspot.com/o/itinaryDetailsImages%2Fday_3.jpeg?alt=media&token=e1461eec-0cb0-4ff3-b586-445771caaf4b"
     };
 
     public static final String[] homeEvent = new String[]{

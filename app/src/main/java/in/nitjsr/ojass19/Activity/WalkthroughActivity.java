@@ -21,7 +21,6 @@ public class WalkthroughActivity extends FancyWalkthroughActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // setContentView(R.layout.activity_walkthrough);
         FancyWalkthroughCard fancywalkthroughCard1 = new FancyWalkthroughCard("Dashboard", "Immerse into the brand new user dashboard.", R.drawable.ic_dashboard_black_24dp);
         FancyWalkthroughCard fancywalkthroughCard2 = new FancyWalkthroughCard("Location", "Reach event venues easily using Maps.", R.drawable.ic_location_on_black_24dp);
         FancyWalkthroughCard fancywalkthroughCard3 = new FancyWalkthroughCard("Notifications", "All notifications at one place. Never miss an event now!", R.drawable.ic_notifications_active_black_24dp);
@@ -29,11 +28,8 @@ public class WalkthroughActivity extends FancyWalkthroughActivity {
 
 
         fancywalkthroughCard1.setBackgroundColor(R.color.white);
-        //fancywalkthroughCard1.setIconLayoutParams(300, 300, 0, 0, 0, 0);
         fancywalkthroughCard2.setBackgroundColor(R.color.white);
-        //fancywalkthroughCard2.setIconLayoutParams(300, 300, 0, 0, 0, 0);
         fancywalkthroughCard3.setBackgroundColor(R.color.white);
-        //fancywalkthroughCard3.setIconLayoutParams(300, 300, 0, 0, 0, 0);
         fancywalkthroughCard4.setBackgroundColor(R.color.white);
         List<FancyWalkthroughCard> pages = new ArrayList<>();
 

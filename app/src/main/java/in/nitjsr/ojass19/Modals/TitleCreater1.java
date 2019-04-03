@@ -1,12 +1,5 @@
 package in.nitjsr.ojass19.Modals;
 
-import android.content.Context;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import in.nitjsr.ojass19.Activity.NotificationsActivity;
-
 public class TitleCreater1 {
     /*public static TitleCreater1 _titleCreator;
     public static List<TitleParent> _titleParents;

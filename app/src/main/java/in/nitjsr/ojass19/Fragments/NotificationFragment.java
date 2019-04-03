@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
@@ -24,6 +25,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import in.nitjsr.ojass19.Modals.FaqModel;
@@ -42,6 +44,8 @@ public class NotificationFragment extends Fragment implements View.OnClickListen
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_notification,container,false);
+
+        Picasso.with(getContext()).load(R.mipmap.notifi_bg).fit().into((ImageView)view.findViewById(R.id.iv_feed));
 
         list= (ListView) view. findViewById(R.id.list);
         adapter =new FaqAdapter(getContext(), 0, new ArrayList<FaqModel>());

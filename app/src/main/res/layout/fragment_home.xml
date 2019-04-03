@@ -10,42 +10,35 @@
         android:id="@+id/drawer_layout"
         android:layout_height="match_parent"
         android:layout_width="match_parent"
-        tools:openDrawer="end"
-        >
+        tools:openDrawer="end">
+
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/gurugyan_fl"
-            />
+            android:id="@+id/gurugyan_fl" />
 
         <android.support.design.widget.NavigationView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="right"
             android:background="@android:color/transparent"
-            android:id="@+id/nav_view"
-            >
+            android:id="@+id/nav_view">
+
             <include layout="@layout/home_layout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                />
+                android:layout_height="match_parent" />
+
         </android.support.design.widget.NavigationView>
+
     </android.support.v4.widget.DrawerLayout>
 
-    <RelativeLayout
-        android:background="@color/colorPrimary"
-        android:layout_centerVertical="true"
-        android:layout_alignParentRight="true"
-        android:id="@+id/view_puller"
-        android:layout_width="50dp"
-        android:layout_height="50dp">
-
         <ImageView
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:id="@+id/view_puller"
             android:layout_centerInParent="true"
             app:srcCompat="@drawable/ic_icon_left"
             android:layout_width="40dp"
             android:layout_height="40dp" />
-
-    </RelativeLayout>
 
 </RelativeLayout>

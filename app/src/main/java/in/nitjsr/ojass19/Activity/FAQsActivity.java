@@ -22,6 +22,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -43,6 +44,8 @@ public class FAQsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_faqs);
+
+        Picasso.with(this).load(R.mipmap.notifi_bg).fit().into((ImageView)findViewById(R.id.iv_faq));
 
         ref= FirebaseDatabase.getInstance().getReference().child("Faq");
         ref.keepSynced(true);

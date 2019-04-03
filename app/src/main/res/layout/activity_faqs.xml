@@ -31,15 +31,26 @@
 
     </LinearLayout>
 
-    <ListView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="8dp"
-        android:id="@+id/list"
-        android:padding="4dp"
-        android:divider="@android:color/transparent"
-        android:dividerHeight="10.0sp"
-        android:animateLayoutChanges="true"
-        android:scrollbars="none"/>
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/iv_faq"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="8dp"
+            android:id="@+id/list"
+            android:padding="4dp"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="10.0sp"
+            android:animateLayoutChanges="true"
+            android:scrollbars="none"/>
+
+    </RelativeLayout>
 
 </LinearLayout>

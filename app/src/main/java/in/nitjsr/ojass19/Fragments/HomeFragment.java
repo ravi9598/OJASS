@@ -34,6 +34,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -79,7 +80,7 @@ public class HomeFragment extends Fragment implements BlurCallback {
 
     private DrawerLayout drawerLayout;
     private LinearLayout llUserInfo;
-    private RelativeLayout viewpuller;
+    private ImageView viewpuller;
     private FrameLayout fl;
     public static final String POSITION_PARAM = "position";
     private Handler handler;
@@ -207,7 +208,7 @@ public class HomeFragment extends Fragment implements BlurCallback {
                 viewpuller.setVisibility(View.VISIBLE);
                 Blurry.delete(fl);
                 Blurry.delete(fl);
-                Log.e("LOL","FUCK");
+                Log.e("TAG","Event");
 
             }
             @Override
@@ -257,7 +258,7 @@ public class HomeFragment extends Fragment implements BlurCallback {
                     int days = Days.daysBetween(start, end).getDays();
 
                     tvDaysToGo.setText(days+" ");
-                    if(days==0){
+                    if(days<=0){
                         days_layout.setVisibility(View.INVISIBLE);
                     }
                 } catch (Exception e) {
@@ -289,7 +290,6 @@ public class HomeFragment extends Fragment implements BlurCallback {
                             tvUserOjId.setTextColor(Color.RED);
                         }
                         if (dataSnapshot.child(FIREBASE_REF_PARTICIPATED_EVENTS).exists()){
-                            //prepareRecyclerView(dataSnapshot.child(FIREBASE_REF_PARTICIPATED_EVENTS));
                         }
                         if (pd.isShowing()) pd.dismiss();
                         if (flag == 1){

@@ -32,6 +32,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import in.nitjsr.ojass19.R;
 import in.nitjsr.ojass19.Utils.SharedPrefManager;
@@ -58,6 +59,8 @@ public class LoginActivity extends AppCompatActivity {
         edit.commit();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        Picasso.with(this).load(R.drawable.login_bg).fit().into((ImageView)findViewById(R.id.iv_login));
 
         mAuth = FirebaseAuth.getInstance();
 

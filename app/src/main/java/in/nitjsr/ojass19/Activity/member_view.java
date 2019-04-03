@@ -66,8 +66,6 @@ public class member_view extends Activity {
             @Override
             public void onClick(View view) {
 
-
-
                 onBackPressed();
             }
         });

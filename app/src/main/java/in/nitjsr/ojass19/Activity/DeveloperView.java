@@ -26,7 +26,7 @@ public class DeveloperView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_developer_page);
 
-        recyclerView = (RecyclerView)findViewById(R.id.dev_recycler);
+        recyclerView = findViewById(R.id.dev_recycler);
         developerList = new ArrayList<>();
 
         findViewById(R.id.ib_back_developers).setOnClickListener(new View.OnClickListener() {

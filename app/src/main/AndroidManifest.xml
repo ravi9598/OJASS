@@ -21,13 +21,8 @@
 
         <activity android:name=".Activity.FAQsActivity"></activity>
         <activity android:name=".Activity.SponsorActivity" />
-        <activity android:name=".Activity.NotificationsActivity" />
         <activity android:name=".Activity.MapsActivity" />
         <activity android:name=".Activity.FullScreenActivity" />
-        <activity android:name=".Activity.AppDevActivity" />
-        <activity android:name=".Activity.DevelopersActivity" />
-        <activity android:name=".Activity.OjassTeamActivity" />
-        <activity android:name=".Activity.GuruGyanActivity" />
         <activity android:name=".Activity.FAQActivity" />
 
         <meta-data

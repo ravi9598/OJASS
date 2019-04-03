@@ -20,14 +20,6 @@ public class Department {
         this.departmentName = departmentName;
     }
 
-//    public String getDepartmentImage() {
-//        return departmentImage;
-//    }
-//
-//    public void setDepartmentImage(String departmentImage) {
-//        this.departmentImage = departmentImage;
-//    }
-
     public Department(){
     }
 }

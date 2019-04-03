@@ -113,7 +113,7 @@ public class GuruGyanFragment extends Fragment implements View.OnClickListener,V
 
                         }
                         posterAdapter = new PosterAdapter(GuruGyanFragment.this,images,null);
-                        viewPager.setAdapter(posterAdapter);
+                       viewPager.setAdapter(posterAdapter);
                         viewPager.setCurrentItem(0);
                         ((CircleIndicator)view.findViewById(R.id.ci_guru_gyan)).setViewPager(viewPager);
                         viewPager.addOnPageChangeListener(GuruGyanFragment.this);

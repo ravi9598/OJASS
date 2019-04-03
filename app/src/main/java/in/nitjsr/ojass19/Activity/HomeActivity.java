@@ -24,6 +24,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -71,20 +72,19 @@ import in.nitjsr.ojass19.Utils.Utilities;
 import static in.nitjsr.ojass19.Utils.Constants.FIREBASE_REF_OJASS_ID;
 import static in.nitjsr.ojass19.Utils.Constants.FIREBASE_REF_USERS;
 
-public class HomeActivity extends AppCompatActivity implements View.OnClickListener,BlurCallback, DataLoadedInterface {
+public class HomeActivity extends AppCompatActivity implements View.OnClickListener, BlurCallback, DataLoadedInterface {
 
     public Toolbar toolbar;
 
     private static final String urlOfApp = "https://play.google.com/store/apps/details?id=in.nitjsr.ojass19&hl=en";
     private String currentVersion;
     private FirebaseAuth mAuth;
-    private BottomSheetDialog bottomSheetDialog;
     //variables
     public static List<EventModel> data = new ArrayList<>();
     private DatabaseReference mRef;
     private ProgressDialog pDialog;
     private BlurCallback mCallback;
-    private int k=0;
+    private int k = 0;
 
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -92,12 +92,12 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            FragmentManager fragmentManager=getSupportFragmentManager();
-            FragmentTransaction transaction=fragmentManager.beginTransaction();
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentTransaction transaction = fragmentManager.beginTransaction();
             Fragment f = getSupportFragmentManager().findFragmentById(R.id.frame_container);
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    if(!(f instanceof HomeFragment)) {
+                    if (!(f instanceof HomeFragment)) {
                         transaction.replace(R.id.frame_container, new HomeFragment()).commit();
                         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
                         return true;
@@ -105,7 +105,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                     break;
 
                 case R.id.navigation_event:
-                    if(!(f instanceof EventsFragment)) {
+                    if (!(f instanceof EventsFragment)) {
                         transaction.replace(R.id.frame_container, new EventsFragment()).commit();
                         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
                         return true;
@@ -113,11 +113,11 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                     break;
 
                 case R.id.navigation_map:
-                    startActivity(new Intent(HomeActivity.this,MapsActivity.class));
+                    startActivity(new Intent(HomeActivity.this, MapsActivity.class));
                     break;
 
                 case R.id.navigation_itinerary:
-                    if(!(f instanceof ItinaryFragment)) {
+                    if (!(f instanceof ItinaryFragment)) {
                         transaction.replace(R.id.frame_container, new ItinaryFragment()).commit();
                         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
                         return true;
@@ -125,8 +125,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                     break;
 
                 case R.id.navigation_notification:
-                    if(!(f instanceof NotificationFragment)) {
-                        //startActivity(new Intent(HomeActivity.this,NotificationsActivity.class));
+                    if (!(f instanceof NotificationFragment)) {
                         transaction.replace(R.id.frame_container, new NotificationFragment()).commit();
                         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
                         return true;
@@ -135,9 +134,11 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             return false;
         }
     };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_home);
         mRef = FirebaseDatabase.getInstance().getReference("Events");
         mAuth = FirebaseAuth.getInstance();
@@ -150,38 +151,23 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.getMenu().getItem(2).setChecked(true);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-        FragmentManager fragmentManager=getSupportFragmentManager();
-        FragmentTransaction transaction=fragmentManager.beginTransaction();
-        transaction.replace(R.id.frame_container,new HomeFragment()).commit();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.replace(R.id.frame_container, new HomeFragment()).commit();
 
-        toolbar=findViewById(R.id.home_toolbar);
+        toolbar = findViewById(R.id.home_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Ojass");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
-
-        bottomSheetDialog = new BottomSheetDialog(HomeActivity.this);
-        View bottomSheetDialogView = getLayoutInflater().inflate(R.layout.explore_dialog, null);
-        bottomSheetDialog.setContentView(bottomSheetDialogView);
-        ImageView ivSponsors=bottomSheetDialogView.findViewById(R.id.exp_sponsors);
-        ImageView ivOjassTeam=bottomSheetDialogView.findViewById(R.id.exp_ojass_team);
-        ImageView ivGuruGyan=bottomSheetDialogView.findViewById(R.id.exp_guru_gyan);
-        ImageView ivAppDev=bottomSheetDialogView.findViewById(R.id.exp_app_dev);
-        ImageView ivFaq=bottomSheetDialogView.findViewById(R.id.exp_faq);
-
         compareAppVersion();
-        
-        ivSponsors.setOnClickListener(this);
-        ivOjassTeam.setOnClickListener(this);
-        ivGuruGyan.setOnClickListener(this);
-        ivAppDev.setOnClickListener(this);
-        ivFaq.setOnClickListener(this);
+
+
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu)
-    {
+    public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.home_menu, menu);
         return true;
     }
@@ -193,19 +179,19 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 ceateQRPopup();
                 return true;
             case R.id.menu_about:
-                startActivity(new Intent(HomeActivity.this,AboutActivity.class));
+                startActivity(new Intent(HomeActivity.this, AboutActivity.class));
                 return true;
             case R.id.menu_ojass_team:
-                startActivity(new Intent(HomeActivity.this,OjassDepartment.class));
+                startActivity(new Intent(HomeActivity.this, OjassDepartment.class));
                 return true;
             case R.id.menu_faq:
-                startActivity(new Intent(HomeActivity.this,FAQActivity.class));
-                return  true;
+                startActivity(new Intent(HomeActivity.this, FAQsActivity.class));
+                return true;
             case R.id.menu_sponsors:
                 startActivity(new Intent(HomeActivity.this, SponsorActivity.class));
                 return true;
             case R.id.menu_app_dev:
-                startActivity(new Intent(HomeActivity.this,DeveloperView.class));
+                startActivity(new Intent(HomeActivity.this, DeveloperView.class));
                 return true;
             case R.id.menu_logout:
                 signOut();
@@ -251,17 +237,17 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             @SuppressLint("NewApi")
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists()){
+                if (dataSnapshot.exists()) {
                     try {
-                        Utilities.setPicassoImage(HomeActivity.this, "https://api.qrserver.com/v1/create-qr-code/?data="+mAuth.getCurrentUser().getUid()+"&size=240x240&margin=10", ivQR, Constants.SQUA_PLACEHOLDER);
-                        if (dataSnapshot.child(FIREBASE_REF_OJASS_ID).exists()){
+                        Utilities.setPicassoImage(HomeActivity.this, "https://api.qrserver.com/v1/create-qr-code/?data=" + mAuth.getCurrentUser().getUid() + "&size=240x240&margin=10", ivQR, Constants.SQUA_PLACEHOLDER);
+                        if (dataSnapshot.child(FIREBASE_REF_OJASS_ID).exists()) {
                             tvOjassId.setText(dataSnapshot.child(FIREBASE_REF_OJASS_ID).getValue().toString());
                             tvOjassId.setTextColor(getResources().getColor(R.color.forest_green));
                         } else {
                             tvOjassId.setText(Constants.PAYMENT_DUE);
                             tvOjassId.setTextColor(Color.RED);
                         }
-                    } catch (Exception e){
+                    } catch (Exception e) {
 
                     }
                 } else {
@@ -296,27 +282,27 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     private void getAllEventsData() {
         subscribeToTopic();
         final SharedPrefManager manager = new SharedPrefManager(this);
-            mRef.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    data.clear();
-                    manager.setData(dataSnapshot.toString());
-                    Log.e("TAG",dataSnapshot.toString());
-                    //add progress dialog
-                    data = parseDataToList(dataSnapshot);
-                    pDialog.dismiss();
+        mRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                data.clear();
+                manager.setData(dataSnapshot.toString());
+                Log.e("TAG", dataSnapshot.toString());
+                //add progress dialog
+                data = parseDataToList(dataSnapshot);
+                pDialog.dismiss();
 
-                }
+            }
 
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
-                    Toast.makeText(HomeActivity.this, "Failed to get data", Toast.LENGTH_SHORT).show();
-                }
-            });
-        }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(HomeActivity.this, "Failed to get data", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 
 
-    private List<EventModel> parseDataToList( DataSnapshot dataSnapshot) {
+    private List<EventModel> parseDataToList(DataSnapshot dataSnapshot) {
         List<EventModel> list = new ArrayList<>();
 
         try {
@@ -378,16 +364,16 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
-    private boolean checkPrizeType(String name){
-        if(     (name.compareToIgnoreCase("High Voltage Concepts")==0) ||
-                (name.compareToIgnoreCase("electrospection")==0) ||
-                (name.compareToIgnoreCase("Electro Scribble")==0) ||
-                (name.compareToIgnoreCase("matsim")==0) ||
-                (name.compareToIgnoreCase("Pro-Lo-Co")==0) ||
-                (name.compareToIgnoreCase("Hack-De-Science")==0) ||
-                (name.compareToIgnoreCase("agnikund")==0) ||
-                (name.compareToIgnoreCase("knockout")==0)
-        ){
+    private boolean checkPrizeType(String name) {
+        if ((name.compareToIgnoreCase("High Voltage Concepts") == 0) ||
+                (name.compareToIgnoreCase("electrospection") == 0) ||
+                (name.compareToIgnoreCase("Electro Scribble") == 0) ||
+                (name.compareToIgnoreCase("matsim") == 0) ||
+                (name.compareToIgnoreCase("Pro-Lo-Co") == 0) ||
+                (name.compareToIgnoreCase("Hack-De-Science") == 0) ||
+                (name.compareToIgnoreCase("agnikund") == 0) ||
+                (name.compareToIgnoreCase("knockout") == 0)
+        ) {
             return false;
         }
         return true;
@@ -396,7 +382,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onBlurCallback() {
         Fragment f = getSupportFragmentManager().findFragmentById(R.id.frame_container);
-        if(f instanceof HomeFragment){
+        if (f instanceof HomeFragment) {
             mCallback = (BlurCallback) f;
             mCallback.onBlurCallback();
         }
@@ -405,7 +391,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public boolean isDataLoaded() {
-        if(data ==null)
+        if (data == null)
             return false;
         else
             return true;
@@ -466,4 +452,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         super.onAttachFragment(fragment);
 
     }
+
+
+
 }

@@ -766,26 +766,26 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Fabulous Four teams will get Rs. 2000 each"
-                            android:textSize="15sp"
-                            />
+                            android:textSize="15sp" />
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="For best innovative design Rs. 1000"
-                            android:textSize="15sp"
-                            />
+                            android:textSize="15sp" />
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="For best Design Report Rs. 1500"
-                            android:textSize="15sp"
-                            />
+                            android:textSize="15sp" />
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="For best presentation Rs. 500"
-                            android:textSize="15sp"
-                            />
+                            android:textSize="15sp" />
+
                     </LinearLayout>
 
                     <LinearLayout
