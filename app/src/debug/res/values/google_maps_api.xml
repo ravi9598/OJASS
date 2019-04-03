@@ -3,6 +3,6 @@
         name="google_maps_key"
         templateMergeStrategy="preserve"
         translatable="false">
-        AIzaSyDdFSbGS-5qUeug58uESSyHsNhJv3OwUtE
+        {Your maps key}
     </string>
 </resources>
