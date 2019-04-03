@@ -54,8 +54,8 @@
     <string name="kit">Kit</string>
 
 
-    <string name="FACEBOOK_APP_ID">1973286816307174</string>
-    <string name="ACCOUNT_KIT_CLIENT_TOKEN">601d497cf08198061be9664786cb0d82</string>
+    <string name="FACEBOOK_APP_ID">{Your facebook app id}</string>
+    <string name="ACCOUNT_KIT_CLIENT_TOKEN">{Your facebook account kit token}</string>
     <string name="AK_LOGIN_PROTOCOL_SCHEME">ak1973286816307174</string>
     <string name="skip_this"><u>Skip this</u></string>
 
